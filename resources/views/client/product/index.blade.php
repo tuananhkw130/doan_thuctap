@@ -119,13 +119,14 @@
                         @foreach ($products as $itemproduct)
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="{{$itemproduct->image}}">
+                                    <div class="product__item__pic set-bg" data-setbg="{{ $itemproduct->image }}">
                                         <ul class="product__hover">
-                                            <li><a href="{{ route('product.detail', ['id' => $itemproduct->id]) }}"><img src="client/assets/img/icon/search.png" alt=""></a></li>
+                                            <li><a href="{{ route('product.detail', ['id' => $itemproduct->id]) }}"><img
+                                                        src="client/assets/img/icon/search.png" alt=""></a></li>
                                         </ul>
                                     </div>
                                     <div class="product__item__text">
-                                        <h6>{{$itemproduct->name}}</h6>
+                                        <h6>{{ $itemproduct->name }}</h6>
                                         <a href="#" class="add-cart">Thêm vào giỏ hàng</a>
                                         <div class="rating">
                                             <i class="fa fa-star"></i>
