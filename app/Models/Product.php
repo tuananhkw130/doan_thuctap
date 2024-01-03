@@ -6,15 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Post extends Model
+class Product extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        "title",
+        "id_category",
+        "name",
         "image",
-        "content",
-        "author",
-        "updated_at"
+        "price",
+        "size",
+        "quantity",
+        "describe"
     ];
 }

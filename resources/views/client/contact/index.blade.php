@@ -9,8 +9,7 @@
                     <div class="section-title">
                         <span>Thông tin</span>
                         <h2>Liên Hệ</h2>
-                        <p>As you might expect of a company that began as a high-end interiors contractor, we pay
-                            strict attention.</p>
+                        <p>Nếu bạn có bất kỳ câu hỏi hoặc cần thêm thông tin, đừng ngần ngại liên hệ, chúng tôi luôn luôn sẵn sàng lắng nghe!</p>
                     </div>
                     <ul>
                         <li>
@@ -19,7 +18,7 @@
                         </li>
                         <li>
                             <h4>Thái Bình</h4>
-                            <p>109 Lý Bôn, Thành phố Thái Bình  <br>+84 345-423-9893</p>
+                            <p>147 Phan Bá Vành, Thành phố Thái Bình  <br>+84 345-423-9893</p>
                         </li>
                     </ul>
                 </div>

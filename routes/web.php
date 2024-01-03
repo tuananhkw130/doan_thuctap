@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 
 use App\Http\Controllers\Client\HomeController as ClientHomeController;
+use App\Http\Controllers\Client\ProductController as ShopController;
 use App\Http\Controllers\Client\PostController as ClientPostController;
 use App\Http\Controllers\Client\ContactController;
 /*
@@ -46,6 +48,15 @@ Route::prefix('admin')->group(function () {
         Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('admin.category.delete');
     });
 
+    Route::prefix('/product')->group(function () {
+        Route::get('/index', [ProductController::class,'index'])->name('admin.product.index');
+        Route::get('/create', [ProductController::class,'create'])->name('admin.product.create');
+        Route::post('/store', [ProductController::class, 'store'])->name('admin.product.store');
+        Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
+        Route::post('/update', [ProductController::class, 'update'])->name('admin.product.update');
+        Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('admin.product.delete');
+    });
+
     Route::prefix('/post')->group(function () {
         Route::get('/index', [PostController::class, 'index'])->name('admin.post.index');
         Route::get('/create', [PostController::class, 'create'])->name('admin.post.create');
@@ -65,6 +76,11 @@ Route::get('/', [ClientHomeController::class, 'index'])->name('client.home.index
 Route::prefix('/post')->group(function () {
     Route::get('/', [ClientPostController::class, 'index'])->name('post.index');
     Route::get('/{id}', [ClientPostController::class, 'detail'])->name('post.detail');
+});
+
+Route::prefix('/shop')->group(function () {
+    Route::get('/', [ShopController::class, 'index'])->name('product.index');
+    Route::get('/{id}', [ShopController::class, 'detail'])->name('product.detail');
 });
 
 Route::prefix('/contact')->group(function () {
