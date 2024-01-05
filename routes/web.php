@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
@@ -29,6 +30,15 @@ Auth::routes();
 
 Route::prefix('admin')->group(function () {
     Route::get('/index', [AdminHomeController::class, 'index'])->name('admin.home.index');
+
+    Route::prefix('/user')->group(function () {
+        Route::get('/index', [UserController::class, 'index'])->name('admin.user.index');
+        Route::get('/create', [UserController::class, 'create'])->name('admin.user.create');
+        Route::post('/store', [UserController::class, 'store'])->name('admin.user.store');
+        Route::get('/edit/{id}', [UserController::class, 'edit'])->name('admin.user.edit');
+        Route::post('/update', [UserController::class, 'update'])->name('admin.user.update');
+        Route::get('/delete/{id}', [UserController::class, 'delete'])->name('admin.user.delete');
+    });
 
     Route::prefix('/menu')->group(function () {
         Route::get('/index', [MenuController::class, 'index'])->name('admin.menu.index');
