@@ -54,7 +54,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return view('client.product.detail', [
             'product' => $product,
-            'query' => $query
+
         ]);
     }
 }

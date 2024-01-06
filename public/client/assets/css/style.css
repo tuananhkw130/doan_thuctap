@@ -3854,3 +3854,18 @@ ol {
 		height: 250px;
 	}
 }
+
+
+.control-account{
+    display: flex;
+    justify-content: center;
+    padding: 15px 25px;
+}
+.control-account a{
+    color: #000;
+    font-size: 16px;
+}
+
+.control-account:hover{
+    background-color: #9e9999;
+}

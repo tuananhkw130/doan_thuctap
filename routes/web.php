@@ -13,6 +13,8 @@ use App\Http\Controllers\Client\HomeController as ClientHomeController;
 use App\Http\Controllers\Client\ProductController as ShopController;
 use App\Http\Controllers\Client\PostController as ClientPostController;
 use App\Http\Controllers\Client\ContactController;
+
+use App\Http\Controllers\Auth\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +27,7 @@ use App\Http\Controllers\Client\ContactController;
 */
 
 
-Auth::routes();
+
 
 
 Route::prefix('admin')->group(function () {
@@ -97,4 +99,12 @@ Route::prefix('/contact')->group(function () {
     Route::get('/', [ContactController::class, 'index'])->name('contact.index');
     Route::post('/', [ContactController::class, 'store'])->name('contact.store');
 
+});
+
+Route::prefix('/auth')->group(function () {
+    Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('auth.showRegister');
+    Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('auth.showLogin');
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });

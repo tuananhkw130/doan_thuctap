@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -12,7 +11,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-    rel="stylesheet">
+        rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('client/assets/css/bootstrap.min.css') }}" type="text/css">
@@ -35,28 +34,36 @@
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
-            <div class="offcanvas__links">
-                <a href="#">Sign in</a>
-                <a href="#">FAQs</a>
-            </div>
-            <div class="offcanvas__top__hover">
-                <span>Usd <i class="arrow_carrot-down"></i></span>
-                <ul>
-                    <li>USD</li>
-                    <li>EUR</li>
-                    <li>USD</li>
-                </ul>
-            </div>
+            @if(Auth::user())
+                <div class="offcanvas__top__hover">
+                    <span>Xin chào {{ Auth::user()->name }} <i class="arrow_carrot-down"></i></span>
+                    <ul>
+                        <li><a href="#">Đăng ký</a></li>
+                        <li><a href="#">Đăng nhập</a></li>
+                    </ul>
+                </div>
+            @else
+                <div class="offcanvas__top__hover">
+                    <span>Tài khoản<i class="arrow_carrot-down"></i></span>
+                    <ul>
+                        <li><a href="#">Đăng ký</a></li>
+                        <li><a href="#">Đăng nhập</a></li>
+                    </ul>
+                </div>
+            @endif
+
         </div>
         <div class="offcanvas__nav__option">
-            <a href="#" class="search-switch"><img src="{{ asset('client/assets/img/icon/search.png') }}" alt=""></a>
+            <a href="#" class="search-switch"><img src="{{ asset('client/assets/img/icon/search.png') }}"
+                    alt=""></a>
             <a href="#"><img src="{{ asset('client/assets/img/icon/heart.png') }}" alt=""></a>
-            <a href="#"><img src="{{ asset('client/assets/img/icon/cart.png') }}" alt=""> <span>0</span></a>
+            <a href="#"><img src="{{ asset('client/assets/img/icon/cart.png') }}" alt="">
+                <span>0</span></a>
             <div class="price">$0.00</div>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>Free shipping, 30-day return or refund guarantee.</p>
+            <p>Miễn phí vận chuyển, đổi trả hàng trong vòng 30 ngày</p>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -68,25 +75,50 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                            <p>Free shipping, 30-day return or refund guarantee.</p>
+                            <p>Miễn phí vận chuyển, đổi trả hàng trong vòng 30 ngày</p>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="header__top__right">
-                            <div class="header__top__links">
-                                <a href="#">Sign in</a>
-                                <a href="#">FAQs</a>
-                            </div>
-                            <div class="header__top__hover">
-                                <span>Usd <i class="arrow_carrot-down"></i></span>
-                                <ul>
-                                    <li>USD</li>
-                                    <li>EUR</li>
-                                    <li>USD</li>
-                                </ul>
+                    @if (Auth::user())
+                        <div class="col-lg-6 col-md-5">
+                            <div class="header__top__right">
+                                <div class="header__top__hover">
+                                    <span>Xin chào {{Auth::user()->name}} <i class="arrow_carrot-down"></i></span>
+                                    <ul>
+                                        <li class="control-account">
+                                            <a href="{{route('admin.home.index')}}">
+                                                Trang quản trị
+                                            </a>
+                                        </li>
+                                        <li class="control-account">
+                                            <a href="{{route('auth.logout')}}">
+                                                Đăng xuất
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @else
+                        <div class="col-lg-6 col-md-5">
+                            <div class="header__top__right">
+                                <div class="header__top__hover">
+                                    <span>Tài khoản <i class="arrow_carrot-down"></i></span>
+                                    <ul>
+                                        <li class="control-account">
+                                            <a href="{{route('auth.register')}}">
+                                                Đăng ký
+                                            </a>
+                                        </li>
+                                        <li class="control-account">
+                                            <a href="{{route('auth.login')}}">
+                                                Đăng nhập
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -94,7 +126,8 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
-                        <a href="{{ route('client.home.index') }}"><img src="{{ asset('client/assets/img/logo.png') }}" alt=""></a>
+                        <a href="{{ route('client.home.index') }}"><img
+                                src="{{ asset('client/assets/img/logo.png') }}" alt=""></a>
                     </div>
                 </div>
 
@@ -102,9 +135,12 @@
 
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="{{ asset('client/assets/img/icon/search.png') }}" alt=""></a>
-                        <a href="#"><img src="{{ asset('client/assets/img/icon/heart.png') }}" alt=""></a>
-                        <a href="#"><img src="{{ asset('client/assets/img/icon/cart.png') }}" alt=""> <span>0</span></a>
+                        <a href="#" class="search-switch"><img
+                                src="{{ asset('client/assets/img/icon/search.png') }}" alt=""></a>
+                        <a href="#"><img src="{{ asset('client/assets/img/icon/heart.png') }}"
+                                alt=""></a>
+                        <a href="#"><img src="{{ asset('client/assets/img/icon/cart.png') }}" alt="">
+                            <span>0</span></a>
                         <div class="price">$0.00</div>
                     </div>
                 </div>
@@ -173,7 +209,8 @@
                                 document.write(new Date().getFullYear());
                             </script>2020
                             All rights reserved | This template is made with <i class="fa fa-heart-o"
-                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                aria-hidden="true"></i> by <a href="https://colorlib.com"
+                                target="_blank">Colorlib</a>
                         </p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </div>
