@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="product__item__text">
                                         <h6>{{ $itemproduct->name }}</h6>
-                                        <a href="#" class="add-cart">Thêm vào giỏ hàng</a>
+                                        <a href="{{route('cart.add')}}" class="add-cart">Thêm vào giỏ hàng</a>
                                         <div class="rating">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>

@@ -1,3 +1,7 @@
+@php
+    use App\Enums\UserRole;
+@endphp
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -84,11 +88,19 @@
                                 <div class="header__top__hover">
                                     <span>Xin chào {{Auth::user()->name}} <i class="arrow_carrot-down"></i></span>
                                     <ul>
-                                        <li class="control-account">
-                                            <a href="{{route('admin.home.index')}}">
-                                                Trang quản trị
-                                            </a>
-                                        </li>
+                                        @if (Auth::user()->role === UserRole::ADMIN)
+                                            <li class="control-account">
+                                                <a href="{{route('admin.home.index')}}">
+                                                    Trang quản trị
+                                                </a>
+                                            </li>
+                                        @else
+                                            <li class="control-account">
+                                                <a href="{{route('admin.order.index')}}">
+                                                    Đơn hàng của bạn
+                                                </a>
+                                            </li>
+                                        @endif
                                         <li class="control-account">
                                             <a href="{{route('auth.logout')}}">
                                                 Đăng xuất

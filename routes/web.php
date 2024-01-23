@@ -7,11 +7,15 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 
 use App\Http\Controllers\Client\HomeController as ClientHomeController;
 use App\Http\Controllers\Client\ProductController as ShopController;
 use App\Http\Controllers\Client\PostController as ClientPostController;
+use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\OrderController;
+use App\Http\Controllers\Client\CheckoutController;
 use App\Http\Controllers\Client\ContactController;
 
 use App\Http\Controllers\Auth\AuthController;
@@ -78,6 +82,14 @@ Route::prefix('admin')->group(function () {
         Route::get('/delete/{id}', [PostController::class, 'delete'])->name('admin.post.delete');
     });
 
+    Route::prefix('/order')->group(function() {
+        Route::get('/', [AdminOrderController::class, 'index'])->name('admin.order.index');
+        Route::get('/detail/{id}', [AdminOrderController::class, 'detail'])->name('admin.order.detail');
+        Route::get('/accept/{id}', [AdminOrderController::class, 'accept'])->name('admin.order.accept');
+        Route::get('/cancel/{id}', [AdminOrderController::class, 'cancel'])->name('admin.order.cancel');
+        Route::get('/success/{id}', [AdminOrderController::class, 'success'])->name('admin.order.success');
+    });
+
     Route::prefix('/contact')->group(function () {
         Route::get('/index', [AdminContactController::class, 'index'])->name('admin.contact.index');
     });
@@ -93,6 +105,23 @@ Route::prefix('/post')->group(function () {
 Route::prefix('/shop')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('product.index');
     Route::get('/{id}', [ShopController::class, 'detail'])->name('product.detail');
+});
+
+Route::prefix('/cart')->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/add', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/remove/{productID}', [CartController::class, 'remove'])->name('cart.remove');
+});
+
+Route:: prefix('/my')->group(function () {
+    Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/order/{id}', [OrderController::class, 'detail'])->name('order.detail');
+    Route::get('/order/cancel/{id}', [OrderController::class, 'cancel'])->name('order.cancel');
+});
+
+Route::prefix('/checkout')->group(function () {
+    Route::get('/', [CheckoutController::class, 'index'])->name('checkout.index');
+    Route::post('/order', [CheckoutController::class, 'order'])->name('checkout.order');
 });
 
 Route::prefix('/contact')->group(function () {
