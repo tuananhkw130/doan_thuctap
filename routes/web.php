@@ -109,8 +109,9 @@ Route::prefix('/shop')->group(function () {
 
 Route::prefix('/cart')->group(function () {
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
-    Route::get('/add', [CartController::class, 'add'])->name('cart.add');
-    Route::get('/remove/{productID}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/add', [CartController::class, 'add'])->name('cart.add');
+    Route::post('/update', [CartController::class, 'update'])->name('cart.update');
+    Route::get('/delete/{productID}', [CartController::class, 'delete'])->name('cart.delete');
 });
 
 Route:: prefix('/my')->group(function () {

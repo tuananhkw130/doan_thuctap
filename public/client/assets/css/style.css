@@ -2683,6 +2683,7 @@ ol {
 	color: #111111;
 	overflow: hidden;
 	margin-bottom: 18px;
+    font-weight: 700;
 }
 
 .checkout__order__products span {
@@ -2724,6 +2725,7 @@ ol {
 	color: #111111;
 	line-height: 40px;
 	overflow: hidden;
+    font-weight: 700;
 }
 
 .checkout__total__all li span {
