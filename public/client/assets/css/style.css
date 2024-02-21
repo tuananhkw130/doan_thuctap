@@ -2772,6 +2772,7 @@ ol {
 	-webkit-transition: all, 0.3s;
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
+    box-shadow: 0px 15px 60px rgba(67, 69, 70, 0.25);
 }
 
 .blog__item__text span {
