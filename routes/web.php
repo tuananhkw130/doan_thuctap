@@ -95,6 +95,8 @@ Route::prefix('admin')->group(function () {
     });
 });
 
+//route client
+
 Route::get('/', [ClientHomeController::class, 'index'])->name('client.home.index');
 
 Route::prefix('/post')->group(function () {
@@ -117,7 +119,6 @@ Route::prefix('/cart')->group(function () {
 Route:: prefix('/my')->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
     Route::get('/order/{id}', [OrderController::class, 'detail'])->name('order.detail');
-    Route::get('/order/cancel/{id}', [OrderController::class, 'cancel'])->name('order.cancel');
 });
 
 Route::prefix('/checkout')->group(function () {

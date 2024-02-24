@@ -26,7 +26,8 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="#">
+                <form action="{{ route('checkout.order') }}" method="POST">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-7 col-md-6">
                             <h6 class="checkout__title">Chi tiết thanh toán</h6>
@@ -34,17 +35,17 @@
                             </div>
                             <div class="checkout__input">
                                 <p>Họ và tên<span>*</span></p>
-                                <input type="text">
+                                <input type="text" name="fullname">
                             </div>
                             <div class="checkout__input">
                                 <p>Địa chỉ<span>*</span></p>
-                                <input type="text"  class="checkout__input__add">
+                                <input type="text" name="address"  class="checkout__input__add">
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Điện thoại<span>*</span></p>
-                                        <input type="text">
+                                        <input type="text" name="phone">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -56,7 +57,7 @@
                             </div>
                             <div class="checkout__input">
                                 <p>Lời nhắn</p>
-                                <input type="text">
+                                <input type="text" name="message">
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-6">

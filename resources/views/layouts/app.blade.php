@@ -41,10 +41,7 @@
             @if(Auth::user())
                 <div class="offcanvas__top__hover">
                     <span>Xin chào {{ Auth::user()->name }} <i class="arrow_carrot-down"></i></span>
-                    <ul>
-                        <li><a href="#">Đăng ký</a></li>
-                        <li><a href="#">Đăng nhập</a></li>
-                    </ul>
+
                 </div>
             @else
                 <div class="offcanvas__top__hover">
@@ -96,7 +93,7 @@
                                             </li>
                                         @else
                                             <li class="control-account">
-                                                <a href="{{route('admin.order.index')}}">
+                                                <a href="{{route('order.index')}}">
                                                     Đơn hàng của bạn
                                                 </a>
                                             </li>
@@ -151,7 +148,6 @@
                                 src="{{ asset('client/assets/img/icon/search.png') }}" alt=""></a>
                         <a href="{{ route('cart.index') }}"><img src="{{ asset('client/assets/img/icon/cart.png') }}" alt="">
                             <span>0</span></a>
-                        <div class="price">$0.00</div>
                     </div>
                 </div>
             </div>

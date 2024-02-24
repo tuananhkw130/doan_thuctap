@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Đăng ký</div>
+                <div class="card-header">
+                    <h4 style=" font-weight: 700;text-align: center;">ĐĂNG KÝ</h4>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('auth.register') }}">
