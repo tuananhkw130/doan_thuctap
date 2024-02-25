@@ -11,16 +11,12 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $query = [
-            'search' => $request->input('search'),
             'idcategory' => $request->input('idcategory'),
             'price' => $request->input('price'),
         ];
 
         $product = Product::get();
 
-        if ($query['search']) {
-            $product = $product->where('name', 'LIKE', '%'. $query['search'] .'%');
-        }
         if ($query['idcategory']) {
             $product = $product->where('id_category', $query['idcategory']);
         }

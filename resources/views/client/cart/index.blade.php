@@ -82,11 +82,7 @@
                                 <a href="{{ route('product.index') }}">Tiếp tục mua hàng</a>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="continue__btn update__btn">
-                                <a href="{{ route('cart.update') }}"><i class="fa fa-spinner"></i> Cập nhật giỏ hàng</a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-4">

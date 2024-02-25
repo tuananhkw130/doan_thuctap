@@ -39,17 +39,6 @@ class CartController extends Controller
         return redirect()->route('cart.index');
     }
 
-    public function update(Request $request)
-    {
-        // Cập nhật số lượng sản phẩm trong giỏ hàng
-        $cartItem = Cart::findOrFail($request->id);
-        $cartItem->quantity = $request->quantity;
-
-        $cartItem->save();
-
-        return redirect()->route('cart.index');
-    }
-
     public function delete($productID) {
         Cart::where('userID', Auth::id())->where('productID', $productID)->delete();
         return redirect()->route('cart.index');
