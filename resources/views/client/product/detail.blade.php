@@ -49,16 +49,16 @@
                                     <div class="product__details__option__size">
                                         <span>Size:</span>
                                         <label for="xxl">xxl
-                                            <input type="radio" id="xxl">
+                                            <input name="size" type="radio" id="xxl">
                                         </label>
                                         <label class="active" for="xl">xl
-                                            <input type="radio" id="xl">
+                                            <input name="size" type="radio" id="xl">
                                         </label>
                                         <label for="l">l
-                                            <input type="radio" id="l">
+                                            <input name="size" type="radio" id="l">
                                         </label>
                                         <label for="sm">s
-                                            <input type="radio" id="sm">
+                                            <input name="size" type="radio" id="sm">
                                         </label>
                                     </div>
                                 </div>

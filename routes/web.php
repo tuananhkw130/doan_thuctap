@@ -87,7 +87,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/detail/{id}', [AdminOrderController::class, 'detail'])->name('admin.order.detail');
         Route::get('/accept/{id}', [AdminOrderController::class, 'accept'])->name('admin.order.accept');
         Route::get('/cancel/{id}', [AdminOrderController::class, 'cancel'])->name('admin.order.cancel');
-        Route::get('/success/{id}', [AdminOrderController::class, 'success'])->name('admin.order.success');
     });
 
     Route::prefix('/contact')->group(function () {

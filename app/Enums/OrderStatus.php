@@ -13,4 +13,7 @@ use BenSampo\Enum\Enum;
 final class OrderStatus extends Enum
 {
     const ORDER = 0;
+    const DELIVERY = 1;
+    const ORDER_SUCCESS = 2;
+    const CANCEL_ORDER = 3;
 }

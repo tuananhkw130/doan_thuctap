@@ -28,22 +28,22 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Ngày đặt</th>
-                                    <th>Trạng thái</th>
+                                    <th style="text-align:center">Mã đơn hàng</th>
+                                    <th style="text-align:center">Ngày đặt</th>
+                                    <th style="text-align:center">Trạng thái</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($orderList as $product)
                                     <tr>
-                                        <td class="product__cart__item">
+                                        <td class="product__cart__item" style="text-align:center">
                                             {{$product->id}}
                                         </td>
-                                        <td class="product__cart__item">
+                                        <td class="product__cart__item" style="text-align:center; unicode-bidi: plaintext;">
                                             {{$product->created_at}}
                                         </td>
-                                        <td class="product__cart__item">
-                                            {!! $product->getStatusStr() !!}
+                                        <td class="product__cart__item" style="text-align:center">
+                                            {!! $product->statusOrder() !!}
                                         </td>
                                     </tr>
                                 @endforeach

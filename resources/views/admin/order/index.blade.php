@@ -24,8 +24,6 @@
                                                 colspan="1" style="width: 118.938px;">Ngày đặt</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
                                             colspan="1" style="width: 39.7031px;">Trạng thái</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                            colspan="1" style="width: 39.7031px;">Lời nhắn</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -33,9 +31,8 @@
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1"><a href="{{ route('admin.order.detail', ['id' => $order->id]) }}">Đơn hàng {{ $order->id }}</a></td>
                                                 <td>{{ $order->name }}</td>
-                                                <td>{{ $order->created_at }}</td>
-                                                <td>{!! $order->getStatusStr() !!}</td>
-                                                <td>{{ $order->message }}</td>
+                                                <td>{{ ($order->created_at) }}</td>
+                                                <td>{!! $order->statusOrder() !!}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

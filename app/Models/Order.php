@@ -21,10 +21,16 @@ class Order extends Model
         "message",
     ];
 
-    public function getStatusStr() {
+    public function statusOrder() {
         switch ($this->status) {
             case OrderStatus::ORDER:
-                return '<span class="badge badge-warning">Chờ xác nhận</span>';
+                return '<span class="badge badge-warning">Chờ</span>';
+            case OrderStatus::CANCEL_ORDER:
+                return '<span class="badge badge-danger">Hủy</span>';
+            case OrderStatus::DELIVERY:
+                return '<span class="badge badge-info">Giao hàng</span>';
+            case OrderStatus::ORDER_SUCCESS:
+                return '<span class="badge badge-success">Thành công</span>';
             default:
                 return 'Trạng thái không xác định';
         }
