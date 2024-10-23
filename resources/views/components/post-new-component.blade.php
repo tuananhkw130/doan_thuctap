@@ -8,13 +8,18 @@
             </div>
         </div>
         <div class="row">
-            @foreach ($posts as $post )
+            @foreach ($posts as $post)
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="{{$post->image}}" style="background-image: url(&quot;img/blog/blog-1.jpg&quot;);"></div>
+                        <div class="pic">
+                            <div class="blog__item__pic set-bg">
+                                <img src="{{ $post->image }}" alt="{{ $post->title }}">
+                            </div>
+                        </div>
                         <div class="blog__item__text">
-                            <span><img src="img/icon/calendar.png" alt=""> {{$post->created_at}}</span>
-                            <h5>{{$post->title}}</h5>
+                            <span><img src="{{ asset('client/assets/img/icon/calendar.png') }}" alt=""
+                                    type="date">{{ $post->created_at }}</span>
+                            <h5>{{ $post->title }}</h5>
                             <a href="{{ route('post.detail', ['id' => $post->id]) }}">Đọc thêm</a>
                         </div>
                     </div>

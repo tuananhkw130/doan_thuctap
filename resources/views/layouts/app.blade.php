@@ -26,6 +26,15 @@
     <link rel="stylesheet" href="{{ asset('client/assets/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/assets/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/assets/css/style.css') }}" type="text/css">
+
+    <!-- Thêm CSS cho Owl Carousel -->
+
+    <!-- Thêm jQuery và Owl Carousel JS từ CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+
+
 </head>
 
 <body>
@@ -38,7 +47,7 @@
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
-            @if(Auth::user())
+            @if (Auth::user())
                 <div class="offcanvas__top__hover">
                     <span>Xin chào {{ Auth::user()->name }} <i class="arrow_carrot-down"></i></span>
 
@@ -70,7 +79,7 @@
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    <header class="header">
+    <header class="header fixed-top">
         <div class="header__top">
             <div class="container">
                 <div class="row">
@@ -83,23 +92,23 @@
                         <div class="col-lg-6 col-md-5">
                             <div class="header__top__right">
                                 <div class="header__top__hover">
-                                    <span>Xin chào {{Auth::user()->name}} <i class="arrow_carrot-down"></i></span>
+                                    <span>Xin chào {{ Auth::user()->name }} <i class="arrow_carrot-down"></i></span>
                                     <ul>
                                         @if (Auth::user()->role === UserRole::ADMIN)
                                             <li class="control-account">
-                                                <a href="{{route('admin.home.index')}}">
+                                                <a href="{{ route('admin.home.index') }}">
                                                     Trang quản trị
                                                 </a>
                                             </li>
                                         @else
                                             <li class="control-account">
-                                                <a href="{{route('order.index')}}">
+                                                <a href="{{ route('order.index') }}">
                                                     Đơn hàng của bạn
                                                 </a>
                                             </li>
                                         @endif
                                         <li class="control-account">
-                                            <a href="{{route('auth.logout')}}">
+                                            <a href="{{ route('auth.logout') }}">
                                                 Đăng xuất
                                             </a>
                                         </li>
@@ -114,12 +123,12 @@
                                     <span>Tài khoản <i class="arrow_carrot-down"></i></span>
                                     <ul>
                                         <li class="control-account">
-                                            <a href="{{route('auth.register')}}">
+                                            <a href="{{ route('auth.register') }}">
                                                 Đăng ký
                                             </a>
                                         </li>
                                         <li class="control-account">
-                                            <a href="{{route('auth.login')}}">
+                                            <a href="{{ route('auth.login') }}">
                                                 Đăng nhập
                                             </a>
                                         </li>
@@ -131,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container ">
             <div class="row">
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo">
@@ -146,7 +155,8 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img
                                 src="{{ asset('client/assets/img/icon/search.png') }}" alt=""></a>
-                        <a href="{{ route('cart.index') }}"><img src="{{ asset('client/assets/img/icon/cart.png') }}" alt="">
+                        <a href="{{ route('cart.index') }}"><img src="{{ asset('client/assets/img/icon/cart.png') }}"
+                                alt="">
                             <span>0</span></a>
                     </div>
                 </div>
@@ -165,9 +175,11 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="client/assets/img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="{{ asset('client/assets/img/footer-logo.png') }}"
+                                    alt=""></a>
                         </div>
-                        <p>Nơi bạn có thể khám phá và mua sắm những mẫu thời trang nam đẳng cấp, từ các bộ sưu tập mới nhất cho đến những phong cách kinh điển.</p>
+                        <p>Nơi bạn có thể khám phá và mua sắm những mẫu thời trang nam đẳng cấp, từ các bộ sưu tập mới
+                            nhất cho đến những phong cách kinh điển.</p>
                         <a href="#"><img src="client/assets/img/payment.png" alt=""></a>
                     </div>
                 </div>
