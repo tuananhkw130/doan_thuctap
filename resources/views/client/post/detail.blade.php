@@ -26,10 +26,6 @@
             <div class="col-lg-12">
                 <div class="blog__details__pic">
                     <img src="{{ $post->image }}" alt="">
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="blog__details__content">
                     <div class="blog__details__share">
                         <span>Chia sẻ</span>
                         <ul>
@@ -39,6 +35,11 @@
                             <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="blog__details__content">
+
                     <div class="blog__details__text">
                         <p style="text-align: justify;">{{ $post->content }}</p>
                     </div>

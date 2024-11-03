@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="contact spad" style="border-top: 1px solid gray;">
+    <section class="spad1" style="border-top: 1px solid gray;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
