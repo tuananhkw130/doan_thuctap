@@ -10,19 +10,19 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{route('admin.post.store')}}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admin.post.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Tiêu đề</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="title" >
+                                    <input type="text" class="form-control" id="validationDefault01" name="title">
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                <label for="validationDefault01">Hình ảnh</label>
+                                    <label for="validationDefault01">Hình ảnh</label>
                                     <div class="custom-file ">
                                         <input type="file" class="custom-file-input" id="customFile" name="image">
                                         <label class="custom-file-label" for="customFile"></label>
-                                     </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Nội dung</label>
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Tác giả</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="author" >
+                                    <input type="text" class="form-control" id="validationDefault01" name="author">
                                 </div>
                             </div>
                             <div class="form-group">

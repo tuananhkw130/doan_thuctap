@@ -5,13 +5,13 @@
 @section('content')
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
-        <div class="container">
+        <div class="container" style="padding-top: 120px;">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
                         <div class="breadcrumb__links">
                             <a href="{{ route('client.home.index') }}" style="font-size: 18px;">Trang chủ</a>
-                            <span style="font-size: 18px;">Sản phẩm</span>
+                            <span style="font-size: 18px;">Danh sách sản phẩm</span>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                                         <a data-toggle="collapse" data-target="#collapseOne">Danh mục</a>
                                     </div>
 
-                                    <x-CategoryComponent/>
+                                    <x-CategoryComponent />
 
                                 </div>
                                 <div class="card">
@@ -50,11 +50,16 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__price">
                                                 <ul>
-                                                    <li><a href="{{ route('product.index', ['price' => '1']) }}">0 - 100.000 VND</a></li>
-                                                    <li><a href="{{ route('product.index', ['price' => '2']) }}">100.000 - 200.000 VND</a></li>
-                                                    <li><a href="{{ route('product.index', ['price' => '3']) }}">200.000 - 300.000 VND</a></li>
-                                                    <li><a href="{{ route('product.index', ['price' => '4']) }}">300.000 - 500.000 VND</a></li>
-                                                    <li><a href="{{ route('product.index', ['price' => '5']) }}">500.000 VND +</a></li>
+                                                    <li><a href="{{ route('product.index', ['price' => '1']) }}">0 - 100.000
+                                                            VND</a></li>
+                                                    <li><a href="{{ route('product.index', ['price' => '2']) }}">100.000 -
+                                                            200.000 VND</a></li>
+                                                    <li><a href="{{ route('product.index', ['price' => '3']) }}">200.000 -
+                                                            300.000 VND</a></li>
+                                                    <li><a href="{{ route('product.index', ['price' => '4']) }}">300.000 -
+                                                            500.000 VND</a></li>
+                                                    <li><a href="{{ route('product.index', ['price' => '5']) }}">500.000 VND
+                                                            +</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -77,7 +82,7 @@
                                     </div>
                                     <div class="product__item__text">
                                         <h6>{{ $itemproduct->name }}</h6>
-                                        <a href="{{route('cart.add')}}" class="add-cart">Thêm vào giỏ hàng</a>
+                                        <a href="{{ route('cart.add') }}" class="add-cart">Thêm vào giỏ hàng</a>
                                         <div class="rating">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>

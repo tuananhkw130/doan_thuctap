@@ -2,10 +2,10 @@
 @section('content')
     <section class="shop-details">
         <div class="product__details__pic">
-            <div class="container">
+            <div class="container" style="padding-top: 120px;">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="product__details__breadcrumb">
+                        <div class="product__details__breadcrumb" style="text-align: left;">
                             <a href="{{ route('client.home.index') }}">Trang chủ</a>
                             <a href="{{ route('product.index') }}">Sản phẩm</a>
                             <span>Chi tiết sản phẩm</span>

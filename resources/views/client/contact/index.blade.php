@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="spad1" style="border-top: 1px solid gray;">
+    @if (session('success'))
+        <div class="alert alert-success" role="alert" style="display: block;">
+            {{ session('success') }}
+        </div>
+    @endif
+    <section class="contact spad1" style="border-top: 1px solid gray;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
@@ -30,14 +35,14 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <input type="text" name="name" placeholder="Họ và tên">
+                                    <input type="text" name="name" placeholder="Họ và tên" required>
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" name="email" placeholder="Email">
+                                    <input type="email" name="email" placeholder="Email" required>
                                 </div>
                                 <div class="col-lg-12">
-                                    <textarea name="message" placeholder="Lời nhắn"></textarea>
-                                    <button type="submit" class="site-btn">Gửi </button>
+                                    <textarea name="message" placeholder="Lời nhắn" required></textarea>
+                                    <button type="submit" class="site-btn">Gửi</button>
                                 </div>
                             </div>
                         </form>
