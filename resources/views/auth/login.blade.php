@@ -53,6 +53,7 @@
                                 </div>
                             </div>
                         </form>
+                        <a href="{{ route('auth.google') }}">đăng nhập bằng google</a>
                     </div>
                 </div>
             </div>

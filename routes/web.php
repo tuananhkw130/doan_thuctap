@@ -19,6 +19,7 @@ use App\Http\Controllers\Client\CheckoutController;
 use App\Http\Controllers\Client\ContactController;
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\GoogleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -138,3 +139,9 @@ Route::prefix('/auth')->group(function () {
     Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
+
+
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
