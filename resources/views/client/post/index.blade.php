@@ -3,7 +3,7 @@
 @section('content')
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-blog set-bg" data-setbg="{{ asset('client/assets/img/breadcrumb-bg.jpg') }}">
-        <div class="container">
+        <div class="container" style="padding-top: 120px;">
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Danh sách bài viết</h2>

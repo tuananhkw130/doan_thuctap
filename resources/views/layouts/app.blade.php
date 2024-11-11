@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('client/assets/css/magnific-popup.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/assets/css/nice-select.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/assets/css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('client/assets/css/owl.theme.default.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/assets/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('client/assets/css/style.css') }}" type="text/css">
 
@@ -73,7 +74,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>Miễn phí vận chuyển, đổi trả hàng trong vòng 30 ngày</p>
+            <marquee>Miễn phí vận chuyển, đổi trả hàng trong vòng 30 ngày</marquee>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -84,8 +85,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
-                        <div class="header__top__left">
-                            <p>Miễn phí vận chuyển, đổi trả hàng trong vòng 30 ngày</p>
+                        <div class ="header__top__left" style="width:300px">
+                            <marquee style="color: rgb(253, 253, 253);">
+                                Miễn phí vận chuyển, đổi trả hàng trong vòng 30 ngày - 195 Lê Duẩn, Thành phố Vinh - 147
+                                Phan Bá Vành, Thành phố Thái Bình
+                            </marquee>
                         </div>
                     </div>
                     @if (Auth::user())
@@ -155,8 +159,8 @@
                     <div class="header__nav__option">
                         <a href="#" class="search-switch"><img
                                 src="{{ asset('client/assets/img/icon/search.png') }}" alt=""></a>
-                        <a href="{{ route('cart.index') }}"><img src="{{ asset('client/assets/img/icon/cart.png') }}"
-                                alt="">
+                        <a href="{{ route('cart.index') }}"><img
+                                src="{{ asset('client/assets/img/icon/cart.png') }}" alt="">
                             <span>0</span></a>
                     </div>
                 </div>

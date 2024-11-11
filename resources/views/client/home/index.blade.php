@@ -179,21 +179,21 @@
         </div>
     </section>
 
+
     <x-ProductNewComponent />
 
     <x-PostNewComponent />
 
     <script>
         $(document).ready(function() {
-            $(".hero__slider").owlCarousel({
-                items: 1, // Số lượng item hiển thị
-                loop: true, // Lặp lại carousel
-                autoplay: true, // Tự động phát
-                autoplayTimeout: 5000, // Thời gian giữa các lần chuyển động (5 giây)
-                autoplayHoverPause: true, // Dừng khi hover
+            $('.hero__slider').owlCarousel({
+                items: 1, // Hiển thị 1 item
+                loop: true, // Lặp lại các slide
+                autoplay: true, // Tự động chuyển slide
+                autoplayTimeout: 500, // Thời gian chuyển slide (500ms)
+                autoplayHoverPause: true, // Dừng khi di chuột qua
                 nav: true, // Hiển thị nút điều hướng
-                navText: ["<span class='arrow_left'></span>", "<span class='arrow_right'></span>"],
-                dots: false // Tắt các điểm chỉ số
+                dots: false // Tắt điểm điều hướng
             });
         });
     </script>
