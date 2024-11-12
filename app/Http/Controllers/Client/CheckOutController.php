@@ -13,10 +13,8 @@ class CheckOutController extends Controller
 {
     public function index() {
         $user = Auth::user();
-        $cart = Cart::select('carts.*', 'products.price', 'products.name')
-            ->join('products', 'products.id', 'carts.productID')
-            ->where('userID', $user->id)
-            ->get();
+        $cart = Cart::select('carts.*', 'products.price', 'products.name')->join('products', 'products.id', 'carts.productID')
+            ->where('userID', $user->id)->get();
         return view('client.checkout.index', [
             'cart' => $cart,
         ]);
@@ -37,10 +35,8 @@ class CheckOutController extends Controller
 
         $dataOrderAdd = [];
         $total = 0;
-        $carts = Cart::select('carts.*', 'products.price')
-            ->join('products', 'products.id', 'carts.productID')
-            ->where('userID', $user->id)
-            ->get();
+        $carts = Cart::select('carts.*', 'products.price') ->join('products', 'products.id', 'carts.productID')
+            ->where('userID', $user->id)->get();
         foreach ($carts as $cart) {
             array_push($dataOrderAdd, [
                 'orderID' => $order->id,
