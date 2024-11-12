@@ -20,6 +20,7 @@ use App\Http\Controllers\Client\ContactController;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\Auth\FacebookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -140,8 +141,9 @@ Route::prefix('/auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
-
-
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('auth/login-google', [GoogleController::class, 'handleGoogleCallback']);
+
+Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('auth.facebook');
+Route::get('auth/login-facebook', [FacebookController::class, 'handleFacebookCallback']);
 
