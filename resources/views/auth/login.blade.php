@@ -53,7 +53,10 @@
                                 </div>
                             </div>
                         </form>
-                        <a href="{{ route('auth.google') }}">đăng nhập bằng google</a>
+                        <a class="btn text-white" data-mdb-ripple-init style="background-color: #dd4b39;"
+                            href="{{ route('auth.google') }}" role="button">
+                            <i class="fab fa-google"></i>
+                        </a>
                     </div>
                 </div>
             </div>

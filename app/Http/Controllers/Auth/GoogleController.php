@@ -6,16 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Log;
 
 class GoogleController extends Controller
 {
-    // Phương thức chuyển hướng đến Google
+
     public function redirectToGoogle()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')
+            ->with(['prompt' => 'select_account'])
+            ->redirect();
     }
 
-    // Phương thức xử lý callback từ Google
     public function handleGoogleCallback()
     {
         try {

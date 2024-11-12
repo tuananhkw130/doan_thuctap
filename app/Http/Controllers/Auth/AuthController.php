@@ -49,7 +49,7 @@ class AuthController extends Controller
         ]);
 
         $user = $request->only('email', 'password');
-        if (Auth::attempt( $user)) {
+        if (Auth::attempt($user)) {
 
             return redirect()->route('client.home.index');
         } else {
@@ -63,7 +63,10 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        $request->session()->forget('socialite_google_user');
+
         Auth::logout();
+
         return redirect()->route('client.home.index');
     }
 }

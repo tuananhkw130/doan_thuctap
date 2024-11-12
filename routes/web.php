@@ -66,8 +66,8 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('/product')->group(function () {
-        Route::get('/index', [ProductController::class,'index'])->name('admin.product.index');
-        Route::get('/create', [ProductController::class,'create'])->name('admin.product.create');
+        Route::get('/index', [ProductController::class, 'index'])->name('admin.product.index');
+        Route::get('/create', [ProductController::class, 'create'])->name('admin.product.create');
         Route::post('/store', [ProductController::class, 'store'])->name('admin.product.store');
         Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
         Route::post('/update', [ProductController::class, 'update'])->name('admin.product.update');
@@ -83,7 +83,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/delete/{id}', [PostController::class, 'delete'])->name('admin.post.delete');
     });
 
-    Route::prefix('/order')->group(function() {
+    Route::prefix('/order')->group(function () {
         Route::get('/', [AdminOrderController::class, 'index'])->name('admin.order.index');
         Route::get('/detail/{id}', [AdminOrderController::class, 'detail'])->name('admin.order.detail');
         Route::get('/accept/{id}', [AdminOrderController::class, 'accept'])->name('admin.order.accept');
@@ -116,7 +116,7 @@ Route::prefix('/cart')->group(function () {
     Route::get('/delete/{productID}', [CartController::class, 'delete'])->name('cart.delete');
 });
 
-Route:: prefix('/my')->group(function () {
+Route::prefix('/my')->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
     Route::get('/order/{id}', [OrderController::class, 'detail'])->name('order.detail');
 });
@@ -143,5 +143,5 @@ Route::prefix('/auth')->group(function () {
 
 
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+Route::get('auth/login-google', [GoogleController::class, 'handleGoogleCallback']);
 
