@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="{{ asset('client/assets/css/style.css') }}" type="text/css">
 
     <!-- Thêm CSS cho Owl Carousel -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
     <!-- Thêm jQuery và Owl Carousel JS từ CDN -->
