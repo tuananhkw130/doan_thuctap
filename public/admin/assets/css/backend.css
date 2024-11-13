@@ -15169,8 +15169,8 @@ body.tab-horizontal .iq-footer {
 }
 
 .flet-datepickr .flatpickr-calendar.inline {
-    top: -12px;
-    left: -3px;
+    top: 7px;
+    left: 0px;
 }
 
 .flet-datepickr .flatpickr-calendar:before {
