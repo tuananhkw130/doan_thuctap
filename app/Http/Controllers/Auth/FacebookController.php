@@ -18,12 +18,11 @@ class FacebookController extends Controller
 
     public function handleFacebookCallback()
     {
-        try {
 
+        try {
             $facebookUser = Socialite::driver('facebook')->user();
 
             dd($facebookUser);
-
 
             $user = User::where('facebook_id', $facebookUser->id)->first();
 
