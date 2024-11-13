@@ -70,7 +70,7 @@
                                     <h5>Đơn hàng hoàn thành</h5>
                                     <span class="badge badge-info">Weekly</span>
                                 </div>
-                                <h3><span class="counter" style="visibility: visible;">{{ $pendingOrders }}</span></h3>
+                                <h3><span class="counter" style="visibility: visible;">{{ $completedOrders }}</span></h3>
                                 <div class="d-flex align-items-center justify-content-between mt-1">
                                     <p class="mb-0">Total Revenue</p>
                                     <span class="text-info">55%</span>
