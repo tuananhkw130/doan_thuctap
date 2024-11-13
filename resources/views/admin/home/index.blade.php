@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col">
                 <div class="row">
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-4">
                         <div class="card card-block card-stretch card-height">
                             <div class="card-body">
                                 <div class="top-block d-flex align-items-center justify-content-between">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-4">
                         <div class="card card-block card-stretch card-height">
                             <div class="card-body">
                                 <div class="top-block d-flex align-items-center justify-content-between">
@@ -44,14 +44,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-4">
                         <div class="card card-block card-stretch card-height">
                             <div class="card-body">
                                 <div class="top-block d-flex align-items-center justify-content-between">
-                                    <h5>Cost</h5>
+                                    <h5>Số lượng người dùng</h5>
                                     <span class="badge badge-success">Today</span>
                                 </div>
-                                <h3>$<span class="counter" style="visibility: visible;">33000</span></h3>
+                                <h3><span class="counter" style="visibility: visible;">{{ $totalUser }}</span></h3>
                                 <div class="d-flex align-items-center justify-content-between mt-1">
                                     <p class="mb-0">Total Revenue</p>
                                     <span class="text-success">85%</span>
@@ -63,14 +63,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-4">
                         <div class="card card-block card-stretch card-height">
                             <div class="card-body">
                                 <div class="top-block d-flex align-items-center justify-content-between">
-                                    <h5>Profit</h5>
+                                    <h5>Đơn hàng hoàn thành</h5>
                                     <span class="badge badge-info">Weekly</span>
                                 </div>
-                                <h3>$<span class="counter" style="visibility: visible;">2500</span></h3>
+                                <h3><span class="counter" style="visibility: visible;">{{ $pendingOrders }}</span></h3>
                                 <div class="d-flex align-items-center justify-content-between mt-1">
                                     <p class="mb-0">Total Revenue</p>
                                     <span class="text-info">55%</span>
