@@ -147,3 +147,10 @@ Route::get('auth/login-google', [GoogleController::class, 'handleGoogleCallback'
 Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->name('auth.facebook');
 Route::get('auth/login-facebook', [FacebookController::class, 'handleFacebookCallback']);
 
+
+
+use App\Http\Controllers\Admin\StatisticsController;
+
+Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics.index');
+
+

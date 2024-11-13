@@ -23,19 +23,17 @@ class GoogleController extends Controller
         try {
             $googleUser = Socialite::driver('google')->stateless()->user();
 
-            // Tìm user đã tồn tại bằng email hoặc tạo mới
+
             $user = User::firstOrCreate(
                 ['email' => $googleUser->email],
                 [
                     'name' => $googleUser->name,
-                    'password' => bcrypt('123456dummy') // Tạo mật khẩu giả cho user
+                    'password' => bcrypt('123456dummy'),
+                    'role' => '1',
                 ]
             );
-
-            // Đăng nhập user
             Auth::login($user);
 
-            // Chuyển hướng sau khi đăng nhập thành công
             return redirect()->intended('/');
         } catch (\Exception $e) {
             return redirect('/login')->withErrors('Có lỗi xảy ra khi đăng nhập bằng Google.');
