@@ -4,7 +4,7 @@
 @endphp
 @section('content')
     <div class="container-fluid">
-        {{-- Hiển thị thông báo lỗi hoặc thành công --}}
+
         @if (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}

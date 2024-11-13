@@ -58,13 +58,10 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        // Kiểm tra nếu người dùng có role là 0 (người quản trị)
         if ($user->role == 0) {
-            // Trả về với thông báo lỗi
+
             return redirect()->route('admin.user.index')->with('error', 'Không thể xóa người quản trị.');
         }
-
-        // Xóa người dùng nếu không phải là người quản trị
         $user->delete();
         return redirect()->route('admin.user.index')->with('success', 'Xóa người dùng thành công.');
     }
