@@ -1,11 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (session('success'))
-        <div class="alert alert-success" role="alert" style="display: block;">
-            {{ session('success') }}
+    <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-bold" id="alertModalLabel">Thông Báo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="color: green">
+                    {{ session('success') }}
+                </div>
+            </div>
         </div>
-    @endif
+    </div>
+
     <section class="contact spad1" style="border-top: 1px solid gray;">
         <div class="container">
             <div class="row">
@@ -51,4 +62,15 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            @if (session('success'))
+                $('#alertModal').modal('show');
+                setTimeout(function() {
+                    $('#alertModal').modal('hide');
+                }, 2500);
+            @endif
+        });
+    </script>
 @endsection

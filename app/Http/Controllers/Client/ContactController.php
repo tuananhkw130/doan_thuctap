@@ -8,12 +8,13 @@ use App\Models\Contact;
 
 class ContactController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('client.contact.index');
     }
 
-    public function store(Request $request) {
-
+    public function store(Request $request)
+    {
         // Validate the request
         $request->validate([
             'name' => 'required|string|max:255',
@@ -21,16 +22,15 @@ class ContactController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Create a new contact entry
+        // Tạo mới liên hệ
         Contact::create([
             "name" => $request->name,
             "email" => $request->email,
             "message" => $request->message
         ]);
 
-        // Set success message in session
-        session()->flash('success', 'Cảm ơn bạn đã gửi thông tin! Chúng tôi sẽ liên hệ với bạn sớm nhất.');
-
-        return redirect()->route('contact.index'); // Redirect to the contact index
+        // Đặt thông báo vào session
+        return redirect()->route('contact.index')->with('success', 'Gửi liên hệ thành công!');
     }
+
 }
