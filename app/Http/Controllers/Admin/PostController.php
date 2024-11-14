@@ -27,8 +27,8 @@ class PostController extends Controller
         Post::create([
             "title" => $request->title,
             "image" => $imgPath,
-            "content" =>$request->content,
-            "author" =>$request->author
+            "content" => $request->content,
+            "author" => $request->author
         ]);
         return redirect()->route('admin.post.index');
     }
@@ -36,7 +36,7 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view("admin.post.edit",[
+        return view("admin.post.edit", [
             "itemPost" => $post
         ]);
     }
@@ -61,6 +61,6 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->delete();
-        return redirect()->route('admin.post.index');
+        return redirect()->route('admin.post.index')->with('success', 'Xóa thành công bài viết');
     }
 }

@@ -7,8 +7,8 @@
                 <div class="owl-stage"
                     style="transform: translate3d(-2698px, 0px, 0px); transition: all 0s ease 0s; width: 8094px;">
                     <div class="owl-item active" style="width: 1349px;">
-                        <div class="hero__items set-bg" data-setbg="{{ asset('client/assets/img/hero/hero-1.jpg') }}"
-                            style="background-image: url({{ asset('client/assets/img/hero/hero-2.jpg') }});">
+                        <div class="hero__items set-bg" data-setbg="{{ asset('client/assets/img/hero/hero5.jpg') }}"
+                            style="background-image: url({{ asset('client/assets/img/hero/hero5.jpg') }});">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-xl-5 col-lg-7 col-md-8">
@@ -32,15 +32,15 @@
                         </div>
                     </div>
                     <div class="owl-item" style="width: 1349px;">
-                        <div class="hero__items set-bg" data-setbg="{{ asset('client/assets/img/hero/hero3.jpg') }}"
-                            style="background-image: url(&quot;{{ asset('client/assets/img/hero/hero3.jpg') }}&quot;);">
+                        <div class="hero__items set-bg" data-setbg="{{ asset('client/assets/img/hero/hero6.jpg') }}"
+                            style="background-image: url(&quot;{{ asset('client/assets/img/hero/hero6.jpg') }}&quot;);">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-xl-5 col-lg-7 col-md-8">
                                         <div class="hero__text">
-                                            <h6 style="opacity: 0">Mùa đông</h6>
-                                            <h2 style="opacity: 0">Fall - Winter Collections 2030</h2>
-                                            <p style="opacity: 0"> A specialist label creating luxury essentials. Ethically
+                                            <h6>Mùa đông</h6>
+                                            <h2>Fall - Winter Collections 2030</h2>
+                                            <p> A specialist label creating luxury essentials. Ethically
                                                 crafted with an
                                                 unwavering
                                                 commitment to exceptional quality.</p>
@@ -55,8 +55,8 @@
                         </div>
                     </div>
                     <div class="owl-item" style="width: 1349px;">
-                        <div class="hero__items set-bg" data-setbg="{{ asset('client/assets/img/hero/hero-2.jpg') }}"
-                            style="background-image: url(&quot;{{ asset('client/assets/img/hero/hero-2.jpg') }}&quot;);">
+                        <div class="hero__items set-bg" data-setbg="{{ asset('client/assets/img/hero/hero7.jpg') }}"
+                            style="background-image: url(&quot;{{ asset('client/assets/img/hero/hero7.jpg') }}&quot;);">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-xl-5 col-lg-7 col-md-8">
@@ -82,8 +82,8 @@
                     </div>
 
                     <div class="owl-item" style="width: 1349px;">
-                        <div class="hero__items set-bg" data-setbg="{{ asset('client/assets/img/hero/hero4.jpg') }}"
-                            style="background-image: url(&quot;{{ asset('client/assets/img/hero/hero4.jpg') }}&quot;);">
+                        <div class="hero__items set-bg" data-setbg="{{ asset('client/assets/img/hero/hero3.jpg') }}"
+                            style="background-image: url(&quot;{{ asset('client/assets/img/hero/hero3.jpg') }}&quot;);">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-xl-5 col-lg-7 col-md-8">
