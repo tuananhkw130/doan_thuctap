@@ -11,8 +11,10 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::get();
-        return view('admin.category.index',
-        ["listCategories" => $categories]);
+        return view(
+            'admin.category.index',
+            ["listCategories" => $categories]
+        );
     }
 
     public function create()
@@ -53,6 +55,6 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
 
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.category.index')->with('success', 'Xóa thành công danh mục');
     }
 }

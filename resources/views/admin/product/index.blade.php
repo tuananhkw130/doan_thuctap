@@ -1,6 +1,24 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container-fluid">
+        <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold" id="alertModalLabel">Thông Báo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="color:green">
+                            {{ session('success') }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -63,4 +81,14 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            @if (session('error') || session('success'))
+                $('#alertModal').modal('show');
+                setTimeout(function() {
+                    $('#alertModal').modal('hide');
+                }, 2500);
+            @endif
+        });
+    </script>
 @endsection

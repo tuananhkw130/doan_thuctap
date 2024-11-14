@@ -9,16 +9,18 @@ use App\Models\Category;
 
 class ProductController extends Controller
 {
-    public function index ()
+    public function index()
     {
         $products = Product::select('products.*', 'categories.name as category_name')
             ->join('categories', 'products.id_category', 'categories.id')
             ->get();
-        return view('admin.product.index',
-        [ "listProduct" => $products]);
+        return view(
+            'admin.product.index',
+            ["listProduct" => $products]
+        );
     }
 
-    public function create ()
+    public function create()
     {
         $categories = Category::get();
         return view('admin.product.create', [
@@ -26,7 +28,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function store (Request $request)
+    public function store(Request $request)
     {
         $imgPath = $this->uploadFile($request->file('image'), 'product');
         Product::create([
@@ -45,7 +47,7 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $product = Product::findOrFail($id);
-        return view("admin.product.edit",[
+        return view("admin.product.edit", [
             "itemProduct" => $product,
             "listCategory" => $categories,
         ]);
@@ -72,6 +74,6 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->delete();
-        return redirect()->route('admin.product.index');
+        return redirect()->route('admin.product.index')->with('success', 'Xóa thành công sản phẩm');
     }
 }

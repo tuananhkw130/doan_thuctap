@@ -26,7 +26,7 @@ class MenuController extends Controller
         Menu::create([
             "name" => $request->name,
             "route" => $request->route,
-            "order" =>$request->order
+            "order" => $request->order
         ]);
         return redirect()->route('admin.menu.index');
     }
@@ -34,7 +34,7 @@ class MenuController extends Controller
     public function edit($id)
     {
         $menu = Menu::findOrFail($id);
-        return view("admin.menu.edit",[
+        return view("admin.menu.edit", [
             "itemMenu" => $menu
         ]);
     }
@@ -55,6 +55,6 @@ class MenuController extends Controller
     {
         $menu = Menu::findOrFail($id);
         $menu->delete();
-        return redirect()->route('admin.menu.index');
+        return redirect()->route('admin.menu.index')->with('success', 'Xóa thành công menu');
     }
 }
