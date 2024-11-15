@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if ($season == 'winter')
+        <script src="{{ asset('client/assets/js/snow.js') }}"></script>
+    @elseif ($season == 'autumn')
+        <script src="{{ asset('client/assets/js/leaves.js') }}"></script>
+    @endif
     <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

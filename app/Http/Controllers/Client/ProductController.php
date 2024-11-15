@@ -5,11 +5,20 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
+        $currentMonth = Carbon::now()->month;
+        if (in_array($currentMonth, [11, 12, 1])) {
+            $season = 'winter';
+        } elseif (in_array($currentMonth, [8, 9, 10])) {
+            $season = 'autumn';
+        } else {
+            $season = 'other';
+        }
         $query = [
             'idcategory' => $request->input('idcategory'),
             'price' => $request->input('price'),
@@ -43,14 +52,23 @@ class ProductController extends Controller
 
         return view('client.product.index', [
             'products' => $product,
-        ]);
+        ], compact('season'));
     }
 
-    public function detail ($id) {
+    public function detail($id)
+    {
+        $currentMonth = Carbon::now()->month;
+        if (in_array($currentMonth, [11, 12, 1])) {
+            $season = 'winter';
+        } elseif (in_array($currentMonth, [8, 9, 10])) {
+            $season = 'autumn';
+        } else {
+            $season = 'other';
+        }
         $product = Product::findOrFail($id);
         return view('client.product.detail', [
             'product' => $product,
 
-        ]);
+        ], compact('season'));
     }
 }

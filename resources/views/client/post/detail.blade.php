@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @if ($season == 'winter')
+        <script src="{{ asset('client/assets/js/snow.js') }}"></script>
+    @elseif ($season == 'autumn')
+        <script src="{{ asset('client/assets/js/leaves.js') }}"></script>
+    @endif
     <!-- Blog Details Hero Begin -->
     <section class="blog-hero spad">
         <div class="container" style="padding-top: 75px;">

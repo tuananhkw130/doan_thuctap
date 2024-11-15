@@ -3,6 +3,11 @@
     $total = 0;
 @endphp
 @section('content')
+    @if ($season == 'winter')
+        <script src="{{ asset('client/assets/js/snow.js') }}"></script>
+    @elseif ($season == 'autumn')
+        <script src="{{ asset('client/assets/js/leaves.js') }}"></script>
+    @endif
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
         <div class="container">
@@ -65,8 +70,8 @@
                                             <td class="cart__close"><a
                                                     href="{{ route('cart.delete', ['productID' => $product->id]) }}"><i
                                                         class="fa fa-close"></i></td>
-                                            </tr>
-                                        </form>
+                                    </tr>
+                                    </form>
                                     @php
                                         $total += $product->price * $product->quantity;
                                     @endphp

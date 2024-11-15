@@ -21,19 +21,6 @@ use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\FacebookController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-
-
 
 
 Route::prefix('admin')->group(function () {
@@ -132,6 +119,9 @@ Route::prefix('/contact')->group(function () {
     Route::post('/', [ContactController::class, 'store'])->name('contact.store');
 
 });
+
+
+//đăng ký đăng nhập
 
 Route::prefix('/auth')->group(function () {
     Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('auth.showRegister');

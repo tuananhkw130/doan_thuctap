@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    @if ($season == 'winter')
+        <script src="{{ asset('client/assets/js/snow.js') }}"></script>
+    @elseif ($season == 'autumn')
+        <script src="{{ asset('client/assets/js/leaves.js') }}"></script>
+    @endif
+
     <section class="hero">
         <div class="hero__slider owl-carousel owl-loaded owl-drag">
             <div class="owl-stage-outer" style="height: 635px;">

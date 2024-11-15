@@ -3997,7 +3997,7 @@ ol {
 }
 
 .input-group .form-control {
-    padding-right: 40px; /* Tạo không gian cho biểu tượng mắt */
+    padding-right: 40px;
 }
 
 .input-group-append {
@@ -4013,4 +4013,34 @@ ol {
     justify-content: center;
     font-size: 12px;
     text-align: center;
+}
+
+.snowflake,
+.leaf {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.snowflake {
+    background-image: url("/client/assets/img/clients/tu.png");
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+.leaf {
+    background-image: url("/client/assets/img/clients/la.png");
+    opacity: 0.8;
+    transform: rotate(45deg);
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
 }
