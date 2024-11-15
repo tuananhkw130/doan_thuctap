@@ -1,6 +1,24 @@
 @extends('layouts.app')
 @section('content')
     <section class="shop-details">
+        <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="alertModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title font-weight-bold" id="alertModalLabel">Thông Báo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="color:green">
+                            {{ session('success') }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="product__details__pic">
             <div class="container" style="padding-top: 120px;">
                 <div class="row">
@@ -80,4 +98,14 @@
             </div>
         </div>
     </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            @if (session('error') || session('success'))
+                $('#alertModal').modal('show');
+                setTimeout(function() {
+                    $('#alertModal').modal('hide');
+                }, 2500);
+            @endif
+        });
+    </script>
 @endsection

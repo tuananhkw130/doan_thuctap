@@ -37,10 +37,10 @@
                                 @foreach ($orderList as $product)
                                     <tr>
                                         <td class="product__cart__item" style="text-align:center">
-                                            {{$product->id}}
+                                            {{ $product->id }}
                                         </td>
                                         <td class="product__cart__item" style="text-align:center; unicode-bidi: plaintext;">
-                                            {{$product->created_at}}
+                                            {{ $product->created_at }}
                                         </td>
                                         <td class="product__cart__item" style="text-align:center">
                                             {!! $product->statusOrder() !!}

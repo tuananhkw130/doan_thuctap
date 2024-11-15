@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $cart = Cart::select('products.*', 'carts.quantity')
             ->join('products', 'products.id', 'carts.productID')
             ->where('carts.userID', Auth::id())
@@ -21,7 +22,8 @@ class CartController extends Controller
         ]);
     }
 
-    public function add(Request $request) {
+    public function add(Request $request)
+    {
         $productID = $request->productID;
         $quantity = $request->quantity;
         $user = Auth::user();
@@ -36,10 +38,11 @@ class CartController extends Controller
                 'quantity' => $quantity,
             ]);
         }
-        return redirect()->route('cart.index');
+        return redirect()->route('cart.index')->with('success', 'Thêm thành công vào giỏ hàng');
     }
 
-    public function delete($productID) {
+    public function delete($productID)
+    {
         Cart::where('userID', Auth::id())->where('productID', $productID)->delete();
         return redirect()->route('cart.index');
     }
