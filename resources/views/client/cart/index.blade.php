@@ -9,7 +9,7 @@
         <script src="{{ asset('client/assets/js/leaves.js') }}"></script>
     @endif
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-option">
+    <section class="breadcrumb-option" style="padding-top: 180px">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

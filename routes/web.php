@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use App\Http\Controllers\Admin\StatisticsController;
 
 use App\Http\Controllers\Client\HomeController as ClientHomeController;
 use App\Http\Controllers\Client\ProductController as ShopController;
@@ -81,6 +82,8 @@ Route::prefix('admin')->group(function () {
     Route::prefix('/contact')->group(function () {
         Route::get('/index', [AdminContactController::class, 'index'])->name('admin.contact.index');
     });
+    Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics.index');
+
 });
 
 //route client
@@ -138,9 +141,5 @@ Route::get('auth/facebook', [FacebookController::class, 'redirectToFacebook'])->
 Route::get('auth/login-facebook', [FacebookController::class, 'handleFacebookCallback']);
 
 
-
-use App\Http\Controllers\Admin\StatisticsController;
-
-Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics.index');
 
 

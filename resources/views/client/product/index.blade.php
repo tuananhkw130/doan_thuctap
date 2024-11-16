@@ -10,7 +10,7 @@
     @endif
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
-        <div class="container" style="padding-top: 120px;">
+        <div class="container" style="padding-top: 150px;">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">

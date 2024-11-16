@@ -8,7 +8,7 @@
         @endif
 
         <div class="product__details__pic">
-            <div class="container" style="padding-top: 120px;">
+            <div class="container" style="padding-top: 140px;">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="product__details__breadcrumb" style="text-align: left;">
