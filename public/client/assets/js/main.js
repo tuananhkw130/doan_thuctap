@@ -169,16 +169,18 @@
     /*-------------------
 		Quantity change
 	--------------------- */
+    // Xử lý cho .pro-qty
     var proQty = $(".pro-qty");
-    proQty.prepend('<span class="fa fa-angle-up dec qtybtn"></span>');
-    proQty.append('<span class="fa fa-angle-down inc qtybtn"></span>');
+    proQty.prepend('<span class="fa fa-angle-down inc qtybtn"></span>'); // Mũi tên lên tăng
+    proQty.append('<span class="fa fa-angle-up dec qtybtn"></span>'); // Mũi tên xuống giảm
     proQty.on("click", ".qtybtn", function () {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
-        if ($button.hasClass("inc")) {
+        if ($button.hasClass("dec")) {
+            // Tăng số lượng
             var newVal = parseFloat(oldValue) + 1;
-        } else {
-            // Don't allow decrementing below zero
+        } else if ($button.hasClass("inc")) {
+            // Giảm số lượng, không giảm xuống dưới 0
             if (oldValue > 0) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
@@ -188,16 +190,18 @@
         $button.parent().find("input").val(newVal);
     });
 
-    var proQty = $(".pro-qty-2");
-    proQty.prepend('<span class="fa fa-angle-left dec qtybtn"></span>');
-    proQty.append('<span class="fa fa-angle-right inc qtybtn"></span>');
-    proQty.on("click", ".qtybtn", function () {
+    // Xử lý cho .pro-qty-2
+    var proQty2 = $(".pro-qty-2");
+    proQty2.prepend('<span class="fa fa-angle-left dec qtybtn"></span>'); // Mũi tên trái giảm
+    proQty2.append('<span class="fa fa-angle-right inc qtybtn"></span>'); // Mũi tên phải tăng
+    proQty2.on("click", ".qtybtn", function () {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
         if ($button.hasClass("inc")) {
+            // Tăng số lượng
             var newVal = parseFloat(oldValue) + 1;
-        } else {
-            // Don't allow decrementing below zero
+        } else if ($button.hasClass("dec")) {
+            // Giảm số lượng, không giảm xuống dưới 0
             if (oldValue > 0) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {

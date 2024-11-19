@@ -13504,16 +13504,16 @@ fieldset:disabled a.btn {
 .btn-primary.disabled,
 .btn-primary:disabled {
     color: #fff;
-    background-color: #5773ff;
-    border-color: #5773ff;
+    background-color: #22a756;
+    border-color: #22a756;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active,
 .btn-primary:not(:disabled):not(.disabled).active,
 .show>.btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #2449ff;
-    border-color: #173eff;
+    background-color: #22a756;
+    border-color: #22a756;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus,

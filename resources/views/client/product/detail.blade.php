@@ -71,11 +71,16 @@
                                 <div class="product__details__cart__option">
                                     <input type="hidden" name="productID" value="{{ $product->id }}">
                                     <div class="quantity">
-                                        <div class="pro-qty"><span class="fa fa-angle-up dec qtybtn"></span>
+                                        <div class="pro-qty">
+                                            <!-- Nút tăng -->
+                                            <span class="fa fa-angle-up dec qtybtn"></span>
+                                            <!-- Ô nhập số lượng -->
                                             <input type="text" name="quantity" value="1">
+                                            <!-- Nút giảm -->
                                             <span class="fa fa-angle-down inc qtybtn"></span>
                                         </div>
                                     </div>
+
                                     <button type="submit" class="primary-btn">Thêm vào giỏ hàng</button>
                                 </div>
                             </div>
