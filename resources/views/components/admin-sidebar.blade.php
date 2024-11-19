@@ -1,8 +1,7 @@
 <div class="iq-sidebar  sidebar-default ">
-    <div class="iq-sidebar-logo d-flex align-items-center">
-        <a href="{{ route('client.home.index') }}" class="header-logo">
-            <img src="{{ asset('admin/assets/images/logo.svg') }}" alt="logo">
-            <h5 class="logo-title light-logo">Male fashion</h5>
+    <div class="iq-sidebar-logo d-flex align-items-center justify-content-center">
+        <a href="{{ route('client.home.index') }}">
+            <img src="{{ asset('admin/assets/images/logoadmin.png') }}" alt="" style="width:150px">
         </a>
         <div class="iq-menu-bt-sidebar ml-0">
             <i class="las la-bars wrapper-menu"></i>
@@ -19,7 +18,7 @@
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
-                        <span class="ml-4">Dashboard</span>
+                        <span class="ml-4">Bảng điều khiển</span>
                     </a>
                 </li>
                 <li class="">

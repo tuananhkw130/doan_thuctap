@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{route('admin.post.update')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('admin.post.update') }}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" value="{{ $itemPost->id }}" name="id">
                             <div class="form-group">
@@ -24,19 +24,21 @@
                                     <label class="custom-file-label" for="customFile"></label>
                                 </div>
                                 <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" name="changeImage" id="change-image">
+                                    <input type="checkbox" class="custom-control-input" name="changeImage"
+                                        id="change-image">
                                     <label class="custom-control-label" for="change-image">Thay đổi hình ảnh</label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Nội dung</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" value="{{ $itemPost->content }}" name="content" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" value="{{ $itemPost->content }}" name="content"
+                                    rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Tác giả</label>
                                 <input type="text" class="form-control" value="{{ $itemPost->author }}"name="author">
                             </div>
-                            <button type="submit" class="btn btn-primary">Sửa</button>
+                            <button type="submit" class="btn btn-warning">Sửa</button>
                             <a href="{{ route('admin.post.index') }}" class="btn bg-danger">Quay lại</a>
                         </form>
                     </div>

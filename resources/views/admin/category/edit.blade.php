@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{route('admin.category.update')}}">
+                        <form method="post" action="{{ route('admin.category.update') }}">
                             @csrf
                             <input type="hidden" value="{{ $itemCategory->id }}" name="id">
                             <div class="form-group">
@@ -19,9 +19,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Mô tả</label>
-                                <input type="text" class="form-control" value="{{ $itemCategory->describe }}" name="describe">
+                                <input type="text" class="form-control" value="{{ $itemCategory->describe }}"
+                                    name="describe">
                             </div>
-                            <button type="submit" class="btn btn-primary">Sửa</button>
+                            <button type="submit" class="btn btn-warning">Sửa</button>
                             <a href="{{ route('admin.category.index') }}" class="btn bg-danger">Quay lại</a>
                         </form>
                     </div>

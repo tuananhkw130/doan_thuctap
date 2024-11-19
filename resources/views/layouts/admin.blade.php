@@ -44,7 +44,7 @@
                         </a>
                     </div>
                     <div class="navbar-breadcrumb">
-                        <h4>TRANG QUẢN TRỊ</h4>
+                        <h4 style="color: #5773ff ; fontweight:bold;">TRANG QUẢN TRỊ</h4>
                     </div>
                     <div class="d-flex align-items-center">
                         <button class="navbar-toggler" type="button" data-toggle="collapse"

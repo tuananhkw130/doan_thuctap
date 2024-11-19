@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Giá</label>
-                                <input type="text" class="form-control" value="{{ $itemProduct->price}}"name="price">
+                                <input type="text" class="form-control" value="{{ $itemProduct->price }}"name="price">
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Số lượng</label>
@@ -66,7 +66,7 @@
                                     value="{{ $itemProduct->describe }}"name="describe">
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Sửa</button>
+                            <button type="submit" class="btn btn-warning">Sửa</button>
                             <a href="{{ route('admin.product.index') }}" class="btn bg-danger">Quay lại</a>
                         </form>
                     </div>
