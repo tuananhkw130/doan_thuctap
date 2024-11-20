@@ -1,5 +1,17 @@
 @extends('layouts.admin')
 @section('content')
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb iq-bg-primary mb-0">
+            <li class="breadcrumb-item">
+                <a href="{{ route('admin.home.index') }}">
+                    <i class="ri-home-4-line mr-1 float-left"></i>
+                    Trang chủ
+                </a>
+            </li>
+            <li class="breadcrumb-item">Đơn hàng</li>
+
+        </ol>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -13,7 +25,7 @@
                         <div class="table-responsive">
                             <div id="datatable_wrapper" class="dataTables_wrapper">
                                 <table id="datatable" class="table data-table table-striped dataTable" role="grid"
-                                    aria-describedby="datatable_info">
+                                    aria-describedby="">
                                     <thead>
                                         <tr class="ligth" role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1"
@@ -30,13 +42,11 @@
                                     <tbody>
                                         @foreach ($orders as $order)
                                             <tr role="row" class="odd">
-                                                <td class="sorting_1">
-                                                    <a href="{{ route('admin.order.detail', ['id' => $order->id]) }}">
-                                                        Đơn hàng {{ $order->id }}
-                                                    </a>
-                                                </td>
+                                                <td class="sorting_1"><a
+                                                        href="{{ route('admin.order.detail', ['id' => $order->id]) }}">Đơn
+                                                        hàng {{ $order->id }}</a></td>
                                                 <td>{{ $order->name }}</td>
-                                                <td>{{ $order->created_at->format('H:i - d/m/Y') }}</td>
+                                                <td>{{ $order->created_at->format('d/m/Y') }}</td>
                                                 <td>{!! $order->statusOrder() !!}</td>
                                             </tr>
                                         @endforeach

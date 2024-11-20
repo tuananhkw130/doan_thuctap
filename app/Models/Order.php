@@ -21,12 +21,15 @@ class Order extends Model
         "message",
     ];
 
-    public function statusOrder() {
+    protected $orderBy = ['created_at' => 'desc'];
+
+    public function statusOrder()
+    {
         switch ($this->status) {
             case OrderStatus::ORDER:
-                return '<span class="badge badge-warning">Chờ</span>';
+                return '<span class="badge badge-warning">Đang xử lý</span>';
             case OrderStatus::CANCEL_ORDER:
-                return '<span class="badge badge-danger">Hủy</span>';
+                return '<span class="badge badge-danger">Đã hủy</span>';
             case OrderStatus::DELIVERY:
                 return '<span class="badge badge-info">Giao hàng</span>';
             case OrderStatus::ORDER_SUCCESS:

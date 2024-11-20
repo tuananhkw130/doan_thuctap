@@ -3,6 +3,18 @@
     use App\Enums\OrderStatus;
 @endphp
 @section('content')
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb iq-bg-primary mb-0">
+            <li class="breadcrumb-item">
+                <a href="{{ route('admin.home.index') }}">
+                    <i class="ri-home-4-line mr-1 float-left"></i>
+                    Trang chủ
+                </a>
+            </li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.order.index') }}">Đơn hàng</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Chi tiết đơn hàng</li>
+        </ol>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -37,11 +49,13 @@
                         <div class="d-flex justify-content-center">
                             @switch($order->status)
                                 @case(OrderStatus::ORDER)
-                                    <a href="{{ route('admin.order.cancel', ['id' => $order->id]) }}" class="btn btn-danger mx-1">Hủy</a>
-                                    <a href="{{ route('admin.order.accept', ['id' => $order->id]) }}" class="btn btn-success mx-1">Chấp nhận</a>
-                                    @break
-                                @default
+                                    <a href="{{ route('admin.order.cancel', ['id' => $order->id]) }}"
+                                        class="btn btn-danger mx-1">Hủy</a>
+                                    <a href="{{ route('admin.order.accept', ['id' => $order->id]) }}"
+                                        class="btn btn-success mx-1">Chấp nhận</a>
+                                @break
 
+                                @default
                             @endswitch
                         </div>
                     </div>

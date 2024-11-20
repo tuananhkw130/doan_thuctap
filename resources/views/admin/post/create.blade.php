@@ -1,5 +1,17 @@
 @extends('layouts.admin')
 @section('content')
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb iq-bg-primary mb-0">
+            <li class="breadcrumb-item">
+                <a href="{{ route('admin.home.index') }}">
+                    <i class="ri-home-4-line mr-1 float-left"></i>
+                    Trang chủ
+                </a>
+            </li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.post.index') }}">Bài viết</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Thêm bài viết</li>
+        </ol>
+    </nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
