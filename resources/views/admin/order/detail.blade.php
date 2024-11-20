@@ -36,6 +36,7 @@
                                 <p class="mb-3">
                                     <b>Địa chỉ:</b> {{ $order->address }}
                                 </p>
+
                             </div>
                             <div class="">
                                 <p class="mb-3">
@@ -57,6 +58,30 @@
 
                                 @default
                             @endswitch
+                        </div>
+                        <div class="table-responsive rounded bg-white">
+                            <table class="table mb-0 table-borderless tbl-server-info">
+                                <thead>
+                                    <tr class="ligth">
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($orderDetail as $product)
+                                        <tr>
+                                            <th scope="row">{{ $product->id }}</th>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->quantity }}</td>
+                                            <td>{{ $product->price }}</td>
+                                        </tr>
+                                    @endforeach
+
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

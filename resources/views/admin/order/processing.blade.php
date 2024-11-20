@@ -37,6 +37,9 @@
                                                 colspan="1" style="width: 118.938px;">Ngày đặt</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
                                                 colspan="1" style="width: 39.7031px;">Trạng thái</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
+                                                colspan="1" style="width: 39.7031px;">Thao tác
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -48,6 +51,12 @@
                                                 <td>{{ $order->name }}</td>
                                                 <td>{{ $order->created_at->format('d/m/Y') }}</td>
                                                 <td>{!! $order->statusOrder() !!}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.order.detail', ['id' => $order->id]) }}"
+                                                        class="btn btn-primary ">
+                                                        Xem chi tiết
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
