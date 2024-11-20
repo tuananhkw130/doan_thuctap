@@ -15,7 +15,7 @@
                         <h2>{{ $post->title }}</h2>
                         <ul>
                             <li>{{ $post->author }}</li>
-                            <li>{{ $post->updated_at }}</li>
+                            <li>{{ $post->updated_at->format('H:i:s d/m/Y') }}</li>
                         </ul>
                     </div>
                 </div>

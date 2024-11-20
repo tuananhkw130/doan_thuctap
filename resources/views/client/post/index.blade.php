@@ -34,7 +34,7 @@
                             </div>
                             <div class="blog__item__text">
                                 <span><img src="{{ asset('client/assets/img/icon/calendar.png') }}" alt=""
-                                        type="date">{{ $post->created_at }}</span>
+                                        type="date">{{ $post->created_at->format('H:i:s d/m/Y') }}</span>
                                 <h5>{{ $post->title }}</h5>
                                 <a href="{{ route('post.detail', ['id' => $post->id]) }}">Đọc thêm</a>
                             </div>
