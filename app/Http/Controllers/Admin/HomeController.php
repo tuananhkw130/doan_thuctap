@@ -20,9 +20,13 @@ class HomeController extends Controller
         $completedOrders = Order::where('status', OrderStatus::DELIVERY)->count();
         $doanhthu = Order::where('status', OrderStatus::DELIVERY)->sum('total');
         $pendingOrders = Order::where('status', OrderStatus::ORDER)->count();
+        $cancelOrders = Order::where('status', OrderStatus::CANCEL_ORDER)->count();
         $totalPost = Post::count();
 
-        return view('admin.home.index', compact('totalProducts', 'totalOrders', 'totalUser', 'completedOrders', 'pendingOrders', 'totalPost', 'doanhthu'));
+        return view(
+            'admin.home.index',
+            compact('totalProducts', 'totalOrders', 'totalUser', 'completedOrders', 'pendingOrders', 'totalPost', 'doanhthu', 'cancelOrders')
+        );
     }
 
 }

@@ -74,6 +74,9 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('/order')->group(function () {
         Route::get('/', [AdminOrderController::class, 'index'])->name('admin.order.index');
+        Route::get('/list-order-done', [AdminOrderController::class, 'listOrderDone'])->name('admin.order.listorderdone');
+        Route::get('/list-order-processing', [AdminOrderController::class, 'listOrderProcessing'])->name('admin.order.listorderprocessing');
+        Route::get('/list-order-cancel', [AdminOrderController::class, 'listOrderCancel'])->name('admin.order.listordercancel');
         Route::get('/detail/{id}', [AdminOrderController::class, 'detail'])->name('admin.order.detail');
         Route::get('/accept/{id}', [AdminOrderController::class, 'accept'])->name('admin.order.accept');
         Route::get('/cancel/{id}', [AdminOrderController::class, 'cancel'])->name('admin.order.cancel');
