@@ -20,8 +20,30 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Đơn hàng {{ $order->id }}</h4>
+                        <div class="">
+                            @switch($order->status)
+                                @case(OrderStatus::ORDER)
+                                    <a href="{{ route('admin.order.cancel', ['id' => $order->id]) }}"
+                                        class="btn btn-danger mx-1">Hủy</a>
+                                    <a href="{{ route('admin.order.accept', ['id' => $order->id]) }}"
+                                        class="btn btn-success mx-1">Chấp nhận</a>
+                                @break
+
+                                @case(OrderStatus::CANCEL_ORDER)
+                                    <h4 class="bg-secondary-light pl-3 pr-3 py-2  rounded">
+                                        Đơn hàng đã hủy
+                                    </h4>
+                                @break
+
+                                @case(OrderStatus::DELIVERY)
+                                    <h4 class="bg-success-light pl-3 pr-3 py-2  rounded">
+                                        Đơn hàng thành công
+                                    </h4>
+                                @break
+
+                                @default
+                                    <span class="text-muted">Trạng thái không xác định</span>
+                            @endswitch
                         </div>
                         @if ($order->status == OrderStatus::DELIVERY)
                             <a href="{{ route('admin.order.export_pdf', ['id' => $order->id]) }}" class="btn btn-info"
@@ -53,7 +75,6 @@
                                 </p>
                             </div>
                         </div>
-
                         <div class="">
                             <table class="table">
                                 <thead>
@@ -87,26 +108,26 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div>
+                        <div class="d-flex justify-content-between">
                             <p>
                                 <b>Tổng số tiền:</b> {{ number_format($order->total) }} VND
                             </p>
+                            <div class="">
+                                @if ($order->status == OrderStatus::CANCEL_ORDER)
+                                    <a href="{{ route('admin.order.listordercancel') }}" class="btn bg-danger">Quay lại</a>
+                                @elseif ($order->status == OrderStatus::DELIVERY)
+                                    <a href="{{ route('admin.order.listorderdone') }}" class="btn bg-danger">Quay lại </a>
+                                @elseif ($order->status == OrderStatus::ORDER)
+                                    <a href="{{ route('admin.order.listorderprocessing') }}" class="btn bg-danger">
+                                        Quay lại
+                                    </a>
+                                @else
+                                    <a href="{{ route('admin.order.index') }}" class="btn bg-danger">Quay lại</a>
+                                @endif
+                            </div>
                         </div>
 
 
-
-                        <div class="d-flex justify-content-center">
-                            @switch($order->status)
-                                @case(OrderStatus::ORDER)
-                                    <a href="{{ route('admin.order.cancel', ['id' => $order->id]) }}"
-                                        class="btn btn-danger mx-1">Hủy</a>
-                                    <a href="{{ route('admin.order.accept', ['id' => $order->id]) }}"
-                                        class="btn btn-success mx-1">Chấp nhận</a>
-                                @break
-
-                                @default
-                            @endswitch
-                        </div>
                     </div>
                 </div>
             </div>
