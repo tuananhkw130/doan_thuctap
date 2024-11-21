@@ -70,11 +70,11 @@
                             <a class="btn text-white btn-sm btn-block" data-mdb-ripple-init
                                 style="background-color: #dd4b39;border-radius:25px;" href="{{ route('auth.google') }}"
                                 role="button">
-                                <i class="fab fa-google pr-1"></i> Google
+                                <i class="fa fa-google pr-1"></i> Google
                             </a>
                             <a class="btn text-white btn-sm btn-block" data-mdb-ripple-init
                                 style="background-color: #3b5998;border-radius:25px;" href="#!" role="button">
-                                <i class="fab fa-facebook-f pr-1"></i> Facebook
+                                <i class="fa fa-facebook-f pr-1"></i> Facebook
                             </a>
 
                         </form>

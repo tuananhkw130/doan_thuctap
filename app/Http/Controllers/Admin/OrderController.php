@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
 use App\Enums\OrderStatus;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
@@ -99,5 +100,23 @@ class OrderController extends Controller
         return view('admin.order.cancel', [
             'orders' => $orders,
         ]);
+    }
+
+    public function exportPDF($id)
+    {
+        $order = Order::where('id', $id)->firstOrFail();
+        $orderDetail = OrderDetail::select('products.*', 'order_details.quantity', 'order_details.price')
+            ->join('products', 'products.id', 'order_details.productID')
+            ->where('orderID', $order->id)
+            ->get();
+
+        // Load view chi tiết đơn hàng và truyền dữ liệu
+        $pdf = Pdf::loadView('admin.order.pdf', [
+            'order' => $order,
+            'orderDetail' => $orderDetail,
+        ]);
+
+        // Xuất PDF với tên file
+        return $pdf->stream('order_' . $order->id . '.pdf');
     }
 }

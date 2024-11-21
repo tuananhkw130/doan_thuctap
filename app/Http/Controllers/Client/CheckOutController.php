@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Enums\OrderStatus;
+use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 class CheckOutController extends Controller
@@ -57,6 +58,7 @@ class CheckOutController extends Controller
             ]);
             $total += $cart->price * $cart->quantity;
         }
+        OrderDetail::insert($dataOrderAdd);
 
         $order->total = $total;
         $order->save();

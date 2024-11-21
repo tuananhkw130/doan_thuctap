@@ -23,30 +23,78 @@
                         <div class="header-title">
                             <h4 class="card-title">Đơn hàng {{ $order->id }}</h4>
                         </div>
+                        @if ($order->status == OrderStatus::DELIVERY)
+                            <a href="{{ route('admin.order.export_pdf', ['id' => $order->id]) }}" class="btn btn-info"
+                                id="btnExportPDF">
+                                Xuất hóa đơn PDF
+                            </a>
+                        @endif
                     </div>
+
                     <div class="card-body ">
-                        <div class="py-3 d-flex">
-                            <div class="">
-                                <p class="mb-3">
+                        <div class="py-3 row">
+                            <div class="col-4">
+                                <p class="">
                                     <b>Người nhận:</b> {{ $order->fullname }}
                                 </p>
-                                <p class="mb-3">
+                                <p class="">
                                     <b>Số điện thoại:</b> {{ $order->phone }}
                                 </p>
-                                <p class="mb-3">
+
+
+                            </div>
+                            <div class="col-4">
+                                <p class="">
                                     <b>Địa chỉ:</b> {{ $order->address }}
                                 </p>
 
-                            </div>
-                            <div class="">
-                                <p class="mb-3">
-                                    <b>Tổng số tiền:</b> {{ number_format($order->total) }} VND
-                                </p>
-                                <p class="mb-3">
+                                <p class="">
                                     <b>Ghi chú:</b> {{ $order->note }}
                                 </p>
                             </div>
                         </div>
+
+                        <div class="">
+                            <table class="table">
+                                <thead>
+                                    <tr class="table-info">
+                                        <th class="text-center" scope="col">#</th>
+                                        <th class="text-center" scope="col">Tên sản phẩm</th>
+                                        <th class="text-center" scope="col">Hình ảnh</th>
+                                        <th class="text-center" scope="col">Số lượng</th>
+                                        <th class="text-center" scope="col">Giá</th>
+                                        <th class="text-center" scope="col">Thành tiền</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-active">
+                                    @foreach ($orderDetail as $product)
+                                        <tr>
+                                            <th class="text-center" scope="row">{{ $product->id }}</th>
+                                            <td class="text-center">{{ $product->name }}</td>
+                                            <td class="text-center">
+                                                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}"
+                                                    style="width: 50px; height: auto;">
+                                            </td>
+                                            <td class="text-center">{{ $product->quantity }}</td>
+                                            <td class="text-center">
+                                                {{ number_format($product->price) }} VND
+                                            </td>
+                                            <td class="text-center">
+                                                {{ number_format($product->price * $product->quantity) }} VND
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <p>
+                                <b>Tổng số tiền:</b> {{ number_format($order->total) }} VND
+                            </p>
+                        </div>
+
+
+
                         <div class="d-flex justify-content-center">
                             @switch($order->status)
                                 @case(OrderStatus::ORDER)
@@ -59,33 +107,20 @@
                                 @default
                             @endswitch
                         </div>
-                        <div class="table-responsive rounded bg-white">
-                            <table class="table mb-0 table-borderless tbl-server-info">
-                                <thead>
-                                    <tr class="ligth">
-                                        <th scope="col">#</th>
-                                        <th scope="col">First</th>
-                                        <th scope="col">Last</th>
-                                        <th scope="col">Handle</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($orderDetail as $product)
-                                        <tr>
-                                            <th scope="row">{{ $product->id }}</th>
-                                            <td>{{ $product->name }}</td>
-                                            <td>{{ $product->quantity }}</td>
-                                            <td>{{ $product->price }}</td>
-                                        </tr>
-                                    @endforeach
-
-
-                                </tbody>
-                            </table>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.getElementById('btnExportPDF').addEventListener('click', function(e) {
+            e.preventDefault(); // Ngăn không cho link mở trên trang hiện tại
+
+            // URL để tải PDF
+            const url = this.href;
+
+            // Mở cửa sổ mới và tải PDF
+            window.open(url, '_blank', 'width=800,height=600');
+        });
+    </script>
 @endsection

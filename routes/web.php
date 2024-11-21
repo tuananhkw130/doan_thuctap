@@ -80,6 +80,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/detail/{id}', [AdminOrderController::class, 'detail'])->name('admin.order.detail');
         Route::get('/accept/{id}', [AdminOrderController::class, 'accept'])->name('admin.order.accept');
         Route::get('/cancel/{id}', [AdminOrderController::class, 'cancel'])->name('admin.order.cancel');
+        Route::get('/export-pdf/{id}', [AdminOrderController::class, 'exportPDF'])->name('admin.order.export_pdf');
+
     });
 
     Route::prefix('/contact')->group(function () {
