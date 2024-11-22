@@ -11,9 +11,9 @@
     <meta name="keywords" content="Male_Fashion, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="favicon.ico" type="{{ asset('client/asset/img/icon/iconhead.png') }}">
+    <link rel="shortcut icon" href="{{ asset('client/assets/img/vv.png') }}" />
 
-    <title>Male-Fashion</title>
+    <title>Valor-Fashion</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
