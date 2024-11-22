@@ -81,8 +81,11 @@
                                 <div class="product__item">
                                     <div class="product__item__pic set-bg" data-setbg="{{ $itemproduct->image }}">
                                         <ul class="product__hover">
-                                            <li><a href="{{ route('product.detail', ['id' => $itemproduct->id]) }}"><img
-                                                        src="client/assets/img/icon/search.png" alt=""></a></li>
+                                            <li>
+                                                <a href="{{ route('product.detail', ['id' => $itemproduct->id]) }}">
+                                                    <img src="client/assets/img/icon/search.png" alt="">
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="product__item__text">
@@ -95,7 +98,19 @@
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star-o"></i>
                                         </div>
-                                        <h5>{{ number_format($itemproduct->price) }} VND </h5>
+
+                                    </div>
+                                    <div class="d-flex justify-content-between ">
+                                        <h5 class="text-bold">{{ number_format($itemproduct->price) }} VND </h5>
+
+                                        <form action="{{ route('favorite.add', ['productID' => $itemproduct->id]) }}"
+                                            method="POST">
+                                            @csrf
+                                            <button type="submit" class="favorite-btn" title="Thêm vào yêu thích">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>

@@ -161,11 +161,17 @@
 
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img
-                                src="{{ asset('client/assets/img/icon/search.png') }}" alt=""></a>
-                        <a href="{{ route('cart.index') }}"><img
-                                src="{{ asset('client/assets/img/icon/cart.png') }}" alt="">
-                            <span>0</span></a>
+                        <a href="#" class="search-switch">
+                            <img src="{{ asset('client/assets/img/icon/search.png') }}" alt="">
+                        </a>
+                        <a href="{{ route('favorite.index') }}">
+                            <img src="{{ asset('client/assets/img/icon/heart.png') }}" alt="">
+
+                        </a>
+                        <a href="{{ route('cart.index') }}">
+                            <img src="{{ asset('client/assets/img/icon/cart.png') }}" alt="">
+                            <span>0</span>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -277,4 +277,34 @@
             }
         });
     });
+    document.addEventListener("DOMContentLoaded", function () {
+        const favoriteButtons = document.querySelectorAll(".favorite-btn");
+
+        favoriteButtons.forEach((button) => {
+            button.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const form = this.closest("form");
+                fetch(form.action, {
+                    method: form.method,
+                    body: new FormData(form),
+                    headers: {
+                        "X-CSRF-TOKEN": document.querySelector(
+                            'meta[name="csrf-token"]'
+                        ).content,
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.success) {
+                            this.classList.add("favorited"); // Thêm class để đổi màu
+                            alert("Đã thêm vào danh sách yêu thích!");
+                        } else {
+                            alert("Đã xảy ra lỗi. Vui lòng thử lại.");
+                        }
+                    })
+                    .catch((error) => console.error("Lỗi:", error));
+            });
+        });
+    });
 })(jQuery);

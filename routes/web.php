@@ -18,6 +18,7 @@ use App\Http\Controllers\Client\CartController;
 use App\Http\Controllers\Client\OrderController;
 use App\Http\Controllers\Client\CheckoutController;
 use App\Http\Controllers\Client\ContactController;
+use App\Http\Controllers\Client\FavoriteController;
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\GoogleController;
@@ -126,6 +127,12 @@ Route::prefix('/contact')->group(function () {
     Route::get('/', [ContactController::class, 'index'])->name('contact.index');
     Route::post('/', [ContactController::class, 'store'])->name('contact.store');
 
+});
+
+Route::prefix('/products')->group(function () {
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorite.index');
+    Route::post('/favorites/add', [FavoriteController::class, 'add'])->name('favorite.add');
+    Route::get('/favorites/delete/{productID}', [FavoriteController::class, 'delete'])->name('favorite.delete');
 });
 
 
