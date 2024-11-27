@@ -32,11 +32,13 @@
                 <div class="col-lg-3">
                     <div class="shop__sidebar">
                         <div class="shop__sidebar__search">
-                            <form action="#">
-                                <input type="text" placeholder="Tìm kiếm">
+                            <form action="{{ route('product.index') }}" method="GET">
+                                <input type="text" name="search" placeholder="Tìm kiếm"
+                                    value="{{ request()->input('search') }}">
                                 <button type="submit"><span class="icon_search"></span></button>
                             </form>
                         </div>
+
                         <div class="shop__sidebar__accordion">
                             <div class="accordion" id="accordionExample">
                                 <div class="card">

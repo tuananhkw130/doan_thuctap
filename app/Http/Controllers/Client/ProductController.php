@@ -22,9 +22,10 @@ class ProductController extends Controller
         $query = [
             'idcategory' => $request->input('idcategory'),
             'price' => $request->input('price'),
+            'search' => $request->input('search'),
         ];
 
-        $product = Product::get();
+        $product = Product::query();  // Dùng query thay vì get() để tạo điều kiện tìm kiếm
 
         if ($query['idcategory']) {
             $product = $product->where('id_category', $query['idcategory']);
@@ -50,9 +51,17 @@ class ProductController extends Controller
             }
         }
 
+        if ($query['search']) {
+            $product = $product->where('name', 'like', '%' . $query['search'] . '%');
+        }
+
+        // Lấy dữ liệu sau khi lọc
+        $product = $product->get();  // Chuyển từ query sang get() để lấy dữ liệu
+
         return view('client.product.index', [
             'products' => $product,
         ], compact('season'));
+
     }
 
     public function detail($id)
