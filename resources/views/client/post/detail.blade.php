@@ -46,7 +46,8 @@
                     <div class="blog__details__content">
 
                         <div class="blog__details__text">
-                            <p style="text-align: justify;">{{ $post->content }}</p>
+                            <p style="text-align: justify;">{!! $post->content !!}
+                            </p>
                         </div>
                     </div>
                 </div>

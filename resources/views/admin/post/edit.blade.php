@@ -43,8 +43,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Nội dung</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" value="{{ $itemPost->content }}" name="content"
-                                    rows="3"></textarea>
+                                <textarea class="form-control" required name="content">{{ $itemPost->content }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Tác giả</label>

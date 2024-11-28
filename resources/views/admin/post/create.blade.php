@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Nội dung</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="content" rows="3"></textarea>
+                                    <textarea class="form-control" name="content" rows="3"></textarea>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Tác giả</label>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Thêm</button>
-                                <a href="{{ route('admin.menu.index') }}" class="btn bg-danger">Quay lại</a>
+                                <a href="{{ route('admin.post.index') }}" class="btn bg-danger">Quay lại</a>
                             </div>
                         </form>
                     </div>
