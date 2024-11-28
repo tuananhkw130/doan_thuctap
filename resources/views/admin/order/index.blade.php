@@ -22,50 +22,33 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <div id="datatable_wrapper" class="dataTables_wrapper">
-                                <table id="datatable" class="table data-table table-striped dataTable" role="grid"
-                                    aria-describedby="">
-                                    <thead>
-                                        <tr class="ligth" role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" aria-sort="ascending" style="width: 158.094px;">Mã đơn hàng
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 247.594px;">Người đặt
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 118.938px;">Ngày đặt
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 39.7031px;">Trạng thái
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 39.7031px;">Thao tác
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($orders as $order)
-                                            <tr role="row" class="odd">
-                                                <td class="sorting_1">
-                                                    Đơn hàng {{ $order->id }}
-                                                </td>
-                                                <td>{{ $order->name }}</td>
-                                                <td>{{ $order->created_at->format('d/m/Y') }}</td>
-                                                <td>{!! $order->statusOrder() !!}</td>
-                                                <td>
-                                                    <a href="{{ route('admin.order.detail', ['id' => $order->id]) }}"
-                                                        class="btn btn-primary ">
-                                                        Xem chi tiết
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr class="table-info">
+                                    <th class="text-center" scope="col">STT</th>
+                                    <th class="text-center" scope="col">Người đặt</th>
+                                    <th class="text-center" scope="col">Ngày đặt</th>
+                                    <th class="text-center" scope="col">Trạng thái</th>
+                                    <th class="text-center" scope="col">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: #fbf0f1">
+                                @foreach ($orders as $index => $order)
+                                    <tr>
+                                        <th class="text-center"> {{ $index + 1 }}</th>
+                                        <td class="text-center">{{ $order->name }}</td>
+                                        <td class="text-center">{{ $order->created_at->format('d/m/Y') }}</td>
+                                        <td class="text-center">{!! $order->statusOrder() !!}</td>
+                                        <td class="text-center">
+                                            <a href="{{ route('admin.order.detail', ['id' => $order->id]) }}"
+                                                class="btn btn-primary ">
+                                                Xem chi tiết
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

@@ -21,35 +21,28 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <div id="datatable_wrapper" class="dataTables_wrapper">
-                                <table id="datatable" class="table data-table table-striped dataTable" role="grid"
-                                    aria-describedby="datatable_info">
-                                    <thead>
-                                        <tr class="ligth" role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" aria-sort="ascending" style="width:39.7031px ;">Id</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width:118.938px ;">Tên người liên hệ</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 158.094px;">Email</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 247.594px;">Lời nhắn</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($listContact as $itemContact)
-                                            <tr role="row" class="odd">
-                                                <td class="sorting_1">{{ $itemContact->id }}</td>
-                                                <td>{{ $itemContact->name }}</td>
-                                                <td>{{ $itemContact->email }}</td>
-                                                <td>{{ $itemContact->message }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr class="table-info">
+                                    <th class="text-center col-1">STT</th>
+                                    <th class="text-center col-3">Tên người liên hệ</th>
+                                    <th class="text-center col-2">Email</th>
+                                    <th class="text-center col-6">Lời nhắn</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: #fbf0f1">
+                                @foreach ($listContact as $index => $itemContact)
+                                    <tr>
+                                        <th class="text-center"> {{ $index + 1 }}</th>
+                                        <td class="text-center">{{ $itemContact->name }}</td>
+                                        <td class="text-center">{{ $itemContact->email }}</td>
+                                        <td class="text-center">
+                                            {{ $itemContact->message }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

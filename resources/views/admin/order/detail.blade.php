@@ -87,7 +87,7 @@
                                         <th class="text-center" scope="col">Thành tiền</th>
                                     </tr>
                                 </thead>
-                                <tbody class="table-active">
+                                <tbody style="background: #fbf0f1">
                                     @foreach ($orderDetail as $product)
                                         <tr>
                                             <th class="text-center" scope="row">{{ $product->id }}</th>

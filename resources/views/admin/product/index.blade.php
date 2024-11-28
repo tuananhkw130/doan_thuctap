@@ -39,54 +39,41 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <div id="datatable_wrapper" class="dataTables_wrapper">
-                                <a class="btn btn-primary mb-3" href="{{ route('admin.product.create') }}">Thêm sản phẩm</a>
-                                <table id="datatable" class="table data-table table-striped dataTable" role="grid"
-                                    aria-describedby="datatable_info">
-                                    <thead>
-                                        <tr class="ligth" role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" aria-sort="ascending" style="width: 158.094px;">Id</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 247.594px;">Danh mục</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 247.594px;">Tên sản phẩm</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 118.938px;">Hình ảnh</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 39.7031px;">Giá</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 39.7031px;">Số lượng</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 39.7031px;">Chức năng</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($listProduct as $itemProduct)
-                                            <tr role="row" class="odd">
-                                                <td class="sorting_1">{{ $itemProduct->id }}</td>
-                                                <td>{{ $itemProduct->category_name }}</td>
-                                                <td>{{ $itemProduct->name }}</td>
-                                                <td>
-                                                    <img height="100" src="{{ $itemProduct->image }}" alt="">
-                                                </td>
-                                                <td>{{ number_format($itemProduct->price) }} VND</td>
-                                                <td>{{ $itemProduct->quantity }}</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="{{ route('admin.product.edit', ['id' => $itemProduct->id]) }}"
-                                                            class="btn btn-warning">Sửa</a>
-                                                        <a href="{{ route('admin.product.delete', ['id' => $itemProduct->id]) }}"
-                                                            class="btn btn-danger mx-2">Xoá</a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr class="table-info">
+                                    <th class="text-center" scope="col">STT</th>
+                                    <th class="text-center" scope="col">Danh mục</th>
+                                    <th class="text-center" scope="col">Tên sản phẩm</th>
+                                    <th class="text-center" scope="col">Hình ảnh</th>
+                                    <th class="text-center" scope="col">Giá</th>
+                                    <th class="text-center" scope="col">Số lượng</th>
+                                    <th class="text-center" scope="col">Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: #fbf0f1">
+                                @foreach ($listProduct as $index => $itemProduct)
+                                    <tr>
+                                        <th class="text-center"> {{ $index + 1 }}</th>
+                                        <td class="text-center">{{ $itemProduct->category_name }}</td>
+                                        <td class="text-center">{{ $itemProduct->name }}</td>
+                                        <td class="text-center">
+                                            <img height="100" src="{{ $itemProduct->image }}" alt="">
+                                        </td>
+                                        <td class="text-center">{{ number_format($itemProduct->price) }} VND</td>
+                                        <td class="text-center">{{ $itemProduct->quantity }}</td>
+                                        <td class="text-center">
+                                            <div class="d-flex" style="justify-content: center">
+                                                <a href="{{ route('admin.product.edit', ['id' => $itemProduct->id]) }}"
+                                                    class="btn btn-warning">Sửa</a>
+                                                <a href="{{ route('admin.product.delete', ['id' => $itemProduct->id]) }}"
+                                                    class="btn btn-danger mx-2">Xoá</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

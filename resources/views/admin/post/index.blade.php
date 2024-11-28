@@ -39,48 +39,36 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <div id="datatable_wrapper" class="dataTables_wrapper">
-                                <a class="btn btn-primary mb-3" href="{{ route('admin.post.create') }}">Thêm bài viết</a>
-                                <table id="datatable" class="table data-table table-striped dataTable" role="grid"
-                                    aria-describedby="datatable_info">
-                                    <thead>
-                                        <tr class="ligth" role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" aria-sort="ascending" style="width: '10%';">Id</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: '30%';">Tiêu đề</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: '20%';">Hình ảnh</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: '20%';">Tác giả</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: '20%';">Chức năng</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($listPost as $itemPost)
-                                            <tr role="row" class="odd">
-                                                <td class="sorting_1">{{ $itemPost->id }}</td>
-                                                <td>{{ $itemPost->title }}</td>
-                                                <td>
-                                                    <img height="100" src="{{ $itemPost->image }}" alt="">
-                                                </td>
-                                                <td>{{ $itemPost->author }}</td>
-                                                <td>
-                                                    <div class="d-flex">
-                                                        <a href="{{ route('admin.post.edit', ['id' => $itemPost->id]) }}"
-                                                            class="btn btn-warning">Sửa</a>
-                                                        <a href="{{ route('admin.post.delete', ['id' => $itemPost->id]) }}"
-                                                            class="btn btn-danger mx-2">Xoá</a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr class="table-info">
+                                    <th class="text-center" scope="col">STT</th>
+                                    <th class="text-center" scope="col">Tiêu đề</th>
+                                    <th class="text-center" scope="col">Hình ảnh</th>
+                                    <th class="text-center" scope="col">Tác giả</th>
+                                    <th class="text-center" scope="col">Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: #fbf0f1">
+                                @foreach ($listPost as $index => $itemPost)
+                                    <tr>
+                                        <th class="text-center"> {{ $index + 1 }}</th>
+                                        <td class="text-center">{{ $itemPost->title }}</td>
+                                        <td class="text-center"><img height="100" src="{{ $itemPost->image }}"
+                                                alt=""></td>
+                                        <td class="text-center">{{ $itemPost->author }}</td>
+                                        <td class="text-center">
+                                            <div class="d-flex" style="justify-content: center">
+                                                <a href="{{ route('admin.post.edit', ['id' => $itemPost->id]) }}"
+                                                    class="btn btn-warning">Sửa</a>
+                                                <a href="{{ route('admin.post.delete', ['id' => $itemPost->id]) }}"
+                                                    class="btn btn-danger mx-2">Xoá</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
