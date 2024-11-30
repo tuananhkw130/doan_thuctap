@@ -17,18 +17,37 @@ class Controller extends BaseController
      * @param $files
      * @return path files
      */
-    public function uploadFile($files, $newFolder=null)
+    public function uploadFile($files, $newFolder = null)
     {
-        if (!$files) {
+        // Kiểm tra nếu $files là mảng (nhiều file)
+        if (is_array($files)) {
+            $paths = [];
+            foreach ($files as $file) {
+                // Gọi hàm xử lý từng file
+                $paths[] = $this->processSingleFile($file, $newFolder);
+            }
+            return $paths; // Trả về mảng đường dẫn của các file
+        }
+
+        // Nếu chỉ là một file
+        return $this->processSingleFile($files, $newFolder);
+    }
+
+    private function processSingleFile($file, $newFolder = null)
+    {
+        if (!$file) {
             return '';
         }
-        $imagePath = $files;
-        $imageName = $imagePath->getClientOriginalName();
+
+        $imageName = $file->getClientOriginalName();
         $filename = explode('.', $imageName)[0];
-        $extension = $imagePath->getClientOriginalExtension();
-        $picName =  Str::slug(time()."_".$filename, "_").".". $extension;
-        $folder = $newFolder ? 'uploads/'.$newFolder : 'uploads';
-        $path = $files->storeAs($folder, $picName, 'public');
+        $extension = $file->getClientOriginalExtension();
+        $picName = Str::slug(time() . "_" . $filename, "_") . "." . $extension;
+        $folder = $newFolder ? 'uploads/' . $newFolder : 'uploads';
+        $path = $file->storeAs($folder, $picName, 'public');
+
         return asset("storage") . '/' . $path;
     }
+
+
 }

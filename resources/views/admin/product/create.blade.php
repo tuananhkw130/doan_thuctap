@@ -42,11 +42,15 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Hình ảnh</label>
-                                    <div class="custom-file ">
-                                        <input type="file" class="custom-file-input" id="customFile" name="image">
-                                        <label class="custom-file-label" for="customFile"></label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile" name="images[]"
+                                            multiple>
+                                        <label class="custom-file-label" for="customFile">Chọn ảnh</label>
                                     </div>
+                                    <div id="preview" class="mt-3 row"></div>
+                                    <!-- Khu vực hiển thị ảnh -->
                                 </div>
+
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Giá</label>
                                     <input type="text" class="form-control" id="validationDefault01" name="price">
@@ -81,4 +85,47 @@
             </div>
         </div>
     </div>
+    <script>
+        const previewContainer = document.getElementById('preview'); // Khu vực preview
+        const customFileInput = document.getElementById('customFile');
+
+        customFileInput.addEventListener('change', function(event) {
+            const files = event.target.files; // Lấy danh sách file mới
+
+            if (files.length === 0) {
+                const noImage = document.createElement('p');
+                noImage.textContent = 'Không có ảnh nào được chọn.';
+                previewContainer.appendChild(noImage);
+                return;
+            }
+
+            // Thêm từng file vào khu vực preview
+            Array.from(files).forEach((file) => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+
+                    // Khi file được đọc xong
+                    reader.onload = function(e) {
+                        const col = document.createElement('div');
+                        col.classList.add('col-md-3', 'mb-3');
+
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.classList.add('img-thumbnail');
+                        img.style.width = '30%';
+
+                        col.appendChild(img);
+                        previewContainer.appendChild(col);
+                    };
+
+                    reader.readAsDataURL(file); // Đọc file dưới dạng URL
+                } else {
+                    const warning = document.createElement('p');
+                    warning.textContent = `File "${file.name}" không phải là ảnh.`;
+                    warning.style.color = 'red';
+                    previewContainer.appendChild(warning);
+                }
+            });
+        });
+    </script>
 @endsection

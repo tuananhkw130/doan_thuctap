@@ -42,17 +42,32 @@
                                 <input type="text" class="form-control" value="{{ $itemProduct->name }}" name="name">
                             </div>
                             <div class="form-group">
-                                <label for="validationDefault01">Hình ảnh</label>
-                                <div class="custom-file ">
-                                    <input type="file" class="custom-file-input" id="customFile" name="image">
-                                    <label class="custom-file-label" for="customFile"></label>
+                                <label for="validationDefault01">Hình ảnh hiện tại</label>
+                                <div class="d-flex flex-wrap mb-3">
+                                    @if (is_array(json_decode($itemProduct->image, true)))
+                                        @foreach (json_decode($itemProduct->image, true) as $index => $image)
+                                            <div class="position-relative mr-3">
+                                                <img src="{{ $image }}" alt="Hình ảnh sản phẩm" height="100"
+                                                    class="rounded mb-2">
+                                                <input type="checkbox" name="deleteImages[]" value="{{ $index }}"
+                                                    class="position-absolute" style="top: 0; right: 0;">
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <span>Không có hình ảnh</span>
+                                    @endif
                                 </div>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input type="checkbox" class="custom-control-input" name="changeImage"
-                                        id="change-image">
-                                    <label class="custom-control-label" for="change-image">Thay đổi hình ảnh</label>
+                                <small>Chọn hình ảnh muốn xóa bằng cách tích vào checkbox.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="validationDefault01">Thêm hình ảnh mới</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile" name="newImages[]"
+                                        multiple>
+                                    <label class="custom-file-label" for="customFile">Chọn ảnh mới</label>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <label for="pwd">Giá</label>
                                 <input type="text" class="form-control" value="{{ $itemProduct->price }}"name="price">
