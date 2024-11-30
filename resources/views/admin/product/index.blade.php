@@ -39,6 +39,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <a class="btn btn-primary mb-3" href="{{ route('admin.product.create') }}">Thêm sản phẩm</a>
                         <table class="table">
                             <thead>
                                 <tr class="table-info">

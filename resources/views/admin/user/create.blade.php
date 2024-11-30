@@ -48,7 +48,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Thêm</button>
-                            <a href="{{ route('admin.menu.index') }}" class="btn bg-danger">Quay lại</a>
+                            <a href="{{ route('admin.user.index') }}" class="btn bg-danger">Quay lại</a>
                         </form>
                     </div>
                 </div>

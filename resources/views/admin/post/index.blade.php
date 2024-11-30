@@ -39,6 +39,7 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <a class="btn btn-primary mb-3" href="{{ route('admin.post.create') }}">Thêm bài viết</a>
                         <table class="table">
                             <thead>
                                 <tr class="table-info">
