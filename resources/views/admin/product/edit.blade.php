@@ -44,8 +44,8 @@
                             <div class="form-group">
                                 <label for="validationDefault01">Hình ảnh hiện tại</label>
                                 <div class="d-flex flex-wrap mb-3">
-                                    @if (is_array(json_decode($itemProduct->image, true)))
-                                        @foreach (json_decode($itemProduct->image, true) as $index => $image)
+                                    @if (is_array($itemProduct->image))
+                                        @foreach ($itemProduct->image as $index => $image)
                                             <div class="position-relative mr-3">
                                                 <img src="{{ $image }}" alt="Hình ảnh sản phẩm" height="100"
                                                     class="rounded mb-2">
@@ -56,6 +56,7 @@
                                     @else
                                         <span>Không có hình ảnh</span>
                                     @endif
+
                                 </div>
                                 <small>Chọn hình ảnh muốn xóa bằng cách tích vào checkbox.</small>
                             </div>

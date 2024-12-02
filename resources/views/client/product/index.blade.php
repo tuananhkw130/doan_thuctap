@@ -79,9 +79,18 @@
                 <div class="col-lg-9">
                     <div class="row">
                         @foreach ($products as $itemproduct)
+                            @php
+                                // Check if the image is a JSON string before decoding
+                                $images = is_string($itemproduct->image)
+                                    ? json_decode($itemproduct->image, true)
+                                    : $itemproduct->image;
+
+                                // If $images is an array, use the first image (or adjust the index as needed)
+                                $imageUrl = is_array($images) ? $images[0] : $images;
+                            @endphp
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="{{ $itemproduct->image }}">
+                                    <div class="product__item__pic set-bg" data-setbg="{{ htmlspecialchars($imageUrl) }}">
                                         <ul class="product__hover">
                                             <li>
                                                 <a href="{{ route('product.detail', ['id' => $itemproduct->id]) }}">

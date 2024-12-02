@@ -11,9 +11,17 @@
         </div>
         <div class="row product__filter" id="MixItUpE2CA1C">
             @foreach ($products as $product)
+                @php
+                    // Check if the image is a JSON string before decoding
+                    $images = is_string($product->image) ? json_decode($product->image, true) : $product->image;
+
+                    // If $images is an array, use the first image (or adjust the index as needed)
+                    $imageUrl = is_array($images) ? $images[0] : $images;
+                @endphp
                 <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="{{ $product->image }}">
+                        <div class="product__item__pic set-bg" data-setbg="{{ htmlspecialchars($imageUrl) }}">
+
                             <span class="label">Mới</span>
                             <ul class="product__hover">
                                 <li><a href="{{ route('product.detail', ['id' => $product->id]) }}"><img

@@ -42,7 +42,11 @@
                         <div class="tab-content" style="display: flex; justify-content: center;">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel" style="width: 65%;">
                                 <div class="product__details__pic__item">
-                                    <img src="{{ $product->image }}" alt="">
+                                    @php
+                                        // Check if $product->image is an array and select the first image
+                                        $imageUrl = is_array($product->image) ? $product->image[0] : $product->image;
+                                    @endphp
+                                    <img src="{{ htmlspecialchars($imageUrl) }}" alt="">
                                 </div>
                             </div>
                         </div>
