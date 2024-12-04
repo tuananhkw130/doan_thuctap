@@ -37,16 +37,61 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-md-3">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="false">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-1.png"
+                                        style="background-image: url(&quot;img/shop-details/thumb-1.png&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-2.png"
+                                        style="background-image: url(&quot;img/shop-details/thumb-2.png&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-3" role="tab"
+                                    aria-selected="true">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-3.png"
+                                        style="background-image: url(&quot;img/shop-details/thumb-3.png&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-4.png"
+                                        style="background-image: url(&quot;img/shop-details/thumb-4.png&quot;);">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="col-lg-6 col-md-9">
-                        <div class="tab-content" style="display: flex; justify-content: center;">
-                            <div class="tab-pane active" id="tabs-1" role="tabpanel" style="width: 65%;">
+                        <div class="tab-content">
+                            <div class="tab-pane" id="tabs-1" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    @php
-                                        // Check if $product->image is an array and select the first image
-                                        $imageUrl = is_array($product->image) ? $product->image[0] : $product->image;
-                                    @endphp
-                                    <img src="{{ htmlspecialchars($imageUrl) }}" alt="">
+                                    <img src="img/shop-details/product-big-2.png" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="img/shop-details/product-big-3.png" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane active" id="tabs-3" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="img/shop-details/product-big.png" alt="">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tabs-4" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="img/shop-details/product-big-4.png" alt="">
+                                    <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&amp;list=RD8PJ3_p7VqHw&amp;start_radio=1"
+                                        class="video-popup"><i class="fa fa-play"></i></a>
                                 </div>
                             </div>
                         </div>

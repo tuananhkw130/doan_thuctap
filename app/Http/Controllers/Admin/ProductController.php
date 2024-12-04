@@ -51,9 +51,6 @@ class ProductController extends Controller
     }
 
 
-
-
-
     public function edit($id)
     {
         $categories = Category::get();
@@ -66,20 +63,46 @@ class ProductController extends Controller
 
     public function update(Request $request)
     {
+
         $product = Product::findOrFail($request->id);
+
         $product->name = $request->name;
-        if ($request->changeImage) {
-            $imgPath = $this->uploadFile($request->file('image'), 'product');
-            $product->image = $imgPath;
-        }
         $product->price = $request->price;
         $product->size = $request->size;
         $product->quantity = $request->quantity;
         $product->describe = $request->describe;
-        $product->save();
 
-        return redirect()->route('admin.product.index');
+        // Lấy danh sách hình ảnh hiện tại (nếu có)
+        $currentImages = is_array($product->image) ? $product->image : json_decode($product->image, true) ?? [];
+
+        // Xóa hình ảnh nếu có yêu cầu từ checkbox
+        if ($request->has('deleteImages')) {
+            foreach ($request->deleteImages as $index) {
+                if (isset($currentImages[$index])) {
+                    // Xóa file ảnh khỏi thư mục (nếu cần)
+                    $imagePath = public_path($currentImages[$index]);
+                    if (file_exists($imagePath)) {
+                        unlink($imagePath);
+                    }
+                    unset($currentImages[$index]);
+                }
+            }
+        }
+
+        // Upload thêm ảnh mới
+        if ($request->hasFile('newImages')) {
+            foreach ($request->file('newImages') as $file) {
+                $newImagePath = $this->uploadFile($file, 'product');
+                $currentImages[] = $newImagePath; // Thêm ảnh mới vào danh sách
+            }
+        }
+        // Lưu danh sách ảnh
+        $product->image = json_encode(array_values($currentImages));
+
+        $product->save();
+        return redirect()->route('admin.product.index')->with('success', 'Cập nhật sản phẩm thành công!');
     }
+
 
     public function delete($id)
     {
