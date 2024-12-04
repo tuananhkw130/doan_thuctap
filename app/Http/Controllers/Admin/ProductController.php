@@ -30,20 +30,17 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $imagePaths = []; // Mảng để lưu đường dẫn ảnh
+        $imagePaths = [];
 
-        // Kiểm tra nếu có ảnh được upload
         if ($request->hasFile('images')) {
-            // Lặp qua các ảnh đã chọn và upload
-            $imagePaths = $this->uploadFile($request->file('images'), 'product'); // Chuyển mảng ảnh vào hàm uploadFile
-            dd($imagePaths); // Kiểm tra xem có mảng ảnh đúng không
+            $imagePaths = $this->uploadFile($request->file('images'), 'product');
         }
 
-        // Tạo sản phẩm mới
+
         Product::create([
             "id_category" => $request->id_category,
             "name" => $request->name,
-            "image" => json_encode($imagePaths), // Lưu mảng ảnh dưới dạng JSON
+            "image" => json_encode($imagePaths),
             "price" => $request->price,
             "size" => $request->size,
             "quantity" => $request->quantity,
