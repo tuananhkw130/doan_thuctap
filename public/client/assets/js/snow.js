@@ -3,7 +3,7 @@ function createSnow() {
     snowflake.classList.add("snowflake");
 
     // Kích thước ngẫu nhiên cho bông tuyết
-    const size = Math.random() * 30 + 20; // Kích thước ngẫu nhiên trong khoảng từ 20px đến 50px
+    const size = Math.random() * 20 + 15; // Kích thước ngẫu nhiên trong khoảng từ 20px đến 50px
     snowflake.style.width = `${size}px`;
     snowflake.style.height = `${size}px`;
 

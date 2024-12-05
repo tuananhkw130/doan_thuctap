@@ -38,67 +38,38 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3">
                         <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-1" role="tab" aria-selected="false">
-                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-1.png"
-                                        style="background-image: url(&quot;img/shop-details/thumb-1.png&quot;);">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">
-                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-2.png"
-                                        style="background-image: url(&quot;img/shop-details/thumb-2.png&quot;);">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="true">
-                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-3.png"
-                                        style="background-image: url(&quot;img/shop-details/thumb-3.png&quot;);">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-4.png"
-                                        style="background-image: url(&quot;img/shop-details/thumb-4.png&quot;);">
-                                        <i class="fa fa-play"></i>
-                                    </div>
-                                </a>
-                            </li>
+                            @foreach ($product as $index => $image)
+                                <li class="nav-item">
+                                    <a class="nav-link {{ $index == 0 ? 'active' : '' }}" data-toggle="tab"
+                                        href="#tabs-{{ (int) $index + 1 }}" role="tab"
+                                        aria-selected="{{ $index == 0 ? 'true' : 'false' }}">
+                                        <div class="product__thumb__pic set-bg"
+                                            data-setbg="{{ asset('storage/images/' . $image) }}"
+                                            style="background-image: url('{{ asset('storage/images/' . $image) }}');">
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="col-lg-6 col-md-9">
                         <div class="tab-content">
-                            <div class="tab-pane" id="tabs-1" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="img/shop-details/product-big-2.png" alt="">
+                            @foreach ($product as $index => $image)
+                                <!-- Kiểm tra lại phép cộng và ép kiểu cho đúng -->
+                                <div class="tab-pane {{ $index == 0 ? 'active' : '' }}" id="tabs-{{ (int) $index + 1 }}"
+                                    role="tabpanel">
+
+                                    <div class="product__details__pic__item">
+                                        <img src="{{ asset('storage/images/' . $image) }}" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-2" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="img/shop-details/product-big-3.png" alt="">
-                                </div>
-                            </div>
-                            <div class="tab-pane active" id="tabs-3" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="img/shop-details/product-big.png" alt="">
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-4" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="img/shop-details/product-big-4.png" alt="">
-                                    <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&amp;list=RD8PJ3_p7VqHw&amp;start_radio=1"
-                                        class="video-popup"><i class="fa fa-play"></i></a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="product__details__content" style="margin-bottom: 60px;">
             <div class="container">
                 <div class="row d-flex justify-content-center">
@@ -156,6 +127,7 @@
             </div>
         </div>
     </section>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             @if (session('error'))
