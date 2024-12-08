@@ -38,32 +38,49 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3">
                         <ul class="nav nav-tabs" role="tablist">
-                            @foreach ($product as $index => $image)
-                                <li class="nav-item">
-                                    <a class="nav-link {{ $index == 0 ? 'active' : '' }}" data-toggle="tab"
-                                        href="#tabs-{{ (int) $index + 1 }}" role="tab"
-                                        aria-selected="{{ $index == 0 ? 'true' : 'false' }}">
-                                        <div class="product__thumb__pic set-bg"
-                                            data-setbg="{{ asset('storage/images/' . $image) }}"
-                                            style="background-image: url('{{ asset('storage/images/' . $image) }}');">
-                                        </div>
-                                    </a>
-                                </li>
-                            @endforeach
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-1.png"
+                                        style="background-image: url(&quot;img/shop-details/thumb-1.png&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-2.png"
+                                        style="background-image: url(&quot;img/shop-details/thumb-2.png&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-3.png"
+                                        style="background-image: url(&quot;img/shop-details/thumb-3.png&quot;);">
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
+                                    <div class="product__thumb__pic set-bg" data-setbg="img/shop-details/thumb-4.png"
+                                        style="background-image: url(&quot;img/shop-details/thumb-4.png&quot;);">
+                                        <i class="fa fa-play"></i>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-lg-6 col-md-9">
+                        @php
+                            $images = is_string($product->image) ? json_decode($product->image, true) : $product->image;
+                            $imageUrl = is_array($images) ? $images[0] : $images;
+                        @endphp
                         <div class="tab-content">
-                            @foreach ($product as $index => $image)
-                                <!-- Kiểm tra lại phép cộng và ép kiểu cho đúng -->
-                                <div class="tab-pane {{ $index == 0 ? 'active' : '' }}" id="tabs-{{ (int) $index + 1 }}"
-                                    role="tabpanel">
-
-                                    <div class="product__details__pic__item">
-                                        <img src="{{ asset('storage/images/' . $image) }}" alt="">
-                                    </div>
+                            <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                <div class="product__details__pic__item">
+                                    <img src="{{ htmlspecialchars($imageUrl) }}" alt="">
                                 </div>
-                            @endforeach
+                            </div>
+
                         </div>
                     </div>
                 </div>

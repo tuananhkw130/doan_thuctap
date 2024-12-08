@@ -46,8 +46,14 @@
                                 @forelse ($cartItems as $product)
                                     <tr>
                                         <td class="product__cart__item">
+                                            @php
+                                                $images = is_string($product->image)
+                                                    ? json_decode($product->image, true)
+                                                    : $product->image;
+                                                $imageUrl = is_array($images) ? $images[0] : $images;
+                                            @endphp
                                             <div class="product__cart__item__pic" style="max-width:15%">
-                                                <img src="{{ $product->image }}" alt="">
+                                                <img src="{{ $imageUrl }}" alt="">
                                             </div>
                                             <div class="product__cart__item__text">
                                                 <h6>{{ $product->name }}</h6>

@@ -25,7 +25,7 @@ class ProductController extends Controller
             'search' => $request->input('search'),
         ];
 
-        $product = Product::query();  // Dùng query thay vì get() để tạo điều kiện tìm kiếm
+        $product = Product::query();
 
         if ($query['idcategory']) {
             $product = $product->where('id_category', $query['idcategory']);
@@ -75,6 +75,7 @@ class ProductController extends Controller
             $season = 'other';
         }
         $product = Product::findOrFail($id);
+
         return view('client.product.detail', [
             'product' => $product,
 
