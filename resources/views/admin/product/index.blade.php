@@ -59,29 +59,20 @@
                                         <td class="text-center">{{ $itemProduct->category_name }}</td>
                                         <td class="text-center">{{ $itemProduct->name }}</td>
                                         <td class="text-center">
-                                            {{-- Kiểm tra nếu image là mảng hoặc chuỗi --}}
-                                            @if (is_array($itemProduct->image))
-                                                @foreach ($itemProduct->image as $image)
-                                                    <img src="{{ $image }}" alt="Ảnh sản phẩm" height="100"
-                                                        class="mr-2">
-                                                @endforeach
-                                            @elseif (is_string($itemProduct->image))
-                                                @php
-                                                    $images = json_decode($itemProduct->image, true);
-                                                @endphp
-                                                @if (is_array($images) && count($images) > 0)
-                                                    @foreach ($images as $image)
-                                                        <img src="{{ $image }}" alt="Ảnh sản phẩm" height="100"
-                                                            class="mr-2">
-                                                    @endforeach
-                                                @else
-                                                    <img src="{{ $itemProduct->image }}" alt="Ảnh sản phẩm" height="100">
-                                                @endif
-                                            @else
-                                                <span>Không có ảnh</span>
-                                            @endif
-                                        </td>
+                                            @php
+                                                $images = is_array($itemProduct->image)
+                                                    ? $itemProduct->image
+                                                    : json_decode($itemProduct->image, true);
+                                            @endphp
 
+                                            @forelse ((array) $images as $image)
+                                                <img src="{{ $image }}" alt="Ảnh sản phẩm" height="100"
+                                                    class="mr-2">
+                                            @empty
+                                                <img src="{{ is_string($itemProduct->image) ? $itemProduct->image : '' }}"
+                                                    alt="Ảnh sản phẩm" height="100">
+                                            @endforelse
+                                        </td>
                                         <td class="text-center">{{ number_format($itemProduct->price) }} VND</td>
                                         <td class="text-center">{{ $itemProduct->quantity }}</td>
                                         <td class="text-center">

@@ -92,10 +92,23 @@
                                         <tr>
                                             <th class="text-center" scope="row">{{ $product->id }}</th>
                                             <td class="text-center">{{ $product->name }}</td>
+
                                             <td class="text-center">
-                                                <img src="{{ asset($product->image) }}" alt="{{ $product->name }}"
-                                                    style="width: 50px; height: auto;">
+                                                @php
+                                                    $images = is_array($product->image)
+                                                        ? $product->image
+                                                        : json_decode($product->image, true);
+                                                @endphp
+
+                                                @forelse ((array) $images as $image)
+                                                    <img src="{{ $image }}" alt="Ảnh sản phẩm" height="100"
+                                                        class="mr-2">
+                                                @empty
+                                                    <img src="{{ is_string($product->image) ? $product->image : '' }}"
+                                                        alt="Ảnh sản phẩm" height="100">
+                                                @endforelse
                                             </td>
+
                                             <td class="text-center">{{ $product->quantity }}</td>
                                             <td class="text-center">
                                                 {{ number_format($product->price) }} VND
