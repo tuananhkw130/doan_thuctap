@@ -4,8 +4,8 @@
     <div class="contact spad1" style="background-color: #e6ede6;">
         <div class="row justify-content-center">
             <div class="col-md-3">
-                <div class="card" style="border-radius:15px">
-                    <div class="card-header" style="border-radius:10px">
+                <div class="card">
+                    <div class="card-header">
                         <h4 style=" font-weight: 700;text-align: center;">ĐĂNG KÝ</h4>
                     </div>
 
@@ -54,6 +54,10 @@
                                 <input id="password-confirm" type="password" class="form-control"
                                     name="password_confirmation" required autocomplete="new-password"
                                     placeholder="Xác nhận mật khẩu">
+                            </div>
+
+                            <div class="text-auth-right">
+                                <p>Bạn đã có tài khoản? <a class="text-a" href="">Đăng nhập</a></p>
                             </div>
 
 

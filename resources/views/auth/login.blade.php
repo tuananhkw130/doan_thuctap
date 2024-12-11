@@ -4,8 +4,8 @@
     <div class="contact spad1" style=" background-color: #e6ede6;">
         <div class="row justify-content-center">
             <div class="col-md-3">
-                <div class="card" style="border-radius:15px">
-                    <div class="card-header" style="border-radius:10px">
+                <div class="card">
+                    <div class="card-header">
                         <h4 style=" font-weight: 700;text-align: center;">ĐĂNG NHẬP</h4>
                     </div>
 
@@ -41,6 +41,10 @@
                                         <strong>Vui lòng nhập lại mật khẩu</strong>
                                     </span>
                                 @enderror
+                            </div>
+
+                            <div class="text-auth-right">
+                                <p>Bạn chưa có tài khoản? <a class="text-a" href="">Đăng ký</a></p>
                             </div>
 
                             <div class="mb-3">

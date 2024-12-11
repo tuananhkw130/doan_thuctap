@@ -4082,6 +4082,10 @@ ol {
     position: relative;
 }
 
+.form-control {
+    border-radius: 0;
+}
+
 .input-group .form-control {
     padding-right: 40px;
 }
@@ -4099,6 +4103,21 @@ ol {
     justify-content: center;
     font-size: 12px;
     text-align: center;
+}
+
+.text-auth-right {
+    justify-items: end;
+    color: #4b4a4a;
+}
+
+.text-a {
+    text-decoration: none;
+    color: #4b4a4a;
+}
+
+.text-a:hover {
+    color: #000;
+    font-weight: bold;
 }
 
 /* hiệu ứng thời tiết */
