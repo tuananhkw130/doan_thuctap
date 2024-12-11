@@ -123,7 +123,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-5 noelhome">
                     <div class="banner__item banner__item--middle">
                         <div class="banner__item__pic">
                             <img src="{{ asset('client/assets/img/banner/banner-2.jpg') }}" alt="">

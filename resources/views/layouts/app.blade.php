@@ -152,7 +152,7 @@
                 <div class="col-lg-3 col-md-3">
                     <div class="header__logo ">
                         <a href="{{ route('client.home.index') }}">
-                            <img src="{{ asset('client/assets/img/2.png') }}" alt="" style="width:150px">
+                            <img src="{{ asset('client/assets/img/3.png') }}" alt="" style="width:150px">
                         </a>
                     </div>
                 </div>

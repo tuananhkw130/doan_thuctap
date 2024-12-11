@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="shop__sidebar">
-                        <div class="shop__sidebar__search">
+                        <div class="shop__sidebar__search noel">
                             <form action="{{ route('product.index') }}" method="GET">
                                 <input type="text" name="search" placeholder="Tìm kiếm"
                                     value="{{ request()->input('search') }}">
@@ -41,7 +41,7 @@
 
                         <div class="shop__sidebar__accordion">
                             <div class="accordion" id="accordionExample">
-                                <div class="card">
+                                <div class="card carddanhmuc" style="border-radius: 10px">
                                     <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseOne">Danh mục</a>
                                     </div>
@@ -49,7 +49,7 @@
                                     <x-CategoryComponent />
 
                                 </div>
-                                <div class="card">
+                                <div class="card carddanhmuc" style="border-radius: 10px">
                                     <div class="card-heading">
                                         <a data-toggle="collapse" data-target="#collapseThree">Lọc theo giá</a>
                                     </div>
@@ -109,7 +109,8 @@
 
                                     </div>
                                     <div class="d-flex justify-content-between ">
-                                        <h5 class="text-bold">{{ number_format($itemproduct->price) }} VND </h5>
+                                        <p style="font-size: 20px; font-weight: bold">
+                                            {{ number_format($itemproduct->price) }} VND </p>
 
                                         <form action="{{ route('favorite.add', ['productID' => $itemproduct->id]) }}"
                                             method="POST">

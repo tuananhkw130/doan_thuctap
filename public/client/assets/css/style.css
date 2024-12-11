@@ -35,6 +35,13 @@ body {
     height: 100%;
     font-family: "Nunito Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
+
+    background: url(//cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/noel/2024/tgdd/bg-dt.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: left bottom;
+    background-attachment: fixed;
+    padding-top: 20px;
 }
 
 h1,
@@ -419,7 +426,7 @@ ol {
 }
 
 .header__logo {
-    padding: 30px 0;
+    padding-top: 12px;
 }
 
 .header__logo a {
@@ -859,9 +866,7 @@ ol {
     position: relative;
 }
 
-.categories__deal__countdown
-    .categories__deal__countdown__timer
-    .cd-item:after {
+.categories__deal__countdown .categories__deal__countdown__timer .cd-item:after {
     position: absolute;
     right: 0;
     top: 7px;
@@ -871,9 +876,7 @@ ol {
     color: #3d3d3d;
 }
 
-.categories__deal__countdown
-    .categories__deal__countdown__timer
-    .cd-item:last-child:after {
+.categories__deal__countdown .categories__deal__countdown__timer .cd-item:last-child:after {
     display: none;
 }
 
@@ -1225,6 +1228,11 @@ ol {
     height: 100%;
 }
 
+.carddanhmuc {
+    padding: 10px;
+    border-radius: 100px;
+}
+
 .shop__sidebar__accordion .card {
     border: none;
     border-radius: 0;
@@ -1244,7 +1252,7 @@ ol {
     padding: 0;
     padding-top: 10px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #e5e5e5;
+
 }
 
 .shop__sidebar__accordion .card-heading {
@@ -1416,17 +1424,15 @@ ol {
 }
 
 .shop__sidebar__accordion .card-heading a:after,
-.shop__sidebar__accordion
-    .card-heading
-    > a.active[aria-expanded="false"]:after {
+.shop__sidebar__accordion .card-heading>a.active[aria-expanded="false"]:after {
     content: "";
     font-family: "FontAwesome";
     font-size: 24px;
     font-weight: 700;
     color: #111111;
     position: absolute;
-    right: 0;
-    top: 2px;
+    right: 13px;
+    top: 9px;
     line-height: 20px;
 }
 
@@ -1437,8 +1443,8 @@ ol {
     font-weight: 700;
     color: #111111;
     position: absolute;
-    right: 0;
-    top: 2px;
+    right: 13px;
+    top: 9px;
     line-height: 20px;
 }
 
@@ -2080,7 +2086,7 @@ ol {
 -----------------------*/
 
 .breadcrumb-option {
-    background: #f3f2ee;
+    background: rgb(243 242 238 / 50%);
     padding: 40px 0;
 }
 
@@ -2358,46 +2364,24 @@ ol {
     width: 400px;
 }
 
-.shopping__cart__table
-    table
-    tbody
-    tr
-    td.product__cart__item
-    .product__cart__item__pic {
+.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__pic {
     float: left;
     margin-right: 30px;
 }
 
-.shopping__cart__table
-    table
-    tbody
-    tr
-    td.product__cart__item
-    .product__cart__item__text {
+.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text {
     overflow: hidden;
     padding-top: 21px;
 }
 
-.shopping__cart__table
-    table
-    tbody
-    tr
-    td.product__cart__item
-    .product__cart__item__text
-    h6 {
+.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text h6 {
     color: #111111;
     font-size: 15px;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-.shopping__cart__table
-    table
-    tbody
-    tr
-    td.product__cart__item
-    .product__cart__item__text
-    h5 {
+.shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__text h5 {
     color: #0d0d0d;
     font-weight: 700;
 }
@@ -2410,14 +2394,7 @@ ol {
     width: 80px;
 }
 
-.shopping__cart__table
-    table
-    tbody
-    tr
-    td.quantity__item
-    .quantity
-    .pro-qty-2
-    input {
+.shopping__cart__table table tbody tr td.quantity__item .quantity .pro-qty-2 input {
     width: 50px;
     border: none;
     text-align: center;
@@ -2425,14 +2402,7 @@ ol {
     font-size: 16px;
 }
 
-.shopping__cart__table
-    table
-    tbody
-    tr
-    td.quantity__item
-    .quantity
-    .pro-qty-2
-    .qtybtn {
+.shopping__cart__table table tbody tr td.quantity__item .quantity .pro-qty-2 .qtybtn {
     font-size: 16px;
     color: #888888;
     width: 10px;
@@ -2665,11 +2635,11 @@ ol {
     visibility: hidden;
 }
 
-.checkout__input__checkbox label input:checked ~ .checkmark {
+.checkout__input__checkbox label input:checked~.checkmark {
     border-color: #e53637;
 }
 
-.checkout__input__checkbox label input:checked ~ .checkmark:after {
+.checkout__input__checkbox label input:checked~.checkmark:after {
     opacity: 1;
 }
 
@@ -3930,12 +3900,7 @@ ol {
         overflow-y: auto;
     }
 
-    .shopping__cart__table
-        table
-        tbody
-        tr
-        td.product__cart__item
-        .product__cart__item__pic {
+    .shopping__cart__table table tbody tr td.product__cart__item .product__cart__item__pic {
         float: none;
         margin-right: 0;
     }
@@ -4198,4 +4163,27 @@ ol {
 
 .favorite-btn.favorited {
     color: #ff0000;
+}
+
+.noel::before {
+    background: url(//cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/noel/2024/tgdd/icon-big.png) no-repeat;
+    background-size: 100%;
+    content: '';
+    height: 69px;
+    position: absolute;
+    right: 79px;
+    top: -57px;
+    width: 229px;
+    z-index: 1000;
+}
+
+.noelhome::before {
+    background: url(//cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/noel/2024/tgdd/icon-big.png) no-repeat;
+    background-size: 100%;
+    content: '';
+    height: 69px;
+    position: absolute;
+    top: -132px;
+    width: 229px;
+    z-index: 1000;
 }
