@@ -104,7 +104,7 @@
                                     <span> - 5 Reviews</span>
                                 </div>
                                 <h3> {{ number_format($product->price) }} VND</h3>
-                                <p>{{ $product->describe }}</p>
+                                <p>{!! $product->describe !!}</p>
                                 <div class="product__details__option">
                                     <div class="product__details__option__size">
                                         <span>Size:</span>

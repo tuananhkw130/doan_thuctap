@@ -105,8 +105,6 @@
         </div>
     </section>
 
-
-
     <x-ProductNewComponent />
 
     <section class="banner spad pt-2">
@@ -141,7 +139,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Giày dép</h2>
-                            <a href="#">Xem ngay</a>
+                            <a href="{{ route('products.filterByCategory', ['idcategory' => 1]) }}">Xem ngay</a>
                         </div>
                     </div>
                 </div>

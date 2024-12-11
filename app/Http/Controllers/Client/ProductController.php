@@ -64,6 +64,25 @@ class ProductController extends Controller
 
     }
 
+    public function filterByCategory($idcategory)
+    {
+        $currentMonth = Carbon::now()->month;
+        if (in_array($currentMonth, [11, 12, 1])) {
+            $season = 'winter';
+        } elseif (in_array($currentMonth, [8, 9, 10])) {
+            $season = 'autumn';
+        } else {
+            $season = 'other';
+        }
+        $products = Product::where('id_category', $idcategory)->get();
+
+        return view('client.product.index', [
+            'products' => $products,
+        ], compact('season'));
+    }
+
+
+
     public function detail($id)
     {
         $currentMonth = Carbon::now()->month;

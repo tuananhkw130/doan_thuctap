@@ -104,6 +104,7 @@ Route::prefix('/post')->group(function () {
 Route::prefix('/shop')->group(function () {
     Route::get('/', [ShopController::class, 'index'])->name('product.index');
     Route::get('/{id}', [ShopController::class, 'detail'])->name('product.detail');
+    Route::get('/products/category/{idcategory}', [ShopController::class, 'filterByCategory'])->name('products.filterByCategory');
 });
 
 Route::prefix('/cart')->group(function () {
@@ -134,6 +135,11 @@ Route::prefix('/products')->group(function () {
     Route::post('/favorites/add', [FavoriteController::class, 'add'])->name('favorite.add');
     Route::get('/favorites/delete/{productID}', [FavoriteController::class, 'delete'])->name('favorite.delete');
 });
+
+
+
+
+
 
 
 //đăng ký đăng nhập
