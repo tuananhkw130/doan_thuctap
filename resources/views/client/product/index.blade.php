@@ -3,11 +3,6 @@
     use Illuminate\Support\Str;
 @endphp
 @section('content')
-    @if ($season == 'winter')
-        <script src="{{ asset('client/assets/js/snow.js') }}"></script>
-    @elseif ($season == 'autumn')
-        <script src="{{ asset('client/assets/js/leaves.js') }}"></script>
-    @endif
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option">
         <div class="container" style="padding-top: 150px;">

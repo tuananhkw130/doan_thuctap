@@ -1,14 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    @if ($season == 'winter')
-        <script src="{{ asset('client/assets/js/snow.js') }}"></script>
-    @elseif ($season == 'autumn')
-        <script src="{{ asset('client/assets/js/leaves.js') }}"></script>
-    @endif
-
-
-
     <section class="hero">
         <div class="hero__slider owl-carousel owl-loaded owl-drag">
             <div class="owl-stage-outer">
@@ -21,8 +13,8 @@
                         </div>
                     </div>
                     <div class="owl-item" style="width: 1349px; height: 388px">
-                        <div class="hero__items set-bg1" data-setbg="{{ asset('client/assets/img/hero/hero9.jpg') }}"
-                            style="background-image: url(&quot;{{ asset('client/assets/img/hero/hero9.jpg') }}&quot;);">
+                        <div class="hero__items set-bg1" data-setbg="{{ asset('client/assets/img/hero/hero14.jpg') }}"
+                            style="background-image: url(&quot;{{ asset('client/assets/img/hero/hero14.jpg') }}&quot;);">
                         </div>
                     </div>
                 </div>

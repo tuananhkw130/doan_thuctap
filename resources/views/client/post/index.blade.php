@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    @if ($season == 'winter')
-        <script src="{{ asset('client/assets/js/snow.js') }}"></script>
-    @elseif ($season == 'autumn')
-        <script src="{{ asset('client/assets/js/leaves.js') }}"></script>
-    @endif
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-blog set-bg" data-setbg="{{ asset('client/assets/img/breadcrumb-bg.jpg') }}">
         <div class="container" style="padding-top: 120px;">

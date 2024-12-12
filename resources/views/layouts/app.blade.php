@@ -40,6 +40,11 @@
 
 
 </head>
+@if ($season == 'winter')
+    <script src="{{ asset('client/assets/js/snow.js') }}"></script>
+@elseif ($season == 'autumn')
+    <script src="{{ asset('client/assets/js/leaves.js') }}"></script>
+@endif
 
 <body>
     <!-- Page Preloder -->

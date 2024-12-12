@@ -3,11 +3,6 @@
     $total = 0;
 @endphp
 @section('content')
-    @if ($season == 'winter')
-        <script src="{{ asset('client/assets/js/snow.js') }}"></script>
-    @elseif ($season == 'autumn')
-        <script src="{{ asset('client/assets/js/leaves.js') }}"></script>
-    @endif
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-option" style="padding-top: 180px">
         <div class="container">
