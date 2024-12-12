@@ -7,20 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
+
 
 class CartController extends Controller
 {
     public function index()
     {
-        $currentMonth = Carbon::now()->month;
-        if (in_array($currentMonth, [11, 12, 1])) {
-            $season = 'winter';
-        } elseif (in_array($currentMonth, [8, 9, 10])) {
-            $season = 'autumn';
-        } else {
-            $season = 'other';
-        }
+
 
         $cart = Cart::select('products.*', 'carts.quantity')
             ->join('products', 'products.id', 'carts.productID')
@@ -29,7 +22,7 @@ class CartController extends Controller
 
         return view('client.cart.index', [
             'cartItems' => $cart,
-        ], compact('season'));
+        ]);
     }
 
     public function add(Request $request)

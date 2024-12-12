@@ -26,7 +26,7 @@
 
                             <div class="mb-3">
                                 <div class="input-group">
-                                    <input id="password" type="password" style="border-radius:5px"
+                                    <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password" placeholder="Mật khẩu">
 

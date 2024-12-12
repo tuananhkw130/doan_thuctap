@@ -9,26 +9,18 @@ use App\Models\Order;
 use App\Enums\OrderStatus;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
+
 class CheckOutController extends Controller
 {
     public function index()
     {
-        $currentMonth = Carbon::now()->month;
-        if (in_array($currentMonth, [11, 12, 1])) {
-            $season = 'winter';
-        } elseif (in_array($currentMonth, [8, 9, 10])) {
-            $season = 'autumn';
-        } else {
-            $season = 'other';
-        }
 
         $user = Auth::user();
         $cart = Cart::select('carts.*', 'products.price', 'products.name')->join('products', 'products.id', 'carts.productID')
             ->where('userID', $user->id)->get();
         return view('client.checkout.index', [
             'cart' => $cart,
-        ], compact('season'));
+        ]);
     }
 
     public function order(Request $request)

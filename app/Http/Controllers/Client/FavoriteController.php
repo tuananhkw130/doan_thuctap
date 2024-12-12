@@ -7,20 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Favorite;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 
 class FavoriteController extends Controller
 {
     public function index()
     {
-        $currentMonth = Carbon::now()->month;
-        if (in_array($currentMonth, [11, 12, 1])) {
-            $season = 'winter';
-        } elseif (in_array($currentMonth, [8, 9, 10])) {
-            $season = 'autumn';
-        } else {
-            $season = 'other';
-        }
 
         $favorites = Favorite::select('products.*')
             ->join('products', 'products.id', '=', 'favorites.productID')
@@ -29,7 +20,7 @@ class FavoriteController extends Controller
 
         return view('client.favorites.index', [
             'favoriteItems' => $favorites,
-        ], compact('season'));
+        ]);
     }
 
     // Thêm sản phẩm vào danh sách yêu thích
