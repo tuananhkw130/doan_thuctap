@@ -1,4 +1,4 @@
-<section class="product spad pt-5">
+<section class="product spad p-0 pt-5">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

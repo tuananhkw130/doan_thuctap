@@ -563,6 +563,10 @@ ol {
   Hero
 -----------------------*/
 
+.hero {
+    margin-top: 135px;
+}
+
 .hero__slider.owl-carousel .owl-item.active .hero__text h6 {
     top: 0;
     opacity: 1;
@@ -4199,6 +4203,18 @@ ol {
     z-index: 1000;
 }
 
+.chuong::before {
+    background: url(//cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/noel/2024/dmx/icon-promo-l.png) no-repeat;
+    background-size: 83px 77px;
+    content: "";
+    position: absolute;
+    height: 77px;
+    left: -5px;
+    top: -20px;
+    width: 83px;
+    z-index: 1;
+}
+
 .banner_pic {
     border-radius: 10px;
     height: 70%;
@@ -4246,4 +4262,12 @@ ol {
 .summer {
     background-color: #141414;
     border-radius: 12px;
+}
+
+.set-bg1 {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
 }
