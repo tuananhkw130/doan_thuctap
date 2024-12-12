@@ -35,13 +35,6 @@ body {
     height: 100%;
     font-family: "Nunito Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
-
-    background: url(//cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/noel/2024/tgdd/bg-dt.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: left bottom;
-    background-attachment: fixed;
-    padding-top: 20px;
 }
 
 h1,
@@ -1252,7 +1245,6 @@ ol {
     padding: 0;
     padding-top: 10px;
     padding-bottom: 20px;
-
 }
 
 .shop__sidebar__accordion .card-heading {
@@ -4187,7 +4179,7 @@ ol {
 .noel::before {
     background: url(//cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/noel/2024/tgdd/icon-big.png) no-repeat;
     background-size: 100%;
-    content: '';
+    content: "";
     height: 69px;
     position: absolute;
     right: 79px;
@@ -4199,10 +4191,59 @@ ol {
 .noelhome::before {
     background: url(//cdnv2.tgdd.vn/webmwg/2024/ContentMwg/images/noel/2024/tgdd/icon-big.png) no-repeat;
     background-size: 100%;
-    content: '';
+    content: "";
     height: 69px;
     position: absolute;
     top: -132px;
     width: 229px;
     z-index: 1000;
+}
+
+.banner_pic {
+    border-radius: 10px;
+    height: 70%;
+}
+
+.banner_pic img {
+    border-radius: 10px;
+}
+
+.banner__item__pic {
+    position: relative;
+    overflow: hidden;
+
+}
+
+.banner__item__pic img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease, scale 0.3s ease;
+}
+
+.banner__item__pic:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.winter {
+    background-color: #ac5858;
+    border-radius: 12px;
+}
+
+.seeall {
+    display: flex;
+    justify-content: center;
+}
+
+.seeall button {
+    border-radius: 10px;
+    border: 1px solid #fff;
+    color: #fff;
+    background: transparent;
+    padding: 10px;
+}
+
+.summer {
+    background-color: #141414;
+    border-radius: 12px;
 }

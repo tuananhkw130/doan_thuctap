@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <a class="btn btn-primary mb-3" href="{{ route('admin.user.create') }}">Thêm người dùng</a>
+                        <a class="btn btn-primary mb-3" href="{{ route('admin.category.create') }}">Thêm danh mục</a>
                         <table class="table">
                             <thead>
                                 <tr class="table-info">

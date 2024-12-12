@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Tin tức mới nhất</h2>
+                    <h2>TIN TỨC MỚI NHẤT</h2>
                 </div>
             </div>
         </div>
