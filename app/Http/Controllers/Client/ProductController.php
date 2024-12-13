@@ -47,12 +47,12 @@ class ProductController extends Controller
             $product = $product->where('name', 'like', '%' . $query['search'] . '%');
         }
 
-        // Lấy dữ liệu sau khi lọc
-        $product = $product->get();  // Chuyển từ query sang get() để lấy dữ liệu
+        $product = $product->orderBy('created_at', 'desc')->paginate(6)->appends($query);
 
-        return view('client.product.index', [
-            'products' => $product,
-        ]);
+        return view(
+            'client.product.index',
+            ['products' => $product]
+        );
 
     }
 
@@ -60,9 +60,10 @@ class ProductController extends Controller
     {
         $products = Product::where('id_category', $idcategory)->get();
 
-        return view('client.product.index', [
-            'products' => $products,
-        ]);
+        return view(
+            'client.product.index',
+            ['products' => $products]
+        );
     }
 
 
@@ -73,7 +74,7 @@ class ProductController extends Controller
 
         return view(
             'client.product.detail',
-            ['product' => $product,]
+            ['product' => $product]
         );
     }
 }

@@ -4278,3 +4278,35 @@ ol {
     height: auto;
     object-fit: contain;
 }
+
+.product__paginationss {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.product__paginationss .page-item {
+    margin: 0 5px;
+}
+
+.product__paginationss .page-link {
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0a0a0a;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product__paginationss .page-link:hover {
+    background-color: #0a0a0a;
+    color: #fff;
+    cursor: pointer;
+}
+
+.product__paginationss .active .page-link {
+    background-color: #0a0a0a;
+    color: #fff;
+    border-color: #0a0a0a;
+}
