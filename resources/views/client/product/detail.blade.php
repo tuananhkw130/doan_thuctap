@@ -135,6 +135,12 @@
             </div>
         </div>
     </div>
+    <div class="container pb-5">
+        <div class="banner_pic d-flex justify-content-center">
+            <img src="{{ asset('client/assets/img/bangsize.png') }}" alt="">
+        </div>
+
+    </div>
     </section>
 
     <script>

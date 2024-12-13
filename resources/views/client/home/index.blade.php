@@ -17,6 +17,11 @@
                             style="background-image: url(&quot;{{ asset('client/assets/img/hero/hero14.jpg') }}&quot;);">
                         </div>
                     </div>
+                    <div class="owl-item" style="width: 1349px; height: 388px">
+                        <div class="hero__items set-bg1" data-setbg="{{ asset('client/assets/img/hero/hero15.png') }}"
+                            style="background-image: url(&quot;{{ asset('client/assets/img/hero/hero15.png') }}&quot;);">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="owl-dots disabled"></div>

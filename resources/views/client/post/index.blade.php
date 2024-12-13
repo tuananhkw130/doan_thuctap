@@ -47,21 +47,21 @@
         </h2>
         <div class="row">
             <div class="col-md-4 d-flex justify-content-center align-items-center" style="padding: 20px;">
-                <iframe width="550" height="425" src="https://www.youtube.com/embed/1Qq3I5bMYPU"
+                <iframe width="550" height="400" src="https://www.youtube.com/embed/1Qq3I5bMYPU"
                     title="4 cách cơ bản giúp bạn tìm ra PHONG CÁCH CÁ NHÂN của mình | Việt Nâu" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <div class="col-md-4 d-flex justify-content-center align-items-center" style="padding: 20px;">
-                <iframe width="550" height="425" src="https://www.youtube.com/embed/mDpmetYZzkA"
+                <iframe width="550" height="400" src="https://www.youtube.com/embed/mDpmetYZzkA"
                     title="5 mẹo mặc đẹp mà không tốn kém, không cần nhiều đồ cho nam giới | Việt Nâu" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <div class="col-md-4 d-flex justify-content-center align-items-center" style="padding: 20px;">
-                <iframe width="550" height="425" src="https://www.youtube.com/embed/d6VRJJSJ77I"
+                <iframe width="550" height="400" src="https://www.youtube.com/embed/d6VRJJSJ77I"
                     title="Thu này mặc gì? Hướng dẫn phối đồ đơn giản hiệu quả thu 2024" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
