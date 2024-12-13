@@ -29,4 +29,28 @@ class HomeController extends Controller
         );
     }
 
+    public function doanhThu(Request $request)
+    {
+        $date = $request->input('date');
+        $month = $request->input('month');
+
+        // Query doanh thu theo ngày hoặc tháng
+        $query = Order::query()->where('status', OrderStatus::DELIVERY);
+
+        if ($date) {
+            $query->whereDate('created_at', $date);
+        } elseif ($month) {
+            $monthNumber = date('m', strtotime($month)); // Chuyển từ YYYY-MM thành m
+            $year = date('Y', strtotime($month));
+            $query->whereMonth('created_at', $monthNumber)
+                ->whereYear('created_at', $year);
+        }
+
+        $revenues = $query->selectRaw('DATE(created_at) as date, SUM(total) as revenue')
+            ->groupBy('date')
+            ->orderBy('date', 'asc')
+            ->get();
+
+        return view('admin.home.doanhthu', compact('revenues', 'date', 'month'));
+    }
 }

@@ -27,6 +27,8 @@ use App\Http\Controllers\Auth\FacebookController;
 
 Route::prefix('admin')->group(function () {
     Route::get('/index', [AdminHomeController::class, 'index'])->name('admin.home.index');
+    Route::get('/admin/doanh-thu', [AdminHomeController::class, 'doanhThu'])->name('admin.doanhthu');
+
 
     Route::prefix('/user')->group(function () {
         Route::get('/index', [UserController::class, 'index'])->name('admin.user.index');
@@ -137,9 +139,6 @@ Route::prefix('/products')->group(function () {
     Route::post('/favorites/add', [FavoriteController::class, 'add'])->name('favorite.add');
     Route::get('/favorites/delete/{productID}', [FavoriteController::class, 'delete'])->name('favorite.delete');
 });
-
-
-
 
 
 

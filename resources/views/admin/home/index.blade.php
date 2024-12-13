@@ -125,17 +125,18 @@
                         <div class="card card-block card-stretch card-height">
                             <div class="card-body">
                                 <div class="top-block d-flex align-items-center justify-content-between">
-                                    <h5>Số lượng bài viết</h5>
-                                    <span class="badge bg-pink">Hôm nay</span>
+                                    <h5>Đơn hàng đã hủy</h5>
+                                    <span class="badge bg-danger">Hôm nay</span>
                                 </div>
-                                <h3><span class="counter" style="visibility: visible;">{{ $totalPost }}</span></h3>
+                                <h3><span class="counter" style="visibility: visible;">{{ $cancelOrders }}</span></h3>
                                 <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <a style="color: #e76ea0" href="{{ route('admin.post.index') }}" class="mb-0">Xem
+                                    <a style="color: red" href="{{ route('admin.order.listordercancel') }}"
+                                        class="mb-0">Xem
                                         chi
                                         tiết </a>
                                 </div>
-                                <div class="iq-progress-bar bg-pink mt-2">
-                                    <span class="bg-pink iq-progress progress-1" data-percent="100"
+                                <div class="iq-progress-bar bg-danger mt-2">
+                                    <span class="bg-danger iq-progress progress-1" data-percent="100"
                                         style="transition: width 2s; width: 100%;"></span>
                                 </div>
                             </div>
@@ -156,7 +157,7 @@
                                     </span>
                                 </h3>
                                 <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <a style="color: #da8d4f" href="{{ route('admin.order.index') }}" class="mb-0">
+                                    <a style="color: #da8d4f" href="{{ route('admin.doanhthu') }}" class="mb-0">
                                         Xem chi tiết
                                     </a>
                                 </div>
@@ -171,18 +172,17 @@
                         <div class="card card-block card-stretch card-height">
                             <div class="card-body">
                                 <div class="top-block d-flex align-items-center justify-content-between">
-                                    <h5>Đơn hàng đã hủy</h5>
-                                    <span class="badge bg-danger">Hôm nay</span>
+                                    <h5>Số lượng bài viết</h5>
+                                    <span class="badge bg-pink">Hôm nay</span>
                                 </div>
-                                <h3><span class="counter" style="visibility: visible;">{{ $cancelOrders }}</span></h3>
+                                <h3><span class="counter" style="visibility: visible;">{{ $totalPost }}</span></h3>
                                 <div class="d-flex align-items-center justify-content-between mt-1">
-                                    <a style="color: red" href="{{ route('admin.order.listordercancel') }}"
-                                        class="mb-0">Xem
+                                    <a style="color: #e76ea0" href="{{ route('admin.post.index') }}" class="mb-0">Xem
                                         chi
                                         tiết </a>
                                 </div>
-                                <div class="iq-progress-bar bg-danger mt-2">
-                                    <span class="bg-danger iq-progress progress-1" data-percent="100"
+                                <div class="iq-progress-bar bg-pink mt-2">
+                                    <span class="bg-pink iq-progress progress-1" data-percent="100"
                                         style="transition: width 2s; width: 100%;"></span>
                                 </div>
                             </div>
