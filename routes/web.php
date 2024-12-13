@@ -122,6 +122,8 @@ Route::prefix('/my')->group(function () {
 Route::prefix('/checkout')->group(function () {
     Route::get('/', [CheckoutController::class, 'index'])->name('checkout.index');
     Route::post('/order', [CheckoutController::class, 'order'])->name('checkout.order');
+    Route::post('/quick-order', [CheckOutController::class, 'quickOrder'])->name('checkout.quickOrder');
+
 });
 
 Route::prefix('/contact')->group(function () {

@@ -20,10 +20,13 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="{{ htmlspecialchars($imageUrl) }}">
 
-                            <span class="label">Mới</span>
+                            <span class="label" style="background: #e24545; color:#fff">Mới</span>
                             <ul class="product__hover">
-                                <li><a href="{{ route('product.detail', ['id' => $product->id]) }}"><img
-                                            src="client/assets/img/icon/search.png" alt=""></a></li>
+                                <li>
+                                    <a href="{{ route('product.detail', ['id' => $product->id]) }}">
+                                        <img src="client/assets/img/icon/search.png" alt="">
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div class="product__item__text">

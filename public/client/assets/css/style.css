@@ -1614,6 +1614,7 @@ ol {
 
 .product__details__pic__item {
     position: relative;
+    width: 96%;
 }
 
 .product__details__pic__item a {
@@ -1634,7 +1635,7 @@ ol {
 }
 
 .product__details__text {
-    text-align: center;
+    text-align: justify;
 }
 
 .product__details__text h4 {
@@ -1680,6 +1681,7 @@ ol {
 
 .product__details__option {
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .product__details__option__size {
@@ -4227,7 +4229,6 @@ ol {
 .banner__item__pic {
     position: relative;
     overflow: hidden;
-
 }
 
 .banner__item__pic img {
@@ -4270,4 +4271,10 @@ ol {
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
+}
+
+.bangsize_pic img {
+    width: 1200px;
+    height: auto;
+    object-fit: contain;
 }
