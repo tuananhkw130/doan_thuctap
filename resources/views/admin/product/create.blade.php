@@ -53,8 +53,7 @@
 
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Giá</label>
-                                    <input type="text" class="form-control" id="priceInput" name="price"
-                                        oninput="formatCurrency(this)" placeholder="Nhập giá">
+                                    <input type="text" class="form-control" id="priceInput" name="price">
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Số lượng</label>
@@ -129,11 +128,5 @@
                 }
             });
         });
-
-        function formatCurrency(input) {
-            let value = input.value.replace(/\D/g, '');
-            value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-            input.value = value;
-        }
     </script>
 @endsection

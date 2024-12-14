@@ -23,10 +23,8 @@ class FavoriteController extends Controller
         ]);
     }
 
-    // Thêm sản phẩm vào danh sách yêu thích
     public function add(Request $request)
     {
-        // Kiểm tra người dùng đã đăng nhập chưa
         if (!Auth::check()) {
             return redirect()->route('auth.showLogin')->with('error', 'Bạn cần đăng nhập để thêm sản phẩm vào danh sách yêu thích.');
         }
@@ -34,19 +32,16 @@ class FavoriteController extends Controller
         $productID = $request->productID;
         $user = Auth::user();
 
-        // Kiểm tra sản phẩm có tồn tại trong cơ sở dữ liệu không
         $product = Product::find($productID);
         if (!$product) {
             return redirect()->route('favorite.index')->with('error', 'Sản phẩm không tồn tại.');
         }
 
-        // Kiểm tra sản phẩm đã tồn tại trong danh sách yêu thích chưa
         $favoriteExist = Favorite::where('userID', $user->id)->where('productID', $productID)->first();
         if ($favoriteExist) {
             return redirect()->route('favorite.index')->with('error', 'Sản phẩm đã có trong danh sách yêu thích.');
         }
 
-        // Thêm sản phẩm vào danh sách yêu thích
         Favorite::create([
             'userID' => $user->id,
             'productID' => $productID,
@@ -55,7 +50,6 @@ class FavoriteController extends Controller
         return redirect()->route('favorite.index')->with('success', 'Đã thêm sản phẩm vào danh sách yêu thích.');
     }
 
-    // Xóa sản phẩm khỏi danh sách yêu thích
     public function delete($productID)
     {
         Favorite::where('userID', Auth::id())->where('productID', $productID)->delete();

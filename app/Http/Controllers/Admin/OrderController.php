@@ -97,6 +97,7 @@ class OrderController extends Controller
         $orders = Order::select('orders.*', 'users.name')
             ->join('users', 'users.id', 'orders.userID')
             ->where('status', OrderStatus::CANCEL_ORDER)
+            ->orderBy('orders.created_at', 'desc')
             ->get();
 
         return view('admin.order.cancel', [

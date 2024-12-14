@@ -102,6 +102,9 @@
                             <div class="form-group">
                                 <label for="size">Size</label>
                                 <select class="form-control mb-3" name="size" id="size">
+                                    <option value="S" {{ $itemProduct->size == 'Tất cả' ? 'selected' : '' }}>
+                                        Tất cả size
+                                    </option>
                                     <option value="S" {{ $itemProduct->size == 'S' ? 'selected' : '' }}>S</option>
                                     <option value="M" {{ $itemProduct->size == 'M' ? 'selected' : '' }}>M</option>
                                     <option value="L" {{ $itemProduct->size == 'L' ? 'selected' : '' }}>L</option>

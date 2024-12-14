@@ -36,7 +36,6 @@ class ProductController extends Controller
             $imagePaths = $this->uploadFile($request->file('images'), 'product');
         }
 
-
         Product::create([
             "id_category" => $request->id_category,
             "name" => $request->name,

@@ -93,20 +93,14 @@
                                             <th class="text-center" scope="row">{{ $product->id }}</th>
                                             <td class="text-center">{{ $product->name }}</td>
 
-                                            <td class="text-center">
+                                            <td class="text-center" style="width:300px">
                                                 @php
-                                                    $images = is_array($product->image)
-                                                        ? $product->image
-                                                        : json_decode($product->image, true);
+                                                    $images = is_string($product->image)
+                                                        ? json_decode($product->image, true)
+                                                        : $product->image;
+                                                    $imageUrl = is_array($images) ? $images[0] : $images;
                                                 @endphp
-
-                                                @forelse ((array) $images as $image)
-                                                    <img src="{{ $image }}" alt="Ảnh sản phẩm" height="100"
-                                                        class="mr-2">
-                                                @empty
-                                                    <img src="{{ is_string($product->image) ? $product->image : '' }}"
-                                                        alt="Ảnh sản phẩm" height="100">
-                                                @endforelse
+                                                <img style="width:30%" src="{{ $imageUrl }}" alt="">
                                             </td>
 
                                             <td class="text-center">{{ $product->quantity }}</td>

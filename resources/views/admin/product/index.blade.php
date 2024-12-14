@@ -58,14 +58,14 @@
                                         <th class="text-center">{{ $index + 1 }}</th>
                                         <td class="text-center">{{ $itemProduct->category_name }}</td>
                                         <td class="text-center">{{ $itemProduct->name }}</td>
-                                        <td class="text-center">
+                                        <td class="text-center" style="width:300px">
                                             @php
                                                 $images = is_string($itemProduct->image)
                                                     ? json_decode($itemProduct->image, true)
                                                     : $itemProduct->image;
                                                 $imageUrl = is_array($images) ? $images[0] : $images;
                                             @endphp
-                                            {{ $imageUrl }}
+                                            <img style="width:30%" src="{{ $imageUrl }}" alt="">
                                         </td>
                                         <td class="text-center">{{ number_format($itemProduct->price) }} VND</td>
                                         <td class="text-center">{{ $itemProduct->quantity }}</td>
