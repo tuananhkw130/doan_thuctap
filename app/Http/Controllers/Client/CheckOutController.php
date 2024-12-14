@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Product;
 use App\Enums\OrderStatus;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
@@ -42,6 +43,17 @@ class CheckOutController extends Controller
         $carts = Cart::select('carts.*', 'products.price')->join('products', 'products.id', 'carts.productID')
             ->where('userID', $user->id)->get();
         foreach ($carts as $cart) {
+
+            $product = Product::findOrFail($cart->productID);
+
+            if ($product->quantity < $cart->quantity) {
+                return redirect()->back()->with('error', 'Không đủ hàng trong kho');
+            }
+
+            // Trừ số lượng kho
+            $product->quantity -= $cart->quantity;
+            $product->save();
+
             array_push($dataOrderAdd, [
                 'orderID' => $order->id,
                 'productID' => $cart->productID,

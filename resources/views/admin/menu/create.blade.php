@@ -35,7 +35,8 @@
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Thứ tự</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="order">
+                                    <input title="Nhập số thứ tự" type="number" class="form-control"
+                                        id="validationDefault01" name="order">
                                 </div>
                             </div>
                             <div class="form-group">

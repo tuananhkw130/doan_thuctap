@@ -35,7 +35,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Thứ tự</label>
-                                <input type="text" class="form-control" value="{{ $itemMenu->order }}"name="order">
+                                <input title="Nhập số thứ tự" type="number" class="form-control"
+                                    value="{{ $itemMenu->order }}"name="order">
                             </div>
                             <button type="submit" class="btn btn-warning">Sửa</button>
                             <a href="{{ route('admin.menu.index') }}" class="btn bg-danger">Quay lại</a>
