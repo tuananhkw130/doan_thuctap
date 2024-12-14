@@ -53,7 +53,8 @@
 
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Giá</label>
-                                    <input type="text" class="form-control" id="validationDefault01" name="price">
+                                    <input type="text" class="form-control" id="priceInput" name="price"
+                                        oninput="formatCurrency(this)" placeholder="Nhập giá">
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Số lượng</label>
@@ -62,7 +63,8 @@
                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault01">Size</label>
                                     <select class="form-control mb-3" name="size">
-                                        <option value="S" checked>S</option>
+                                        <option value="Tất cả" checked>Tất cả size</option>
+                                        <option value="S">S</option>
                                         <option value="M">M</option>
                                         <option value="L">L</option>
                                         <option value="XL">XL</option>
@@ -127,5 +129,11 @@
                 }
             });
         });
+
+        function formatCurrency(input) {
+            let value = input.value.replace(/\D/g, '');
+            value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            input.value = value;
+        }
     </script>
 @endsection

@@ -72,14 +72,11 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->describe = $request->describe;
 
-        // Lấy danh sách hình ảnh hiện tại (nếu có)
         $currentImages = is_array($product->image) ? $product->image : json_decode($product->image, true) ?? [];
 
-        // Xóa hình ảnh nếu có yêu cầu từ checkbox
         if ($request->has('deleteImages')) {
             foreach ($request->deleteImages as $index) {
                 if (isset($currentImages[$index])) {
-                    // Xóa file ảnh khỏi thư mục (nếu cần)
                     $imagePath = public_path($currentImages[$index]);
                     if (file_exists($imagePath)) {
                         unlink($imagePath);
@@ -89,14 +86,12 @@ class ProductController extends Controller
             }
         }
 
-        // Upload thêm ảnh mới
         if ($request->hasFile('newImages')) {
             foreach ($request->file('newImages') as $file) {
                 $newImagePath = $this->uploadFile($file, 'product');
-                $currentImages[] = $newImagePath; // Thêm ảnh mới vào danh sách
+                $currentImages[] = $newImagePath;
             }
         }
-        // Lưu danh sách ảnh
         $product->image = json_encode(array_values($currentImages));
 
         $product->save();

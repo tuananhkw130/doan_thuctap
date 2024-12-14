@@ -47,7 +47,7 @@ class ProductController extends Controller
             $product = $product->where('name', 'like', '%' . $query['search'] . '%');
         }
 
-        $product = $product->orderBy('created_at', 'desc')->paginate(6)->appends($query);
+        $product = $product->orderBy('created_at', 'desc')->paginate(8)->appends($query);
 
         return view(
             'client.product.index',
@@ -58,7 +58,7 @@ class ProductController extends Controller
 
     public function filterByCategory($idcategory)
     {
-        $products = Product::where('id_category', $idcategory)->get();
+        $products = Product::where('id_category', $idcategory)->paginate(8);
 
         return view(
             'client.product.index',

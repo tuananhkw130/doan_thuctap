@@ -40,7 +40,7 @@ class HomeController extends Controller
         if ($date) {
             $query->whereDate('created_at', $date);
         } elseif ($month) {
-            $monthNumber = date('m', strtotime($month)); // Chuyển từ YYYY-MM thành m
+            $monthNumber = date('m', strtotime($month));
             $year = date('Y', strtotime($month));
             $query->whereMonth('created_at', $monthNumber)
                 ->whereYear('created_at', $year);
@@ -48,7 +48,7 @@ class HomeController extends Controller
 
         $revenues = $query->selectRaw('DATE(created_at) as date, SUM(total) as revenue')
             ->groupBy('date')
-            ->orderBy('date', 'asc')
+            ->orderBy('date', 'desc')
             ->get();
 
         return view('admin.home.doanhthu', compact('revenues', 'date', 'month'));

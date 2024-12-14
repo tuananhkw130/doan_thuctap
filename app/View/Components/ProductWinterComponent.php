@@ -23,7 +23,7 @@ class ProductWinterComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        $products = Product::where('id_category', 3)
+        $products = Product::where('id_category', 4)
             ->orderBy('created_at', 'DESC')
             ->take(4)
             ->get();

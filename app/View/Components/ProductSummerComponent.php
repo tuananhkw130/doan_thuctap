@@ -21,7 +21,7 @@ class ProductSummerComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        $products = Product::where('id_category', 2)
+        $products = Product::where('id_category', 5)
             ->orderBy('created_at', 'DESC')
             ->take(4)
             ->get();

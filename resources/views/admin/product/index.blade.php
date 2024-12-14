@@ -60,18 +60,12 @@
                                         <td class="text-center">{{ $itemProduct->name }}</td>
                                         <td class="text-center">
                                             @php
-                                                $images = is_array($itemProduct->image)
-                                                    ? $itemProduct->image
-                                                    : json_decode($itemProduct->image, true);
+                                                $images = is_string($itemProduct->image)
+                                                    ? json_decode($itemProduct->image, true)
+                                                    : $itemProduct->image;
+                                                $imageUrl = is_array($images) ? $images[0] : $images;
                                             @endphp
-
-                                            @forelse ((array) $images as $image)
-                                                <img src="{{ $image }}" alt="Ảnh sản phẩm" height="100"
-                                                    class="mr-2">
-                                            @empty
-                                                <img src="{{ is_string($itemProduct->image) ? $itemProduct->image : '' }}"
-                                                    alt="Ảnh sản phẩm" height="100">
-                                            @endforelse
+                                            {{ $imageUrl }}
                                         </td>
                                         <td class="text-center">{{ number_format($itemProduct->price) }} VND</td>
                                         <td class="text-center">{{ $itemProduct->quantity }}</td>
