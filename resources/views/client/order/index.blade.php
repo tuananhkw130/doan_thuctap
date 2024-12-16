@@ -51,7 +51,9 @@
                                 @foreach ($orderList as $product)
                                     <tr>
                                         <td class="product__cart__item" style="text-align:center">
-                                            {{ $product->id }}
+                                            <a href="{{ route('order.detail', ['id' => $product->id]) }}">
+                                                Đơn hàng {{ $product->id }}
+                                            </a>
                                         </td>
                                         <td class="product__cart__item" style="text-align:center; unicode-bidi: plaintext;">
                                             {{ $product->created_at->format('d/m/Y') }}
