@@ -51,7 +51,7 @@
                                 @foreach ($orderList as $product)
                                     <tr>
                                         <td class="product__cart__item" style="text-align:center">
-                                            <a href="{{ route('order.detail', ['id' => $product->id]) }}">
+                                            <a class="text-a" href="{{ route('order.detail', ['id' => $product->id]) }}">
                                                 Đơn hàng {{ $product->id }}
                                             </a>
                                         </td>

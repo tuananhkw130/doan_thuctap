@@ -12,7 +12,7 @@
                         <h4>Chi tiết đơn hàng</h4>
                         <div class="breadcrumb__links">
                             <a href="{{ route('client.home.index') }}">Trang chủ</a>
-                            <a href="{{ route('product.index') }}">Đơn hàng</a>
+                            <a href="{{ route('order.index') }}">Đơn hàng</a>
                             <span>Chi tiết</span>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($orderDetail as $product)
+                                @foreach ($orderDetail as $product)
                                     <tr>
                                         <td class="product__cart__item" style="text-align:center; align-item:center">
                                             @php
@@ -78,12 +78,8 @@
                                         <td class="cart__price" style="text-align:center">
                                             {{ number_format($product->price * $product->quantity) }} VND
                                         </td>
-
                                     </tr>
-                                @empty
-                                    <h4 class="text-center mb-4" style="color: red;">Chưa có sản phẩm nào trong danh sách
-                                        yêu thích</h4>
-                                @endforelse
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

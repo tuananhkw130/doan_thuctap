@@ -57,7 +57,9 @@
                             </div>
 
                             <div class="text-auth-right">
-                                <p>Bạn đã có tài khoản? <a class="text-a" href="">Đăng nhập</a></p>
+                                <p>Bạn đã có tài khoản? <a class="text-a" href="{{ route('auth.login') }}">Đăng
+                                        nhập</a>
+                                </p>
                             </div>
 
 

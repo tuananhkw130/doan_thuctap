@@ -32,7 +32,7 @@
             @endforeach
         </div>
         <div class="seeall">
-            <button>Xem tất cả</button>
+            <button><a href="{{ route('products.filterByCategory', ['idcategory' => 4]) }}">Xem tất cả</a></button>
         </div>
     </div>
 </section>

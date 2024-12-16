@@ -36,7 +36,7 @@ class OrderController extends Controller
             ->where('status', OrderStatus::ORDER)
             ->firstOrFail();
         $order->status = OrderStatus::CANCEL_ORDER;
-        $order->message = 'Người dùng hủy đặt hàng';
+        $order->message = 'Người dùng đã hủy đặt hàng';
         $order->save();
         return redirect()->route('order.index');
     }

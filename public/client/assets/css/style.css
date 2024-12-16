@@ -4260,6 +4260,15 @@ ol {
     padding: 10px;
 }
 
+.seeall button a {
+    color: #fff;
+}
+
+.seeall button a:hover {
+    color: #fff;
+    font-weight: bold;
+}
+
 .summer {
     background-color: #141414;
     border-radius: 12px;

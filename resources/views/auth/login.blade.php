@@ -44,7 +44,8 @@
                             </div>
 
                             <div class="text-auth-right">
-                                <p>Bạn chưa có tài khoản? <a class="text-a" href="">Đăng ký</a></p>
+                                <p>Bạn chưa có tài khoản? <a class="text-a" href="{{ route('auth.register') }}">Đăng ký</a>
+                                </p>
                             </div>
 
                             <div class="mb-3">
