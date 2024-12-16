@@ -130,26 +130,29 @@
     <script>
         document.getElementById('newImages').addEventListener('change', function(event) {
             const previewContainer = document.getElementById('previewImages');
+            const files = Array.from(event.target.files); // Duy trì thứ tự click chọn
 
-            // Duyệt qua các tệp mới được chọn
-            Array.from(event.target.files).forEach(file => {
+            files.forEach((file) => {
                 const reader = new FileReader();
-                reader.onload = function(e) {
-                    // Tạo một thẻ <img> mới cho mỗi ảnh
+                reader.onload = (e) => {
+                    // Tạo thẻ <img> mới cho mỗi ảnh
                     const img = document.createElement('img');
+                    Object.assign(img.style, {
+                        height: '100px',
+                        marginRight: '10px',
+                        borderRadius: '5px',
+                        objectFit: 'cover',
+                        display: 'inline-block',
+                    });
                     img.src = e.target.result;
                     img.alt = "Ảnh mới";
-                    img.style.height = '100px';
-                    img.style.marginRight = '10px';
-                    img.style.borderRadius = '5px';
-                    img.style.objectFit = 'cover';
-                    img.style.display = 'inline-block';
 
-                    // Thêm ảnh vào container preview mà không xóa ảnh trước đó
+                    // Thêm ảnh vào container preview
                     previewContainer.appendChild(img);
                 };
                 reader.readAsDataURL(file);
             });
         });
     </script>
+
 @endsection
