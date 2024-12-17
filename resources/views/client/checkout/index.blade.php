@@ -83,14 +83,15 @@
                                 <ul class="checkout__total__all">
                                     <li>Tổng <span>{{ number_format($total) }} VND</span></li>
                                 </ul>
-                                <button type="submit" class="site-btn">Đặt hàng</button>
+                                <button type="submit" class="site-btn">Thanh toán khi nhận hàng</button>
                             </div>
                         </div>
                     </div>
                 </form>
                 <form action="{{ route('checkout.vnpay') }}" method="POST">
                     @csrf
-                    <button type="submit" class="site-btn">mua</button>
+                    <input type="hidden" name="amount" value="{{ $total }}">
+                    <button type="submit" name="redirect" class="site-btn">Thanh toán qua ngân hàng</button>
                 </form>
             </div>
         </div>
