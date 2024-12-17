@@ -81,17 +81,17 @@
                                 <div class="product__details__option">
                                     <div class="product__details__option__size">
                                         <span>Size:</span>
-                                        <label for="xxl">xxl
-                                            <input name="size" type="radio" id="xxl">
-                                        </label>
                                         <label class="active" for="xl">xl
                                             <input name="size" type="radio" id="xl">
                                         </label>
                                         <label for="l">l
                                             <input name="size" type="radio" id="l">
                                         </label>
-                                        <label for="sm">s
-                                            <input name="size" type="radio" id="sm">
+                                        <label for="m">m
+                                            <input name="size" type="radio" id="m">
+                                        </label>
+                                        <label for="s">s
+                                            <input name="size" type="radio" id="s">
                                         </label>
                                     </div>
                                 </div>

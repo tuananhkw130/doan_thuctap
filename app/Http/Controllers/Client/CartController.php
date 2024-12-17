@@ -27,7 +27,7 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-        // Kiểm tra người dùng đã đăng nhập chưa
+
         if (!Auth::check()) {
             return redirect()->route('auth.showLogin')->with('error', 'Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.');
         }
@@ -36,21 +36,18 @@ class CartController extends Controller
         $quantity = $request->quantity;
         $user = Auth::user();
 
-        // Lấy sản phẩm từ cơ sở dữ liệu
+
         $product = Product::find($productID);
         if (!$product) {
             return redirect()->route('cart.index')->with('error', 'Sản phẩm không tồn tại.');
         }
 
-        // Kiểm tra số lượng đặt hàng có lớn hơn số lượng sản phẩm hiện có hay không
         if ($quantity > $product->quantity) {
             return redirect()->route('product.detail', ['id' => $productID])->with('error', 'Số lượng sản phẩm bạn đặt vượt quá số lượng hiện có.');
         }
 
-        // Kiểm tra sản phẩm đã tồn tại trong giỏ hàng chưa
         $orderExist = Cart::where('userID', $user->id)->where('productID', $productID)->first();
         if ($orderExist) {
-            // Kiểm tra tổng số lượng sau khi cập nhật
             if ($orderExist->quantity + $quantity > $product->quantity) {
                 return redirect()->route('cart.index')->with('error', 'Tổng số lượng trong giỏ hàng vượt quá số lượng sản phẩm hiện có.');
             }
