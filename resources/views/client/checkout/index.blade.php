@@ -88,6 +88,10 @@
                         </div>
                     </div>
                 </form>
+                <form action="{{ route('checkout.vnpay') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="site-btn">mua</button>
+                </form>
             </div>
         </div>
     </section>
