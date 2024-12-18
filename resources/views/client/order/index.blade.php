@@ -10,7 +10,12 @@
                     </button>
                 </div>
                 <div class="modal-body" style="color: green">
-                    {{ session('success') }}
+                    @if (session('success'))
+                        {{ session('success') }}
+                    @elseif (session('error'))
+                        <!-- Hiển thị thông báo lỗi -->
+                        <span style="color: red;">{{ session('error') }}</span>
+                    @endif
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="{{ route('checkout.order') }}" method="POST">
+                <form action="{{ route('checkout.orderVnpay') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-lg-7 col-md-6">
@@ -87,11 +87,6 @@
                             </div>
                         </div>
                     </div>
-                </form>
-                <form action="{{ route('checkout.vnpay') }}" method="POST">
-                    @csrf
-                    <input type="hidden" name="amount" value="{{ $total }}">
-                    <button type="submit" name="redirect" class="site-btn">Thanh toán qua ngân hàng</button>
                 </form>
             </div>
         </div>

@@ -24,6 +24,7 @@ class CheckOutController extends Controller
         ]);
     }
 
+
     public function order(Request $request)
     {
         $user = Auth::user();
@@ -72,32 +73,89 @@ class CheckOutController extends Controller
         return redirect()->route('order.index')->with('success', 'Đặt hàng thành công');
     }
 
+    public function orderVnpay(Request $request)
+    {
+        $user = Auth::user();
 
-    public function createPayment(Request $request)
+        // Tạo đơn hàng
+        $order = Order::create([
+            'userID' => $user->id,
+            'fullname' => $request->fullname,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'total' => 0, // Tạm thời đặt giá trị là 0, sẽ cập nhật sau
+            'status' => OrderStatus::ORDER,
+            'message' => $request->message,
+        ]);
+
+        $dataOrderAdd = [];
+        $total = 0;
+
+        // Lấy các sản phẩm trong giỏ hàng
+        $carts = Cart::select('carts.*', 'products.price')->join('products', 'products.id', 'carts.productID')
+            ->where('userID', $user->id)->get();
+
+        foreach ($carts as $cart) {
+
+            $product = Product::findOrFail($cart->productID);
+
+            if ($product->quantity < $cart->quantity) {
+                return redirect()->back()->with('error', 'Không đủ hàng trong kho');
+            }
+
+            // Trừ số lượng kho
+            $product->quantity -= $cart->quantity;
+            $product->save();
+
+            // Thêm chi tiết đơn hàng
+            array_push($dataOrderAdd, [
+                'orderID' => $order->id,
+                'productID' => $cart->productID,
+                'quantity' => $cart->quantity,
+                'price' => $cart->price,
+            ]);
+
+            // Cộng tổng giá trị đơn hàng
+            $total += $cart->price * $cart->quantity;
+        }
+
+        // Thêm chi tiết đơn hàng vào cơ sở dữ liệu
+        OrderDetail::insert($dataOrderAdd);
+
+        // Cập nhật tổng đơn hàng
+        $order->total = $total;
+        $order->save();
+
+        // Xóa các sản phẩm trong giỏ hàng
+        Cart::where('userID', $user->id)->delete();
+
+        // Tạo yêu cầu thanh toán qua VNPAY
+        return $this->xuLyVnpay($order);
+    }
+
+    public function xuLyVnpay(Order $order)
     {
 
-        $data = $request->all();
-        $order_code = rand(00, 9999);
-
+        $order_code = $order->id;
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-        $vnp_Returnurl = "http://127.0.0.1:8000/my/orders";
+        $vnp_Returnurl = 'http://127.0.0.1:8000/my/orders';
         $vnp_TmnCode = "F3N044AE";
         $vnp_HashSecret = "O1KQU87C8PNRD5ZUPPX5AT0ZJDM7LPQC";
 
         $vnp_TxnRef = $order_code;
-        $vnp_OrderInfo = "Thanh toán hóa đơn";
+        $vnp_OrderInfo = "Thanh toán đơn hàng #" . $order_code;
         $vnp_OrderType = "billpayment";
-        $vnp_Amount = $data['amount'] * 100;
+        $vnp_Amount = $order->total * 100;
         $vnp_Locale = "vn";
         $vnp_BankCode = "NCB";
-        $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+        $vnp_IpAddr = request()->ip();
 
         $inputData = array(
             "vnp_Version" => "2.1.0",
             "vnp_TmnCode" => $vnp_TmnCode,
             "vnp_Amount" => $vnp_Amount,
             "vnp_Command" => "pay",
-            "vnp_CreateDate" => date('YmdHis'),
+            "vnp_CreateDate" => now()->format('YmdHis'),
             "vnp_CurrCode" => "VND",
             "vnp_IpAddr" => $vnp_IpAddr,
             "vnp_Locale" => $vnp_Locale,
@@ -107,14 +165,12 @@ class CheckOutController extends Controller
             "vnp_TxnRef" => $vnp_TxnRef
         );
 
-        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+        if ($vnp_BankCode) {
             $inputData['vnp_BankCode'] = $vnp_BankCode;
-        }
-        if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
-            $inputData['vnp_Bill_State'] = $vnp_Bill_State;
         }
 
         ksort($inputData);
+
         $query = "";
         $i = 0;
         $hashdata = "";
@@ -129,24 +185,10 @@ class CheckOutController extends Controller
         }
 
         $vnp_Url = $vnp_Url . "?" . $query;
-        if (isset($vnp_HashSecret)) {
-            $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);//
-            $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
-        }
-        $returnData = array(
-            'code' => '00'
-            ,
-            'message' => 'success'
-            ,
-            'data' => $vnp_Url
-        );
-        if (isset($_POST['redirect'])) {
-            header('Location: ' . $vnp_Url);
-            die();
-        } else {
-            echo json_encode($returnData);
-        }
+
+        $vnpSecureHash = hash_hmac('sha512', $hashdata, $vnp_HashSecret);
+        $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
+
+        return redirect($vnp_Url);
     }
-
-
 }

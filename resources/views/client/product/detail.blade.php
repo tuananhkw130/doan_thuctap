@@ -77,7 +77,8 @@
                                     <span> - 5 Reviews</span>
                                 </div>
                                 <h3> {{ number_format($product->price) }} VND</h3>
-                                <p>{!! $product->describe !!}</p>
+                                <p class="mb-2">{!! $product->describe !!}</p>
+                                <p class="mb-2">Còn: {{ $product->quantity }} sản phẩm</p>
                                 <div class="product__details__option">
                                     <div class="product__details__option__size">
                                         <span>Size:</span>
