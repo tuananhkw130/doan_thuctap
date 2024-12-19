@@ -24,7 +24,6 @@ class CheckOutController extends Controller
         ]);
     }
 
-
     public function order(Request $request)
     {
         $user = Auth::user();
@@ -51,7 +50,6 @@ class CheckOutController extends Controller
                 return redirect()->back()->with('error', 'Không đủ hàng trong kho');
             }
 
-            // Trừ số lượng kho
             $product->quantity -= $cart->quantity;
             $product->save();
 
@@ -77,14 +75,14 @@ class CheckOutController extends Controller
     {
         $user = Auth::user();
 
-        // Tạo đơn hàng
         $order = Order::create([
             'userID' => $user->id,
             'fullname' => $request->fullname,
             'phone' => $request->phone,
             'address' => $request->address,
-            'total' => 0, // Tạm thời đặt giá trị là 0, sẽ cập nhật sau
+            'total' => 0,
             'status' => OrderStatus::ORDER,
+            'paymentstatus' => 1,
             'message' => $request->message,
         ]);
 
@@ -103,11 +101,9 @@ class CheckOutController extends Controller
                 return redirect()->back()->with('error', 'Không đủ hàng trong kho');
             }
 
-            // Trừ số lượng kho
             $product->quantity -= $cart->quantity;
             $product->save();
 
-            // Thêm chi tiết đơn hàng
             array_push($dataOrderAdd, [
                 'orderID' => $order->id,
                 'productID' => $cart->productID,
@@ -115,23 +111,26 @@ class CheckOutController extends Controller
                 'price' => $cart->price,
             ]);
 
-            // Cộng tổng giá trị đơn hàng
             $total += $cart->price * $cart->quantity;
         }
 
-        // Thêm chi tiết đơn hàng vào cơ sở dữ liệu
         OrderDetail::insert($dataOrderAdd);
 
-        // Cập nhật tổng đơn hàng
+
         $order->total = $total;
         $order->save();
 
-        // Xóa các sản phẩm trong giỏ hàng
         Cart::where('userID', $user->id)->delete();
 
-        // Tạo yêu cầu thanh toán qua VNPAY
-        return $this->xuLyVnpay($order);
+        $action = $request->action;
+
+        if ($action == 'home') {
+            return redirect()->route('order.index')->with('success', 'Đặt hàng thành công');
+        } elseif ($action === 'bank') {
+            return $this->xuLyVnpay($order);
+        }
     }
+
 
     public function xuLyVnpay(Order $order)
     {

@@ -105,7 +105,6 @@
         <p><b>Họ và tên:</b> {{ $order->fullname }}</p>
         <p><b>Số điện thoại:</b> {{ $order->phone }}</p>
         <p><b>Địa chỉ:</b> {{ $order->address }}</p>
-        <p><b>Ghi chú:</b> {{ $order->message }}</p>
     </div>
 
     <div>

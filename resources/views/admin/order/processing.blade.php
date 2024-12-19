@@ -29,6 +29,7 @@
                                     <th class="text-center" scope="col">Người đặt</th>
                                     <th class="text-center" scope="col">Ngày đặt</th>
                                     <th class="text-center" scope="col">Trạng thái</th>
+                                    <th class="text-center" scope="col">Hình thức</th>
                                     <th class="text-center" scope="col">Thao tác</th>
                                 </tr>
                             </thead>
@@ -39,6 +40,13 @@
                                         <td class="text-center">{{ $order->name }}</td>
                                         <td class="text-center">{{ $order->created_at->format('d/m/Y') }}</td>
                                         <td class="text-center">{!! $order->statusOrder() !!}</td>
+                                        <td class="text-center">
+                                            @if ($order->paymentstatus == 1)
+                                                <span style="color: rgb(73, 99, 245);">Thanh toán khi nhận hàng</span>
+                                            @elseif ($order->paymentstatus == 2)
+                                                <span style="color: green;">Đã thanh toán qua ngân hàng</span>
+                                            @endif
+                                        </td>
                                         <td class="text-center">
                                             <a href="{{ route('admin.order.detail', ['id' => $order->id]) }}"
                                                 class="btn btn-primary ">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Enums\OrderStatus;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -60,6 +61,15 @@ class OrderController extends Controller
         $order = Order::where('status', OrderStatus::ORDER)
             ->where('id', $id)
             ->firstOrFail();
+
+        $orderDetails = OrderDetail::where('orderID', $order->id)->get();
+
+        foreach ($orderDetails as $orderDetail) {
+            $product = Product::findOrFail($orderDetail->productID);
+
+            $product->quantity += $orderDetail->quantity;
+            $product->save();
+        }
 
         $order->status = OrderStatus::CANCEL_ORDER;
         $order->save();

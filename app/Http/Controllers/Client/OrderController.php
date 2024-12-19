@@ -12,8 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $trangThaiTT = $request->vnp_ResponseCode;
+        if ($trangThaiTT == '00') {
+            $order_id = $request->vnp_TxnRef;
+            Order::where('id', $order_id)
+                ->update(['paymentstatus' => 2,]);
+        }
+
         $user = Auth::user();
         $orderList = Order::where('userID', $user->id)->orderBy('id', 'DESC')->get();
         return view('client.order.index', ['orderList' => $orderList]);
@@ -37,19 +44,15 @@ class OrderController extends Controller
             ->where('status', OrderStatus::ORDER)
             ->firstOrFail();
 
-        // Lấy danh sách chi tiết đơn hàng
         $orderDetails = OrderDetail::where('orderID', $order->id)->get();
 
         foreach ($orderDetails as $orderDetail) {
-            // Tìm sản phẩm
             $product = Product::findOrFail($orderDetail->productID);
 
-            // Cộng lại số lượng sản phẩm trong kho
             $product->quantity += $orderDetail->quantity;
             $product->save();
         }
 
-        // Cập nhật trạng thái đơn hàng
         $order->status = OrderStatus::CANCEL_ORDER;
         $order->message = 'Người dùng đã hủy đặt hàng';
         $order->save();

@@ -71,7 +71,7 @@
                                 </p>
 
                                 <p class="">
-                                    <b>Ghi chú:</b> {{ $order->note }}
+                                    <b>Ghi chú:</b> {{ $order->message }}
                                 </p>
                             </div>
                         </div>

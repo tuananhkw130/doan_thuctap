@@ -34,9 +34,9 @@
             <div class="checkout__form">
                 <form action="{{ route('checkout.orderVnpay') }}" method="POST">
                     @csrf
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col-lg-7 col-md-6">
-                            <h6 class="checkout__title">Chi tiết thanh toán</h6>
+                            <h6 class="checkout__title">Thông tin người nhận</h6>
                             <div class="row">
                             </div>
                             <div class="checkout__input">
@@ -83,7 +83,12 @@
                                 <ul class="checkout__total__all">
                                     <li>Tổng <span>{{ number_format($total) }} VND</span></li>
                                 </ul>
-                                <button type="submit" class="site-btn">Thanh toán khi nhận hàng</button>
+                                <button type="submit" name="action" value="home" class="site-btn">
+                                    Thanh toán khi nhận hàng
+                                </button>
+                                <button type="submit" name="action" value="bank" class="site-btn mt-3">
+                                    Thanh toán qua ngân hàng
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -49,7 +49,8 @@
                                 <tr>
                                     <th style="text-align:center">Mã đơn hàng</th>
                                     <th style="text-align:center">Ngày đặt</th>
-                                    <th style="text-align:center">Trạng thái</th>
+                                    <th style="text-align:center">Trạng thái đơn hàng</th>
+                                    <th style="text-align:center">Hình thức thanh toán</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,10 +67,19 @@
                                         <td class="product__cart__item" style="text-align:center">
                                             {!! $product->statusOrder() !!}
                                         </td>
+                                        <td class="product__cart__item" style="text-align:center">
+
+                                            @if ($product->paymentstatus == 1)
+                                                <span style="color: rgb(73, 99, 245);">Thanh toán khi nhận hàng</span>
+                                            @elseif ($product->paymentstatus == 2)
+                                                <span style="color: green;">Đã thanh toán qua ngân hàng</span>
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
