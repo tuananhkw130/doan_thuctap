@@ -52,7 +52,7 @@ class OrderController extends Controller
 
         $order->status = OrderStatus::DELIVERY;
         $order->save();
-        return redirect()->route('admin.order.index');
+        return redirect()->route('admin.order.detail', ['id' => $order->id]);
     }
 
     public function cancel(Request $request, $id)
@@ -63,7 +63,7 @@ class OrderController extends Controller
 
         $order->status = OrderStatus::CANCEL_ORDER;
         $order->save();
-        return redirect()->route('admin.order.index');
+        return redirect()->route('admin.order.detail', ['id' => $order->id]);
     }
 
     public function listOrderDone()

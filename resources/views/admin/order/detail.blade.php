@@ -24,7 +24,7 @@
                             @switch($order->status)
                                 @case(OrderStatus::ORDER)
                                     <a href="{{ route('admin.order.cancel', ['id' => $order->id]) }}"
-                                        class="btn btn-danger mx-1">Hủy</a>
+                                        class="btn btn-danger mx-1">Hủy đơn hàng</a>
                                     <a href="{{ route('admin.order.accept', ['id' => $order->id]) }}"
                                         class="btn btn-success mx-1">Chấp nhận</a>
                                 @break
