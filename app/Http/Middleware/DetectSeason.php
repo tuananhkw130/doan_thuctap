@@ -19,7 +19,6 @@ class DetectSeason
     {
         $currentMonth = Carbon::now()->month;
 
-        // Xác định mùa theo tháng
         if (in_array($currentMonth, [11, 12, 1])) {
             $season = 'winter';
         } elseif (in_array($currentMonth, [8, 9, 10])) {
@@ -28,7 +27,6 @@ class DetectSeason
             $season = 'other';
         }
 
-        // Chia sẻ biến $season với tất cả view
         View::share('season', $season);
 
         return $next($request);

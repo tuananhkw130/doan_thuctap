@@ -2,8 +2,7 @@ function createSnow() {
     const snowflake = document.createElement("div");
     snowflake.classList.add("snowflake");
 
-    // Kích thước ngẫu nhiên cho bông tuyết
-    const size = Math.random() * 20 + 15; // Kích thước ngẫu nhiên trong khoảng từ 20px đến 50px
+    const size = Math.random() * 10 + 10;
     snowflake.style.width = `${size}px`;
     snowflake.style.height = `${size}px`;
 
@@ -14,7 +13,7 @@ function createSnow() {
 
     setTimeout(() => {
         snowflake.remove();
-    }, 5000);
+    }, 7000);
 }
 
 setInterval(createSnow, 400);
