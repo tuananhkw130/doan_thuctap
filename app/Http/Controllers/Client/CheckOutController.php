@@ -89,7 +89,6 @@ class CheckOutController extends Controller
         $dataOrderAdd = [];
         $total = 0;
 
-        // Lấy các sản phẩm trong giỏ hàng
         $carts = Cart::select('carts.*', 'products.price')->join('products', 'products.id', 'carts.productID')
             ->where('userID', $user->id)->get();
 
