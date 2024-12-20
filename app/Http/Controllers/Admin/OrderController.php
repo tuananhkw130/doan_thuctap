@@ -13,12 +13,17 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::select('orders.*', 'users.name')
+        $query = Order::select('orders.*', 'users.name')
             ->join('users', 'users.id', 'orders.userID')
-            ->orderBy('orders.created_at', 'desc')
-            ->get();
+            ->orderBy('orders.created_at', 'desc');
+
+        if ($request->filled('specific_date')) {
+            $query->whereDate('orders.created_at', $request->specific_date);
+        }
+
+        $orders = $query->get();
 
         return view('admin.order.index', [
             'orders' => $orders,

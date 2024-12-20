@@ -40,6 +40,23 @@
                     </div>
                     <div class="card-body">
                         <a class="btn btn-primary mb-3" href="{{ route('admin.product.create') }}">Thêm sản phẩm</a>
+
+                        <form method="GET" action="{{ route('admin.product.index') }}" class="mb-4">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="specific_date">Chọn ngày cụ thể:</label>
+                                    <input type="date" id="specific_date" name="specific_date" class="form-control"
+                                        value="{{ request('specific_date') }}">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12 d-flex justify-content-start">
+                                    <button type="submit" class="btn btn-success">Lọc</button>
+                                    <a href="{{ route('admin.product.index') }}" class="btn btn-secondary ml-2">Reset</a>
+                                </div>
+                            </div>
+                        </form>
+
                         <table class="table">
                             <thead>
                                 <tr class="table-info">

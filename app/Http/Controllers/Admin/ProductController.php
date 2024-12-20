@@ -9,16 +9,24 @@ use App\Models\Category;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::select('products.*', 'categories.name as category_name')
-            ->join('categories', 'products.id_category', 'categories.id')
-            ->get();
+        $query = Product::select('products.*', 'categories.name as category_name')
+            ->join('categories', 'products.id_category', 'categories.id');
+
+        if ($request->filled('specific_date')) {
+            $query->whereDate('products.created_at', $request->specific_date);
+        }
+
+        $products = $query->get();
+
         return view(
             'admin.product.index',
             ["listProduct" => $products]
         );
     }
+
+
 
     public function create()
     {
