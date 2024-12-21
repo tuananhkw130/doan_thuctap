@@ -27,7 +27,7 @@ class Order extends Model
     {
         switch ($this->status) {
             case OrderStatus::ORDER:
-                return '<span class="badge badge-warning">Đang xử lý</span>';
+                return '<span class="badge badge-warning">Chờ giao hàng</span>';
             case OrderStatus::CANCEL_ORDER:
                 return '<span class="badge badge-danger">Đã hủy</span>';
             case OrderStatus::DELIVERY:

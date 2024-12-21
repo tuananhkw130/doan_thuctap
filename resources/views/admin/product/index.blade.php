@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@php
+    use App\Enums\UserRole;
+@endphp
 @section('content')
     <nav aria-label="breadcrumb" class="mb-4">
         <ol class="breadcrumb iq-bg-primary mb-0">
@@ -39,7 +42,9 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <a class="btn btn-primary mb-3" href="{{ route('admin.product.create') }}">Thêm sản phẩm</a>
+                        @if (Auth::user()->role !== UserRole::NhanVien)
+                            <a class="btn btn-primary mb-3" href="{{ route('admin.product.create') }}">Thêm sản phẩm</a>
+                        @endif
 
                         <form method="GET" action="{{ route('admin.product.index') }}" class="mb-4">
                             <div class="row">
@@ -66,7 +71,9 @@
                                     <th class="text-center" scope="col">Hình ảnh</th>
                                     <th class="text-center" scope="col">Giá</th>
                                     <th class="text-center" scope="col">Số lượng</th>
-                                    <th class="text-center" scope="col">Chức năng</th>
+                                    @if (Auth::user()->role !== UserRole::NhanVien)
+                                        <th class="text-center" scope="col">Chức năng</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody style="background: #fbf0f1">
@@ -86,14 +93,16 @@
                                         </td>
                                         <td class="text-center">{{ number_format($itemProduct->price) }} VND</td>
                                         <td class="text-center">{{ $itemProduct->quantity }}</td>
-                                        <td class="text-center">
-                                            <div class="d-flex" style="justify-content: center">
-                                                <a href="{{ route('admin.product.edit', ['id' => $itemProduct->id]) }}"
-                                                    class="btn btn-warning">Sửa</a>
-                                                <a href="{{ route('admin.product.delete', ['id' => $itemProduct->id]) }}"
-                                                    class="btn btn-danger mx-2">Xoá</a>
-                                            </div>
-                                        </td>
+                                        @if (Auth::user()->role !== UserRole::NhanVien)
+                                            <td class="text-center">
+                                                <div class="d-flex" style="justify-content: center">
+                                                    <a href="{{ route('admin.product.edit', ['id' => $itemProduct->id]) }}"
+                                                        class="btn btn-warning">Sửa</a>
+                                                    <a href="{{ route('admin.product.delete', ['id' => $itemProduct->id]) }}"
+                                                        class="btn btn-danger mx-2">Xoá</a>
+                                                </div>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

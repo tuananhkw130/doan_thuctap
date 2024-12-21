@@ -106,7 +106,7 @@
                                 <div class="header__top__hover">
                                     <span>Xin chào {{ Auth::user()->name }} <i class="arrow_carrot-down"></i></span>
                                     <ul>
-                                        @if (Auth::user()->role === UserRole::ADMIN)
+                                        @if (in_array(Auth::user()->role, [UserRole::ADMIN, UserRole::NhanVien]))
                                             <li class="control-account">
                                                 <a href="{{ route('admin.home.index') }}">
                                                     Trang quản trị

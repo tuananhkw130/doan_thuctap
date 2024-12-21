@@ -64,7 +64,15 @@
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>{{ $user->role === UserRole::ADMIN ? 'Admin' : 'Người dùng' }}</td>
+                                                <td>
+                                                    @if ($user->role === UserRole::ADMIN)
+                                                        Admin
+                                                    @elseif ($user->role === UserRole::NhanVien)
+                                                        Nhân viên
+                                                    @else
+                                                        Người dùng
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <div class="d-flex">
                                                         <a href="{{ route('admin.user.edit', ['id' => $user->id]) }}"
