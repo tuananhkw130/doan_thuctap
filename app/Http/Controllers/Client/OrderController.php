@@ -44,6 +44,12 @@ class OrderController extends Controller
             ->where('status', OrderStatus::ORDER)
             ->firstOrFail();
 
+        if ($order->paymentstatus == 2) {
+            session()->flash('success', 'Đơn hàng đã được hủy. Chúng tôi sẽ hoàn tiền trong vòng 24h tiếp theo.');
+        } else {
+            session()->flash('success', 'Đơn hàng đã được hủy.');
+        }
+
         $orderDetails = OrderDetail::where('orderID', $order->id)->get();
 
         foreach ($orderDetails as $orderDetail) {
@@ -59,5 +65,6 @@ class OrderController extends Controller
 
         return redirect()->route('order.index');
     }
+
 
 }

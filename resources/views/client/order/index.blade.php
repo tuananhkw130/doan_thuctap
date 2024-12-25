@@ -91,7 +91,7 @@
                 $('#alertModal').modal('show');
                 setTimeout(function() {
                     $('#alertModal').modal('hide');
-                }, 2500);
+                }, 4000);
             @endif
         });
     </script>
