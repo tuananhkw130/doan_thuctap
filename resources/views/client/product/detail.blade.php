@@ -76,9 +76,15 @@
                                     <i class="fa fa-star-o"></i>
                                     <span> - 5 Reviews</span>
                                 </div>
-                                <h3> {{ number_format($product->price) }} VND</h3>
+                                <h3>{{ number_format($product->price) }} VND</h3>
                                 <p class="mb-2">{!! $product->describe !!}</p>
-                                <p class="mb-2">Còn: {{ $product->quantity }} sản phẩm</p>
+                                <p class="mb-2">
+                                    @if ($product->quantity == 0)
+                                        <span style="color: red;">Hết hàng</span>
+                                    @else
+                                        Còn: {{ $product->quantity }} sản phẩm
+                                    @endif
+                                </p>
                                 <div class="product__details__option">
                                     <div class="product__details__option__size">
                                         <span>Size:</span>
@@ -100,15 +106,18 @@
                                     <input type="hidden" name="productID" value="{{ $product->id }}">
                                     <div class="quantity">
                                         <div class="pro-qty">
-                                            <!-- Nút tăng -->
                                             <span class="fa fa-angle-up dec qtybtn"></span>
-                                            <!-- Ô nhập số lượng -->
-                                            <input type="text" name="quantity" value="1">
-                                            <!-- Nút giảm -->
+                                            <input type="text" name="quantity"
+                                                @if ($product->quantity == 0) value="0" @endif value="1">
                                             <span class="fa fa-angle-down inc qtybtn"></span>
                                         </div>
                                     </div>
-                                    <button type="submit" class="primary-btn">Thêm vào giỏ hàng</button>
+                                    <button type="submit"
+                                        class="primary-btn @if ($product->quantity == 0) disabled-btn @endif"
+                                        @if ($product->quantity == 0) disabled @endif>
+                                        Thêm vào giỏ hàng
+                                    </button>
+
                                 </div>
                             </div>
                         </form>
@@ -117,7 +126,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="container pb-5">
         <div class="bangsize_pic d-flex justify-content-center">
