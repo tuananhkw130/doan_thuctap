@@ -72,6 +72,16 @@
                                     <b>Ghi chú:</b> {{ $order->message }}
                                 </p>
                             </div>
+                            <div class="col-4">
+                                <p class="">
+                                    <b>Hình thức thanh toán</b>
+                                    @if ($order->paymentstatus == 1)
+                                        Thanh toán khi nhận hàng
+                                    @else($order->paymentstatus == 2)
+                                        Thanh toán qua ngân hàng
+                                    @endif
+                                </p>
+                            </div>
                         </div>
                         <div class="">
                             <table class="table">

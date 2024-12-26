@@ -137,6 +137,15 @@
                 </tr>
             </tfoot>
         </table>
+        <div class="info">
+            <p><b>Hình thức thanh toán:</b>
+                @if ($order->paymentstatus == 1)
+                    Thanh toán khi nhận hàng
+                @else($order->paymentstatus == 2)
+                    Đã thanh toán qua ngân hàng
+                @endif
+            </p>
+        </div>
     </div>
 
     <div class="footer">

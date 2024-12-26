@@ -19,6 +19,7 @@ class Order extends Model
         "total",
         "status",
         "message",
+        "paymentstatus",
     ];
 
     protected $orderBy = ['created_at' => 'desc'];

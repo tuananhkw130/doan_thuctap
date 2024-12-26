@@ -12,20 +12,38 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $query = Product::select('products.*', 'categories.name as category_name')
-            ->join('categories', 'products.id_category', 'categories.id');
+            ->join('categories', 'products.id_category', '=', 'categories.id');
 
         if ($request->filled('specific_date')) {
             $query->whereDate('products.created_at', $request->specific_date);
         }
 
         $products = $query->get();
+        $categories = Category::all();
 
-        return view(
-            'admin.product.index',
-            ["listProduct" => $products]
-        );
+        return view('admin.product.index', [
+            'listProduct' => $products,
+            'categories' => $categories,
+        ]);
     }
 
+    public function listByCategory($categoryId)
+    {
+        $category = Category::findOrFail($categoryId);
+
+        $products = Product::select('products.*', 'categories.name as category_name')
+            ->join('categories', 'products.id_category', '=', 'categories.id')
+            ->where('categories.id', $categoryId)
+            ->get();
+
+        $categories = Category::all();
+
+        return view('admin.product.index', [
+            'category' => $category,
+            'listProduct' => $products,
+            'categories' => $categories,
+        ]);
+    }
 
 
     public function create()

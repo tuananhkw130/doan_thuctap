@@ -128,13 +128,11 @@ class OrderController extends Controller
             ->where('orderID', $order->id)
             ->get();
 
-        // Load view chi tiết đơn hàng và truyền dữ liệu
         $pdf = Pdf::loadView('admin.order.pdf', [
             'order' => $order,
             'orderDetail' => $orderDetail,
         ]);
 
-        // Xuất PDF với tên file
         return $pdf->stream('order_' . $order->id . '.pdf');
     }
 }

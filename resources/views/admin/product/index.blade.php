@@ -46,21 +46,42 @@
                             <a class="btn btn-primary mb-3" href="{{ route('admin.product.create') }}">Thêm sản phẩm</a>
                         @endif
 
-                        <form method="GET" action="{{ route('admin.product.index') }}" class="mb-4">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label for="specific_date">Chọn ngày cụ thể:</label>
-                                    <input type="date" id="specific_date" name="specific_date" class="form-control"
-                                        value="{{ request('specific_date') }}">
-                                </div>
+                        <div class="row ">
+                            <div class="col-7">
+                                <form method="GET" action="{{ route('admin.product.index') }}" class="mb-4">
+                                    <label for="specific_date" class="form-label">Chọn ngày cụ thể:</label>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4 pr-0">
+                                            <input type="date" id="specific_date" name="specific_date"
+                                                class="form-control" value="{{ request('specific_date') }}">
+                                        </div>
+                                        <div class="col-md-7">
+                                            <div class="d-flex justify-content-start gap-2">
+                                                <button type="submit" class="btn btn-success mr-4">Lọc theo ngày</button>
+                                                <div class="mr-2">
+                                                    <button type="button" class="btn btn-info dropdown-toggle"
+                                                        data-toggle="dropdown" aria-expanded="false">
+                                                        Danh mục sản phẩm
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        @foreach ($categories as $category)
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('admin.product.byCategory', $category->id) }}">
+                                                                {{ $category->name }}
+                                                            </a>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                                <a href="{{ route('admin.product.index') }}"
+                                                    class="btn btn-secondary">Reset</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-md-12 d-flex justify-content-start">
-                                    <button type="submit" class="btn btn-success">Lọc</button>
-                                    <a href="{{ route('admin.product.index') }}" class="btn btn-secondary ml-2">Reset</a>
-                                </div>
-                            </div>
-                        </form>
+
+
+                        </div>
 
                         <table class="table">
                             <thead>

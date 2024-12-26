@@ -21,18 +21,18 @@
                             <h4 class="card-title">Danh sách đơn hàng</h4>
                         </div>
                     </div>
-                    <form method="GET" action="{{ route('admin.order.index') }}" class="mb-4">
-                        <div class="row px-3">
+                    <form method="GET" action="{{ route('admin.order.index') }}" class="mb-4 pl-3">
+                        <label for="specific_date" class="form-label">Chọn ngày cụ thể:</label>
+                        <div class="row align-items-center">
                             <div class="col-md-4">
-                                <label for="specific_date">Chọn ngày cụ thể:</label>
                                 <input type="date" id="specific_date" name="specific_date" class="form-control"
                                     value="{{ request('specific_date') }}">
                             </div>
-                        </div>
-                        <div class="row mt-3 px-3">
-                            <div class="col-md-12 d-flex justify-content-start">
-                                <button type="submit" class="btn btn-success">Lọc</button>
-                                <a href="{{ route('admin.order.index') }}" class="btn btn-secondary ml-2">Reset</a>
+                            <div class="col-md-4">
+                                <div class="d-flex justify-content-start gap-2">
+                                    <button type="submit" class="btn btn-success mr-2">Lọc</button>
+                                    <a href="{{ route('admin.order.index') }}" class="btn btn-secondary">Reset</a>
+                                </div>
                             </div>
                         </div>
                     </form>
