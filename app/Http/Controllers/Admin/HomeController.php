@@ -34,7 +34,6 @@ class HomeController extends Controller
         $date = $request->input('date');
         $month = $request->input('month');
 
-        // Query doanh thu theo ngày hoặc tháng
         $query = Order::query()->where('status', OrderStatus::DELIVERY);
 
         if ($date) {

@@ -62,7 +62,7 @@
                         </div>
                         <div class="banner__item__text">
                             <h2>Bộ sưu tập mùa Giáng sinh 2024</h2>
-                            <a href="">Xem ngay</a>
+                            <a href="{{ route('products.filterByCategory', ['idcategory' => 4]) }}">Xem ngay</a>
                         </div>
                     </div>
                 </div>
